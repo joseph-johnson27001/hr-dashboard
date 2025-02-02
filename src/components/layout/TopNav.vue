@@ -8,7 +8,6 @@
       <i class="fas fa-bell"></i>
       <div class="profile">
         <i class="fas fa-user-circle"></i>
-        <span>Admin</span>
       </div>
     </div>
   </div>

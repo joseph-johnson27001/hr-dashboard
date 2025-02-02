@@ -6,7 +6,9 @@
     <!-- Main Content Area -->
     <div class="main-area">
       <TopNav />
-      <MainContent />
+      <div class="main">
+        <MainContent />
+      </div>
     </div>
   </div>
 </template>
@@ -50,10 +52,17 @@ body {
 }
 
 .main-area {
+  background-color: #f0f8ff;
   flex: 1;
   display: flex;
   flex-direction: column;
+  border-top-left-radius: 12px;
+}
+
+.main {
+  background-color: #f9fafb;
+  border-top-left-radius: 12px;
   height: 100%;
-  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 </style>
