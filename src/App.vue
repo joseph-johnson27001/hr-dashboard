@@ -1,16 +1,42 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <!-- Sidebar -->
+    <SideBar :isCollapsed="isSidebarCollapsed" @toggleSidebar="toggleSidebar" />
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <TopNav @toggleSidebar="toggleSidebar" />
+      <MainContent />
+    </div>
+  </div>
 </template>
 
 <script>
+import SideBar from "./components/layout/SideBar.vue";
+import TopNav from "./components/layout/TopNav.vue";
+import MainContent from "./components/layout/MainContent.vue";
+
 export default {
-  name: "App",
+  components: {
+    SideBar,
+    TopNav,
+    MainContent,
+  },
+  data() {
+    return {
+      isSidebarCollapsed: false,
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      this.isSidebarCollapsed = !this.isSidebarCollapsed;
+    },
+  },
 };
 </script>
 
 <style>
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  margin: 0px;
 }
 </style>
