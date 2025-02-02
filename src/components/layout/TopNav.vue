@@ -1,7 +1,7 @@
 <template>
   <div class="top-nav">
     <div class="search-bar">
-      <input type="text" placeholder="Search..." />
+      <!-- <input type="text" placeholder="Search..." /> -->
     </div>
 
     <div class="user-profile">
@@ -23,8 +23,8 @@ export default {};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2c3e50;
-  color: white;
+  background-color: #f0f8ff;
+  color: #0f3659;
   padding: 10px 20px;
   height: 60px;
   width: 100%;

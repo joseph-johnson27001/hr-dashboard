@@ -9,11 +9,17 @@
     <!-- Sidebar Content -->
     <nav>
       <ul>
-        <li v-for="item in menuItems" :key="item.name">
-          <router-link :to="item.path">
+        <li
+          v-for="item in menuItems"
+          :key="item.name"
+          class="menu-item"
+          :class="{ active: activeMenu === item.name }"
+          @click="setActiveMenu(item.name)"
+        >
+          <div class="menu-link">
             <i :class="item.icon"></i>
             <span>{{ item.name }}</span>
-          </router-link>
+          </div>
         </li>
       </ul>
     </nav>
@@ -25,26 +31,28 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: "Dashboard", path: "/", icon: "fas fa-tachometer-alt" },
-        { name: "Employees", path: "/employees", icon: "fas fa-users" },
-        {
-          name: "Attendance",
-          path: "/attendance",
-          icon: "fas fa-calendar-check",
-        },
-        { name: "Reports", path: "/reports", icon: "fas fa-chart-line" },
-        { name: "Settings", path: "/settings", icon: "fas fa-cog" },
+        { name: "Dashboard", icon: "fas fa-tachometer-alt" },
+        { name: "Employees", icon: "fas fa-users" },
+        { name: "Attendance", icon: "fas fa-calendar-check" },
+        { name: "Reports", icon: "fas fa-chart-line" },
+        { name: "Settings", icon: "fas fa-cog" },
       ],
+      activeMenu: "Dashboard", // Default active item
     };
+  },
+  methods: {
+    setActiveMenu(menuName) {
+      this.activeMenu = menuName;
+    },
   },
 };
 </script>
 
 <style scoped>
 .sidebar {
-  width: 250px;
-  background-color: #2c3e50;
-  color: white;
+  width: 225px;
+  background-color: #f0f8ff;
+  color: #0f3659;
   height: 100vh;
   padding: 10px 20px;
   transition: width 0.3s ease;
@@ -55,17 +63,25 @@ export default {
 }
 
 .heading-area {
-  cursor: pointer;
   padding: 10px 0px;
+  margin-left: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  font-weight: 400;
+}
+
+.heading-area i {
+  cursor: pointer;
 }
 
 .dashboard-name {
   font-size: 18px;
-  color: white;
+}
+
+nav {
+  padding-top: 40px;
 }
 
 nav ul {
@@ -74,24 +90,30 @@ nav ul {
 }
 
 nav ul li {
-  margin: 20px 0;
+  cursor: pointer;
+  margin: 10px 0;
 }
 
-nav ul li a {
+nav ul li .menu-link {
   display: flex;
   align-items: center;
-  color: white;
+  color: #0f3659;
   text-decoration: none;
   padding: 10px;
   border-radius: 5px;
-  transition: background 0.3s;
+  transition: background-color 0.2s;
 }
 
-nav ul li a:hover {
-  background: rgba(255, 255, 255, 0.2);
+nav ul li .menu-link:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 
-nav ul li i {
+nav ul li.active .menu-link {
+  background-color: #0288d1;
+  color: white;
+}
+
+nav ul li .menu-link i {
   margin-right: 10px;
 }
 </style>

@@ -4,7 +4,7 @@
     <SideBar />
 
     <!-- Main Content Area -->
-    <div class="main-content">
+    <div class="main-area">
       <TopNav />
       <MainContent />
     </div>
@@ -40,7 +40,6 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
 }
 
 #app {
@@ -50,11 +49,11 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.main-content {
+.main-area {
   flex: 1;
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #f7fafc;
+  border-radius: 5px;
 }
 </style>
