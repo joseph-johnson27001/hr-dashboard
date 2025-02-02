@@ -1,13 +1,10 @@
 <template>
   <div id="app">
-    <!-- Sidebar -->
     <SideBar />
-
-    <!-- Main Content Area -->
     <div class="main-area">
       <TopNav />
       <div class="main">
-        <MainContent />
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -16,20 +13,16 @@
 <script>
 import SideBar from "./components/layout/SideBar.vue";
 import TopNav from "./components/layout/TopNav.vue";
-import MainContent from "./components/layout/MainContent.vue";
 
 export default {
   components: {
     SideBar,
     TopNav,
-    MainContent,
   },
-  data() {},
 };
 </script>
 
 <style>
-/* Global styles for the entire app */
 * {
   margin: 0;
   padding: 0;

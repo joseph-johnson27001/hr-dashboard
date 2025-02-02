@@ -2,6 +2,7 @@
   <div :class="['sidebar', { collapsed: isCollapsed }]">
     <!-- Toggle Button and Dashboard Name -->
     <div class="heading-area">
+      <i class="fas fa-home"></i>
       <span class="dashboard-name">Dashboard</span>
       <i class="fas fa-bars"></i>
     </div>
@@ -11,15 +12,14 @@
       <ul>
         <li
           v-for="item in menuItems"
-          :key="item.name"
+          :key="item.path"
           class="menu-item"
-          :class="{ active: activeMenu === item.name }"
-          @click="setActiveMenu(item.name)"
+          :class="{ active: $route.path === item.path }"
         >
-          <div class="menu-link">
+          <router-link :to="item.path" class="menu-link">
             <i :class="item.icon"></i>
             <span>{{ item.name }}</span>
-          </div>
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -31,19 +31,17 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: "Dashboard", icon: "fas fa-tachometer-alt" },
-        { name: "Employees", icon: "fas fa-users" },
-        { name: "Attendance", icon: "fas fa-calendar-check" },
-        { name: "Reports", icon: "fas fa-chart-line" },
-        { name: "Settings", icon: "fas fa-cog" },
+        { name: "Home", path: "/", icon: "fas fa-tachometer-alt" },
+        { name: "Employees", path: "/employees", icon: "fas fa-users" },
+        {
+          name: "Attendance",
+          path: "/attendance",
+          icon: "fas fa-calendar-check",
+        },
+        { name: "Reports", path: "/reports", icon: "fas fa-chart-line" },
+        { name: "Settings", path: "/settings", icon: "fas fa-cog" },
       ],
-      activeMenu: "Dashboard", // Default active item
     };
-  },
-  methods: {
-    setActiveMenu(menuName) {
-      this.activeMenu = menuName;
-    },
   },
 };
 </script>
