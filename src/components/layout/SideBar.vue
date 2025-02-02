@@ -1,7 +1,8 @@
 <template>
   <div :class="['sidebar', { collapsed: isCollapsed }]">
-    <!-- Toggle Button -->
-    <div class="toggle-btn" @click="$emit('toggleSidebar')">
+    <!-- Toggle Button and Dashboard Name -->
+    <div class="heading-area">
+      <span class="dashboard-name">Dashboard</span>
       <i class="fas fa-bars"></i>
     </div>
 
@@ -11,7 +12,7 @@
         <li v-for="item in menuItems" :key="item.name">
           <router-link :to="item.path">
             <i :class="item.icon"></i>
-            <span v-if="!isCollapsed">{{ item.name }}</span>
+            <span>{{ item.name }}</span>
           </router-link>
         </li>
       </ul>
@@ -21,9 +22,6 @@
 
 <script>
 export default {
-  props: {
-    isCollapsed: Boolean,
-  },
   data() {
     return {
       menuItems: [
@@ -48,20 +46,26 @@ export default {
   background-color: #2c3e50;
   color: white;
   height: 100vh;
-  padding: 20px;
+  padding: 10px 20px;
   transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
+  font-weight: 100;
+  font-family: "Poppins", sans-serif;
 }
 
-.sidebar.collapsed {
-  width: 80px;
-}
-
-.toggle-btn {
+.heading-area {
   cursor: pointer;
-  padding: 10px;
-  text-align: right;
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dashboard-name {
+  font-size: 18px;
+  color: white;
 }
 
 nav ul {
@@ -89,14 +93,5 @@ nav ul li a:hover {
 
 nav ul li i {
   margin-right: 10px;
-}
-
-/* Hide text when collapsed */
-.sidebar.collapsed nav ul li i {
-  margin-right: 0;
-}
-
-.sidebar.collapsed nav ul li span {
-  display: none;
 }
 </style>

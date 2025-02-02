@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <!-- Sidebar -->
-    <SideBar :isCollapsed="isSidebarCollapsed" @toggleSidebar="toggleSidebar" />
+    <SideBar />
 
     <!-- Main Content Area -->
     <div class="main-content">
-      <TopNav @toggleSidebar="toggleSidebar" />
+      <TopNav />
       <MainContent />
     </div>
   </div>
@@ -22,21 +22,39 @@ export default {
     TopNav,
     MainContent,
   },
-  data() {
-    return {
-      isSidebarCollapsed: false,
-    };
-  },
-  methods: {
-    toggleSidebar() {
-      this.isSidebarCollapsed = !this.isSidebarCollapsed;
-    },
-  },
+  data() {},
 };
 </script>
 
 <style>
+/* Global styles for the entire app */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
 body {
-  margin: 0px;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f7fafc;
 }
 </style>
