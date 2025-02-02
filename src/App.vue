@@ -60,6 +60,7 @@ body {
 }
 
 .main {
+  padding: 10px;
   background-color: #f9fafb;
   border-top-left-radius: 12px;
   height: 100%;

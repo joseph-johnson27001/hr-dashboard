@@ -54,7 +54,7 @@ export default {
   background-color: #f0f8ff;
   color: #0f3659;
   height: 100vh;
-  padding: 10px 20px;
+  padding: 10px 10px;
   transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,7 @@ nav ul {
 
 nav ul li {
   cursor: pointer;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 nav ul li .menu-link {

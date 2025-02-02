@@ -26,7 +26,7 @@ export default {
   background-color: white;
   border-radius: 12px;
   padding: 20px;
-  margin: 10px;
+  margin: 5px;
   border: 1px solid #ddd;
   display: flex;
   flex-direction: column;
@@ -44,6 +44,6 @@ export default {
 .stat-card-value {
   font-size: 24px;
   font-weight: 700;
-  color: #0288d1; /* This color can be adjusted */
+  color: #0288d1;
 }
 </style>
