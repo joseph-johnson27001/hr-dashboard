@@ -75,6 +75,7 @@ export default {
 
 .dashboard-name {
   font-size: 18px;
+  padding-left: 10px;
 }
 
 nav {
