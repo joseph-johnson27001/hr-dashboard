@@ -69,35 +69,50 @@ export default {
 .main-content {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .stat-section {
   margin-bottom: 10px;
+  width: 100%;
 }
 
-.stat-category {
-  font-weight: 100;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
+/* Stat Cards Responsive Grid */
 .stat-cards {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 10px;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .stat-cards {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .stat-cards {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .stat-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 .info-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 10px;
+  width: 100%;
 }
 
-.profit-graph-card {
-  margin-top: 20px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+@media (max-width: 900px) {
+  .info-cards {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
