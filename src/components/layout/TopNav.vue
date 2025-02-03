@@ -35,7 +35,7 @@ export default {};
 
 .search-bar input {
   padding: 5px;
-  border-radius: 4px;
+  border-radius: 5px;
   border: 1px solid #ccc;
   width: 200px;
 }

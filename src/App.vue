@@ -56,11 +56,14 @@ body {
   background-color: #f9f9f9;
   border-top-left-radius: 12px;
   height: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid #bbb;
   overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
 }
 
 canvas {
+  width: 100%;
   margin-top: 5px;
+  max-height: 300px;
 }
 </style>

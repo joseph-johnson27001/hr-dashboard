@@ -26,6 +26,9 @@
       <InfoCard title="Employee Satisfaction (%)">
         <EmployeeSatisfactionGraph />
       </InfoCard>
+      <InfoCard title="Spending Breakdown (%)">
+        <SpendingBreakdownGraph />
+      </InfoCard>
     </div>
   </div>
 </template>
@@ -35,6 +38,7 @@ import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/TotalEmployeesGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeeSatisfactionGraph.vue";
+import SpendingBreakdownGraph from "@/components/Graphs/SpendingBreakdownGraph.vue";
 
 export default {
   components: {
@@ -42,6 +46,7 @@ export default {
     StatCard,
     TotalEmployeesGraph,
     EmployeeSatisfactionGraph,
+    SpendingBreakdownGraph,
   },
   data() {
     return {
@@ -77,7 +82,6 @@ export default {
   width: 100%;
 }
 
-/* Stat Cards Responsive Grid */
 .stat-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -105,7 +109,7 @@ export default {
 
 .info-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   width: 100%;
 }

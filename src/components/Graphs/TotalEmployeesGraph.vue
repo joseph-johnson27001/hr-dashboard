@@ -51,7 +51,6 @@ export default {
             data: [50, 55, 50, 55, 60, 55, 60, 65, 65, 70, 85, 70],
             backgroundColor: "rgba(204,231,246)",
             borderColor: "#0288d1",
-
             borderWidth: 1,
           },
         ],
@@ -104,10 +103,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-canvas {
-  width: 100%;
-  max-height: 300px;
-}
-</style>

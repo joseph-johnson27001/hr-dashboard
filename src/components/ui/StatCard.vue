@@ -24,9 +24,10 @@ export default {
 <style scoped>
 .stat-card {
   background-color: white;
-  border-radius: 12px;
+  border-radius: 5px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 8px;
   display: flex;
   flex-direction: column;
 }

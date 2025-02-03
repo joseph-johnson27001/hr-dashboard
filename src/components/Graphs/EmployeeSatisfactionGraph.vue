@@ -113,10 +113,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-canvas {
-  width: 100%;
-  max-height: 300px;
-}
-</style>
