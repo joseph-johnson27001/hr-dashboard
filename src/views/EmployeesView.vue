@@ -115,46 +115,6 @@ export default {
           location: "Austin",
           joinDate: "2019-01-15",
         },
-        {
-          id: 11,
-          name: "Olivia Walker",
-          position: "HR Assistant",
-          status: "On Leave",
-          location: "Los Angeles",
-          joinDate: "2022-05-05",
-        },
-        {
-          id: 12,
-          name: "Benjamin Allen",
-          position: "System Administrator",
-          status: "Active",
-          location: "Phoenix",
-          joinDate: "2018-12-07",
-        },
-        {
-          id: 13,
-          name: "Charlotte Young",
-          position: "Content Strategist",
-          status: "On Leave",
-          location: "San Francisco",
-          joinDate: "2021-09-21",
-        },
-        {
-          id: 14,
-          name: "Daniel King",
-          position: "IT Support",
-          status: "Active",
-          location: "New York",
-          joinDate: "2020-03-10",
-        },
-        {
-          id: 15,
-          name: "Sophia Scott",
-          position: "Product Designer",
-          status: "Active",
-          location: "Los Angeles",
-          joinDate: "2019-06-28",
-        },
       ],
     };
   },
@@ -182,6 +142,7 @@ export default {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #ddd;
+  font-size: 14px;
 }
 
 .employee-table th,
@@ -198,6 +159,7 @@ export default {
 
 .employee-table tbody tr:hover {
   background-color: #f5f5f5;
+  cursor: pointer;
 }
 
 .status-active {

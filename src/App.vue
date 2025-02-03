@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <SideBar />
-    <div class="main-area">
+    <div class="right-area">
       <TopNav />
       <div class="main">
         <router-view></router-view>
@@ -42,21 +42,21 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.main-area {
+.right-area {
   height: 100%;
   background-color: #f0f8ff;
   flex: 1;
   display: flex;
   flex-direction: column;
-  border-top-left-radius: 12px;
 }
 
 .main {
   height: 100%;
   padding: 10px;
-  background-color: whitesmoke;
+  background-color: #f9f9f9;
   border-top-left-radius: 12px;
   height: 100%;
   border: 1px solid #ddd;
+  overflow: auto;
 }
 </style>

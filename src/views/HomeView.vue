@@ -2,59 +2,18 @@
   <div class="main-content">
     <!-- StatCards at the top -->
     <div class="stat-cards">
-      <StatCard title="Total Employees" :value="150" />
-      <StatCard title="Attendance Rate" :value="'90%'" />
-      <StatCard title="Active Job Openings" :value="3" />
-      <StatCard title="Total Employees" :value="150" />
-      <StatCard title="Attendance Rate" :value="'90%'" />
-      <StatCard title="Active Job Openings" :value="3" />
+      <StatCard
+        v-for="stat in stats"
+        :key="stat.title"
+        :title="stat.title"
+        :value="stat.value"
+      />
     </div>
 
     <!-- InfoCards below the StatCards -->
     <div class="info-cards">
-      <InfoCard title="Employee Overview">
-        <p>View the latest updates on the employee data.</p>
-      </InfoCard>
-
-      <InfoCard title="Attendance Summary">
-        <p>Attendance data is available for the last 30 days.</p>
-      </InfoCard>
-    </div>
-    <div class="info-cards">
-      <InfoCard title="Employee Overview">
-        <p>View the latest updates on the employee data.</p>
-      </InfoCard>
-
-      <InfoCard title="Attendance Summary">
-        <p>Attendance data is available for the last 30 days.</p>
-      </InfoCard>
-    </div>
-    <div class="info-cards">
-      <InfoCard title="Employee Overview">
-        <p>View the latest updates on the employee data.</p>
-      </InfoCard>
-
-      <InfoCard title="Attendance Summary">
-        <p>Attendance data is available for the last 30 days.</p>
-      </InfoCard>
-    </div>
-    <div class="info-cards">
-      <InfoCard title="Employee Overview">
-        <p>View the latest updates on the employee data.</p>
-      </InfoCard>
-
-      <InfoCard title="Attendance Summary">
-        <p>Attendance data is available for the last 30 days.</p>
-      </InfoCard>
-    </div>
-    <div class="info-cards">
-      <InfoCard title="Employee Overview">
-        <p>View the latest updates on the employee data.</p>
-      </InfoCard>
-
-      <InfoCard title="Attendance Summary">
-        <p>Attendance data is available for the last 30 days.</p>
-      </InfoCard>
+      <InfoCard title="Employee Overview"> </InfoCard>
+      <InfoCard title="Attendance Summary"> </InfoCard>
     </div>
   </div>
 </template>
@@ -67,6 +26,18 @@ export default {
   components: {
     InfoCard,
     StatCard,
+  },
+  data() {
+    return {
+      stats: [
+        { title: "Total Employees", value: 150 },
+        { title: "Attendance Rate", value: "90%" },
+        { title: "Active Job Openings", value: 3 },
+        { title: "Departments", value: 5 },
+        { title: "New Hires This Month", value: 8 },
+        { title: "Pending Approvals", value: 4 },
+      ],
+    };
   },
 };
 </script>

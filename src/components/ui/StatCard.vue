@@ -29,20 +29,17 @@ export default {
   border: 1px solid #ddd;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 .stat-card-title {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   color: #0f3659;
 }
 
 .stat-card-value {
-  font-size: 24px;
-  font-weight: 700;
+  padding-top: 5px;
+  font-size: 18px;
   color: #0288d1;
 }
 </style>
