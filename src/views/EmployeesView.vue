@@ -1,3 +1,3 @@
 <template>
-  <div>EMPLOYEES</div>
+  <div></div>
 </template>

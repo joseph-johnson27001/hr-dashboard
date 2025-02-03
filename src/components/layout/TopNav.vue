@@ -27,6 +27,7 @@ export default {};
   padding: 10px 20px;
   height: 60px;
   width: 100%;
+  box-sizing: border-box;
 }
 .burger-btn {
   cursor: pointer;

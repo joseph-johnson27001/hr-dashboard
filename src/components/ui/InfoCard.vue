@@ -22,14 +22,13 @@ export default {
   background-color: white;
   border-radius: 12px;
   padding: 20px;
-  margin: 5px;
   border: 1px solid #ddd;
 }
 
 .info-card-title {
   font-size: 18px;
   font-weight: 400;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
   color: #0f3659;
 }
 </style>

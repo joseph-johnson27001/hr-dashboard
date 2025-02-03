@@ -51,8 +51,9 @@ export default {
   width: 210px;
   background-color: #f0f8ff;
   color: #0f3659;
-  height: 100vh;
-  padding: 10px 10px;
+  height: 100%;
+  min-height: 100vh;
+  padding: 0px 10px;
   transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -61,7 +62,7 @@ export default {
 }
 
 .heading-area {
-  padding: 10px 0px;
+  padding: 20px 0px;
   margin-left: 10px;
   display: flex;
   align-items: center;

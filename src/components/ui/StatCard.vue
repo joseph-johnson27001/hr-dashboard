@@ -26,7 +26,6 @@ export default {
   background-color: white;
   border-radius: 12px;
   padding: 20px;
-  margin: 5px;
   border: 1px solid #ddd;
   display: flex;
   flex-direction: column;

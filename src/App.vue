@@ -26,7 +26,6 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html,
@@ -39,12 +38,12 @@ body {
 
 #app {
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
   font-family: "Poppins", sans-serif;
 }
 
 .main-area {
+  height: 100%;
   background-color: #f0f8ff;
   flex: 1;
   display: flex;
@@ -53,6 +52,7 @@ body {
 }
 
 .main {
+  height: 100%;
   padding: 10px;
   background-color: #f9fafb;
   border-top-left-radius: 12px;
