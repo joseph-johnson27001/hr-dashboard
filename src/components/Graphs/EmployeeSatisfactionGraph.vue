@@ -87,6 +87,9 @@ export default {
             display: false,
             text: "Employee Satisfaction",
           },
+          legend: {
+            display: false,
+          },
           tooltip: {
             callbacks: {
               label: (tooltipItem) => `${tooltipItem.raw}%`,

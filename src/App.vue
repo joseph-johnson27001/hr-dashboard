@@ -59,4 +59,8 @@ body {
   border: 1px solid #ddd;
   overflow: auto;
 }
+
+canvas {
+  margin-top: 5px;
+}
 </style>

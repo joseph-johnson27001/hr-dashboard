@@ -23,7 +23,7 @@
       <InfoCard title="Total Employees">
         <TotalEmployeesGraph />
       </InfoCard>
-      <InfoCard title="Employee Satisfaction">
+      <InfoCard title="Employee Satisfaction (%)">
         <EmployeeSatisfactionGraph />
       </InfoCard>
     </div>

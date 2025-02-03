@@ -78,6 +78,9 @@ export default {
             display: false,
             text: "Total Employees Overview",
           },
+          legend: {
+            display: false,
+          },
           tooltip: {
             callbacks: {
               label: (tooltipItem) => `£${tooltipItem.raw.toLocaleString()}`,
