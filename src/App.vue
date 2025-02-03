@@ -52,7 +52,7 @@ body {
 
 .main {
   height: 100%;
-  padding: 10px;
+  padding: 20px;
   background-color: #f9f9f9;
   border-top-left-radius: 12px;
   height: 100%;

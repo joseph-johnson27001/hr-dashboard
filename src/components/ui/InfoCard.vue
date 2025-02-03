@@ -26,7 +26,7 @@ export default {
 }
 
 .info-card-title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   padding-bottom: 10px;
   color: #0f3659;
