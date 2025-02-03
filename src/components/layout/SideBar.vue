@@ -2,7 +2,6 @@
   <div :class="['sidebar', { collapsed: isCollapsed }]">
     <!-- Toggle Button and Dashboard Name -->
     <div class="heading-area">
-      <i class="fas fa-home"></i>
       <span class="dashboard-name">Dashboard</span>
       <i class="fas fa-bars"></i>
     </div>
@@ -63,7 +62,6 @@ export default {
 
 .heading-area {
   padding: 20px 0px;
-  margin-left: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -80,7 +78,7 @@ export default {
 }
 
 nav {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 nav ul {

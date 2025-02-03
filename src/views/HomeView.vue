@@ -56,24 +56,6 @@
         <p>Attendance data is available for the last 30 days.</p>
       </InfoCard>
     </div>
-    <div class="info-cards">
-      <InfoCard title="Employee Overview">
-        <p>View the latest updates on the employee data.</p>
-      </InfoCard>
-
-      <InfoCard title="Attendance Summary">
-        <p>Attendance data is available for the last 30 days.</p>
-      </InfoCard>
-    </div>
-    <div class="info-cards">
-      <InfoCard title="Employee Overview">
-        <p>View the latest updates on the employee data.</p>
-      </InfoCard>
-
-      <InfoCard title="Attendance Summary">
-        <p>Attendance data is available for the last 30 days.</p>
-      </InfoCard>
-    </div>
   </div>
 </template>
 
@@ -96,14 +78,13 @@ export default {
 }
 
 .stat-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
   margin-bottom: 10px;
-  box-sizing: border-box;
 }
 
 .stat-cards .stat-card {
-  box-sizing: border-box;
   flex: 1;
 }
 
@@ -112,6 +93,5 @@ export default {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-bottom: 10px;
-  box-sizing: border-box;
 }
 </style>
