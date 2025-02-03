@@ -17,10 +17,15 @@
         </div>
       </div>
     </div>
+
     <!-- InfoCards below the StatCards -->
     <div class="info-cards">
-      <InfoCard title="Employee Overview"> </InfoCard>
-      <InfoCard title="Attendance Summary"> </InfoCard>
+      <InfoCard title="Profit Overview">
+        <ProfitGraph />
+      </InfoCard>
+      <InfoCard title="Employee Satisfaction">
+        <EmployeeSatisfactionGraph />
+      </InfoCard>
     </div>
   </div>
 </template>
@@ -28,11 +33,15 @@
 <script>
 import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
+import ProfitGraph from "@/components/Graphs/ProfitGraph.vue";
+import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeeSatisfactionGraph.vue";
 
 export default {
   components: {
     InfoCard,
     StatCard,
+    ProfitGraph,
+    EmployeeSatisfactionGraph,
   },
   data() {
     return {
@@ -79,7 +88,15 @@ export default {
 
 .info-cards {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
+}
+
+.profit-graph-card {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 </style>
