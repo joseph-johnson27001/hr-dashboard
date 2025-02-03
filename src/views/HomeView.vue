@@ -23,6 +23,9 @@
       <InfoCard title="Total Employees">
         <TotalEmployeesGraph />
       </InfoCard>
+      <InfoCard title="Employee Performance">
+        <EmployeePerforamnceGraph />
+      </InfoCard>
       <InfoCard title="Employee Satisfaction (%)">
         <EmployeeSatisfactionGraph />
       </InfoCard>
@@ -39,6 +42,7 @@ import StatCard from "@/components/ui/StatCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/TotalEmployeesGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeeSatisfactionGraph.vue";
 import SpendingBreakdownGraph from "@/components/Graphs/SpendingBreakdownGraph.vue";
+import EmployeePerforamnceGraph from "@/components/Graphs/EmployeePerforamnceGraph.vue";
 
 export default {
   components: {
@@ -47,6 +51,7 @@ export default {
     TotalEmployeesGraph,
     EmployeeSatisfactionGraph,
     SpendingBreakdownGraph,
+    EmployeePerforamnceGraph,
   },
   data() {
     return {

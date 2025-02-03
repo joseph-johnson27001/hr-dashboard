@@ -54,7 +54,7 @@ body {
   height: 100%;
   padding: 20px;
   background-color: #f9f9f9;
-  border-top-left-radius: 12px;
+  border-top-left-radius: 5px;
   height: 100%;
   border: 1px solid #bbb;
   overflow: auto;
