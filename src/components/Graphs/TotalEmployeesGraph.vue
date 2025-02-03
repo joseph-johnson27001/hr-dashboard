@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas ref="profitChart"></canvas>
+    <canvas ref="totalEmployeesChart"></canvas>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ ChartJS.register(
 );
 
 export default {
-  name: "ProfitGraph",
+  name: "TotalEmployeesChart",
   data() {
     return {
       chartData: {
@@ -47,11 +47,8 @@ export default {
         ],
         datasets: [
           {
-            label: "Profit (in GBP)",
-            data: [
-              12000, 15000, 18000, 22000, 19000, 24000, 26000, 28000, 30000,
-              32000, 31000, 33000,
-            ],
+            label: "Number of Employees",
+            data: [50, 55, 50, 55, 60, 55, 60, 65, 65, 70, 85, 70],
             backgroundColor: "rgba(204,231,246)",
             borderColor: "#0288d1",
 
@@ -72,14 +69,14 @@ export default {
               display: true,
             },
             ticks: {
-              stepSize: 10000,
+              stepSize: 20,
             },
           },
         },
         plugins: {
           title: {
             display: false,
-            text: "Profit Overview",
+            text: "Total Employees Overview",
           },
           tooltip: {
             callbacks: {
@@ -95,7 +92,7 @@ export default {
   },
   methods: {
     renderChart() {
-      new ChartJS(this.$refs.profitChart, {
+      new ChartJS(this.$refs.totalEmployeesChart, {
         type: "bar",
         data: this.chartData,
         options: this.chartOptions,

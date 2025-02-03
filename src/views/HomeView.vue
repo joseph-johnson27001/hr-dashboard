@@ -20,8 +20,8 @@
 
     <!-- InfoCards below the StatCards -->
     <div class="info-cards">
-      <InfoCard title="Profit Overview">
-        <ProfitGraph />
+      <InfoCard title="Total Employees">
+        <TotalEmployeesGraph />
       </InfoCard>
       <InfoCard title="Employee Satisfaction">
         <EmployeeSatisfactionGraph />
@@ -33,14 +33,14 @@
 <script>
 import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
-import ProfitGraph from "@/components/Graphs/ProfitGraph.vue";
+import TotalEmployeesGraph from "@/components/Graphs/TotalEmployeesGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeeSatisfactionGraph.vue";
 
 export default {
   components: {
     InfoCard,
     StatCard,
-    ProfitGraph,
+    TotalEmployeesGraph,
     EmployeeSatisfactionGraph,
   },
   data() {
@@ -48,9 +48,10 @@ export default {
       workforceStats: [
         { title: "Total Employees", value: 150 },
         { title: "New Hires This Month", value: 8 },
+        { title: "Employee Turnover Rate", value: "5%" },
         { title: "Total Payroll (Monthly)", value: "$1.2M" },
         { title: "Employee Satisfaction", value: "85%" },
-        { title: "Training Rate", value: "78%" },
+        { title: "Absenteeism Rate", value: "3%" },
       ],
     };
   },
@@ -82,7 +83,7 @@ export default {
 
 .stat-cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
 }
 
