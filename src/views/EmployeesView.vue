@@ -12,7 +12,14 @@
       </thead>
       <tbody>
         <tr v-for="employee in employees" :key="employee.id">
-          <td>{{ employee.name }}</td>
+          <td class="employee-name-container">
+            <img
+              :src="employee.photoUrl"
+              alt="Profile Photo"
+              class="profile-photo"
+            />
+            {{ employee.name }}
+          </td>
           <td>{{ employee.position }}</td>
           <td :class="getStatusClass(employee.status)">
             {{ employee.status }}
@@ -32,6 +39,7 @@ export default {
   components: {
     InfoCard,
   },
+
   data() {
     return {
       employees: [
@@ -42,6 +50,7 @@ export default {
           status: "Active",
           location: "New York",
           joinDate: "2021-06-15",
+          photoUrl: "images/ProfilePhoto1.jpg",
         },
         {
           id: 2,
@@ -50,6 +59,7 @@ export default {
           status: "On Leave",
           location: "Los Angeles",
           joinDate: "2020-08-10",
+          photoUrl: "images/ProfilePhoto2.jpg",
         },
         {
           id: 3,
@@ -58,6 +68,7 @@ export default {
           status: "Active",
           location: "Chicago",
           joinDate: "2019-11-30",
+          photoUrl: "images/ProfilePhoto3.jpg",
         },
         {
           id: 4,
@@ -66,6 +77,7 @@ export default {
           status: "Active",
           location: "San Francisco",
           joinDate: "2022-02-01",
+          photoUrl: "images/ProfilePhoto4.jpg",
         },
         {
           id: 5,
@@ -74,6 +86,7 @@ export default {
           status: "On Leave",
           location: "Miami",
           joinDate: "2018-04-12",
+          photoUrl: "images/ProfilePhoto1.jpg",
         },
         {
           id: 6,
@@ -82,6 +95,7 @@ export default {
           status: "Active",
           location: "Boston",
           joinDate: "2020-05-22",
+          photoUrl: "images/ProfilePhoto2.jpg",
         },
         {
           id: 7,
@@ -90,6 +104,7 @@ export default {
           status: "Active",
           location: "Seattle",
           joinDate: "2021-07-30",
+          photoUrl: "images/ProfilePhoto3.jpg",
         },
         {
           id: 8,
@@ -98,6 +113,7 @@ export default {
           status: "On Leave",
           location: "Chicago",
           joinDate: "2017-09-09",
+          photoUrl: "images/ProfilePhoto4.jpg",
         },
         {
           id: 9,
@@ -106,6 +122,7 @@ export default {
           status: "Active",
           location: "Dallas",
           joinDate: "2021-11-18",
+          photoUrl: "images/ProfilePhoto1.jpg",
         },
         {
           id: 10,
@@ -114,6 +131,7 @@ export default {
           status: "Active",
           location: "Austin",
           joinDate: "2019-01-15",
+          photoUrl: "images/ProfilePhoto2.jpg",
         },
         {
           id: 11,
@@ -122,6 +140,7 @@ export default {
           status: "Active",
           location: "New York",
           joinDate: "2020-03-22",
+          photoUrl: "images/ProfilePhoto3.jpg",
         },
         {
           id: 12,
@@ -130,6 +149,7 @@ export default {
           status: "On Leave",
           location: "Los Angeles",
           joinDate: "2022-04-17",
+          photoUrl: "images/ProfilePhoto4.jpg",
         },
         {
           id: 13,
@@ -138,6 +158,7 @@ export default {
           status: "Active",
           location: "Chicago",
           joinDate: "2021-10-05",
+          photoUrl: "images/ProfilePhoto1.jpg",
         },
         {
           id: 14,
@@ -146,6 +167,7 @@ export default {
           status: "On Leave",
           location: "Miami",
           joinDate: "2019-12-01",
+          photoUrl: "images/ProfilePhoto2.jpg",
         },
         {
           id: 15,
@@ -154,6 +176,7 @@ export default {
           status: "Active",
           location: "Boston",
           joinDate: "2020-08-15",
+          photoUrl: "images/ProfilePhoto3.jpg",
         },
         {
           id: 16,
@@ -162,6 +185,7 @@ export default {
           status: "Active",
           location: "Seattle",
           joinDate: "2018-11-09",
+          photoUrl: "images/ProfilePhoto4.jpg",
         },
         {
           id: 17,
@@ -170,6 +194,7 @@ export default {
           status: "Active",
           location: "Dallas",
           joinDate: "2021-01-29",
+          photoUrl: "images/ProfilePhoto1.jpg",
         },
         {
           id: 18,
@@ -178,6 +203,7 @@ export default {
           status: "On Leave",
           location: "Chicago",
           joinDate: "2017-05-20",
+          photoUrl: "images/ProfilePhoto2.jpg",
         },
         {
           id: 19,
@@ -186,6 +212,7 @@ export default {
           status: "Active",
           location: "Austin",
           joinDate: "2021-02-14",
+          photoUrl: "images/ProfilePhoto3.jpg",
         },
         {
           id: 20,
@@ -194,6 +221,7 @@ export default {
           status: "Active",
           location: "San Francisco",
           joinDate: "2020-07-08",
+          photoUrl: "images/ProfilePhoto4.jpg",
         },
       ],
     };
@@ -248,5 +276,22 @@ export default {
 
 .status-on-leave {
   color: orange;
+}
+
+.profile-photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.employee-table td {
+  vertical-align: middle;
+}
+
+.employee-name-container {
+  display: flex;
+  align-items: center;
 }
 </style>

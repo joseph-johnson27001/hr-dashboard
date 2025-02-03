@@ -80,7 +80,7 @@ export default {
           },
           tooltip: {
             callbacks: {
-              label: (tooltipItem) => `£${tooltipItem.raw.toLocaleString()}`,
+              label: (tooltipItem) => `${tooltipItem.raw.toLocaleString()}`,
             },
           },
         },
