@@ -54,7 +54,7 @@ body {
 .main {
   height: 100%;
   padding: 10px;
-  background-color: #f9fafb;
+  background-color: whitesmoke;
   border-top-left-radius: 12px;
   height: 100%;
   border: 1px solid #ddd;

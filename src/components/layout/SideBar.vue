@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 210px;
+  width: 200px;
   background-color: #f0f8ff;
   color: #0f3659;
   height: 100%;
