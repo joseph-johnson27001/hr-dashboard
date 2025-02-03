@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <canvas ref="totalEmployeesChart"></canvas>
-  </div>
+  <canvas ref="totalEmployeesChart"></canvas>
 </template>
 
 <script>

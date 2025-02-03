@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <canvas ref="satisfactionChart"></canvas>
-  </div>
+  <canvas ref="satisfactionChart"></canvas>
 </template>
 
 <script>

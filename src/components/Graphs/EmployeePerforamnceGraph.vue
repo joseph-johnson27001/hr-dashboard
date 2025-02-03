@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <canvas ref="performanceRangeChart"></canvas>
-  </div>
+  <canvas ref="performanceRangeChart"></canvas>
 </template>
 
 <script>

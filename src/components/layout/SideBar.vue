@@ -98,7 +98,7 @@ nav ul li .menu-link {
   color: #0f3659;
   text-decoration: none;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 12px;
   transition: background-color 0.2s;
 }
 

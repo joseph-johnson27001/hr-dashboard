@@ -115,6 +115,86 @@ export default {
           location: "Austin",
           joinDate: "2019-01-15",
         },
+        {
+          id: 11,
+          name: "Benjamin Turner",
+          position: "Software Engineer",
+          status: "Active",
+          location: "New York",
+          joinDate: "2020-03-22",
+        },
+        {
+          id: 12,
+          name: "Sophia Harris",
+          position: "HR Assistant",
+          status: "On Leave",
+          location: "Los Angeles",
+          joinDate: "2022-04-17",
+        },
+        {
+          id: 13,
+          name: "Ethan White",
+          position: "Product Designer",
+          status: "Active",
+          location: "Chicago",
+          joinDate: "2021-10-05",
+        },
+        {
+          id: 14,
+          name: "Chloe Martinez",
+          position: "Marketing Executive",
+          status: "On Leave",
+          location: "Miami",
+          joinDate: "2019-12-01",
+        },
+        {
+          id: 15,
+          name: "James Anderson",
+          position: "Lead Developer",
+          status: "Active",
+          location: "Boston",
+          joinDate: "2020-08-15",
+        },
+        {
+          id: 16,
+          name: "Olivia Robinson",
+          position: "Sales Manager",
+          status: "Active",
+          location: "Seattle",
+          joinDate: "2018-11-09",
+        },
+        {
+          id: 17,
+          name: "Isabella Lopez",
+          position: "Operations Assistant",
+          status: "Active",
+          location: "Dallas",
+          joinDate: "2021-01-29",
+        },
+        {
+          id: 18,
+          name: "Charlotte Walker",
+          position: "Product Manager",
+          status: "On Leave",
+          location: "Chicago",
+          joinDate: "2017-05-20",
+        },
+        {
+          id: 19,
+          name: "Mason Scott",
+          position: "Marketing Manager",
+          status: "Active",
+          location: "Austin",
+          joinDate: "2021-02-14",
+        },
+        {
+          id: 20,
+          name: "Amelia Young",
+          position: "Data Analyst",
+          status: "Active",
+          location: "San Francisco",
+          joinDate: "2020-07-08",
+        },
       ],
     };
   },
@@ -147,7 +227,7 @@ export default {
 
 .employee-table th,
 .employee-table td {
-  padding: 12px;
+  padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }

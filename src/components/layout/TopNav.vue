@@ -25,7 +25,7 @@ export default {};
   background-color: #f0f8ff;
   color: #0f3659;
   padding: 10px 20px;
-  height: 40px;
+  height: 60px;
   width: 100%;
   box-sizing: border-box;
 }
