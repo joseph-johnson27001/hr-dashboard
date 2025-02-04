@@ -1,7 +1,9 @@
 <template>
   <div class="info-card">
     <h3 class="info-card-title">{{ title }}</h3>
-    <slot></slot>
+    <div class="chart-container">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -24,6 +26,14 @@ export default {
   padding: 20px;
   border: 1px solid #ccc;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-container {
+  flex: 1;
+  min-height: 200px;
+  width: 100%;
 }
 
 .info-card-title {
