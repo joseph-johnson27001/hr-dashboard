@@ -42,7 +42,7 @@ import StatCard from "@/components/ui/StatCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/TotalEmployeesGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeeSatisfactionGraph.vue";
 import SpendingBreakdownGraph from "@/components/Graphs/SpendingBreakdownGraph.vue";
-import EmployeePerforamnceGraph from "@/components/Graphs/EmployeePerforamnceGraph.vue";
+import EmployeePerforamnceGraph from "@/components/Graphs/EmployeePerformanceGraph.vue";
 
 export default {
   components: {
