@@ -31,14 +31,12 @@ export default {
   data() {
     return {
       chartInstance: null,
-
+      isMounted: false, // Track mount state
       performanceScores: [
         0.5, 2.5, 3.8, 4.5, 1.2, 3.1, 6.7, 8.9, 2.3, 5.4, 6.1, 7.5, 8.0, 4.3,
         3.9,
       ],
-
       scoreRanges: ["8-10", "6-8", "4-6", "2-4", "0-2"],
-
       chartData: {
         labels: [],
         datasets: [
@@ -51,7 +49,6 @@ export default {
           },
         ],
       },
-
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
@@ -75,13 +72,8 @@ export default {
           },
         },
         plugins: {
-          title: {
-            display: false,
-            text: "Employee Performance by Score Range",
-          },
-          legend: {
-            display: false,
-          },
+          title: { display: false },
+          legend: { display: false },
           tooltip: {
             callbacks: {
               label: (tooltipItem) => `Employees: ${tooltipItem.raw}`,
@@ -92,6 +84,7 @@ export default {
     };
   },
   mounted() {
+    this.isMounted = true; // Set flag when component is mounted
     this.$nextTick(() => {
       this.prepareChartData();
       this.renderChart();
@@ -99,6 +92,7 @@ export default {
     });
   },
   beforeUnmount() {
+    this.isMounted = false; // Set flag when component is unmounted
     window.removeEventListener("resize", this.handleResize);
     this.destroyChart();
   },
@@ -118,27 +112,32 @@ export default {
     },
 
     renderChart() {
-      this.destroyChart();
+      // Prevent chart rendering if the component is not mounted or if the canvas reference is invalid
+      if (!this.isMounted || !this.$refs.performanceRangeChart) return;
 
-      if (this.$refs.performanceRangeChart) {
-        this.chartInstance = new ChartJS(this.$refs.performanceRangeChart, {
-          type: "bar",
-          data: this.chartData,
-          options: this.chartOptions,
-        });
-      }
+      this.destroyChart(); // Prevents duplicate charts
+
+      this.chartInstance = new ChartJS(this.$refs.performanceRangeChart, {
+        type: "bar",
+        data: this.chartData,
+        options: this.chartOptions,
+      });
     },
 
     destroyChart() {
-      if (this.chartInstance) {
+      // Ensure that the chart instance is valid before attempting to destroy
+      if (this.chartInstance && this.isMounted) {
         this.chartInstance.destroy();
         this.chartInstance = null;
       }
     },
 
     handleResize() {
-      if (this.chartInstance) {
-        this.chartInstance.resize();
+      // Ensure resize is triggered only if the chart instance is valid and the component is mounted
+      if (this.chartInstance && this.isMounted) {
+        requestAnimationFrame(() => {
+          if (this.chartInstance) this.chartInstance.resize();
+        });
       }
     },
   },
