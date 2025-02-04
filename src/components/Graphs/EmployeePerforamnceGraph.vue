@@ -1,5 +1,7 @@
 <template>
-  <canvas ref="performanceRangeChart"></canvas>
+  <div class="chart-container">
+    <canvas ref="performanceRangeChart"></canvas>
+  </div>
 </template>
 
 <script>
@@ -28,6 +30,8 @@ export default {
   name: "PerformanceRangeChart",
   data() {
     return {
+      chartInstance: null,
+
       performanceScores: [
         0.5, 2.5, 3.8, 4.5, 1.2, 3.1, 6.7, 8.9, 2.3, 5.4, 6.1, 7.5, 8.0, 4.3,
         3.9,
@@ -43,7 +47,6 @@ export default {
             data: [],
             borderColor: "rgba(34, 139, 34, 1)",
             backgroundColor: "rgba(34, 139, 34, 0.2)",
-
             borderWidth: 1,
           },
         ],
@@ -51,6 +54,7 @@ export default {
 
       chartOptions: {
         responsive: true,
+        maintainAspectRatio: false,
         indexAxis: "y",
         scales: {
           x: {
@@ -88,36 +92,67 @@ export default {
     };
   },
   mounted() {
-    this.prepareChartData();
-    this.renderChart();
+    this.$nextTick(() => {
+      this.prepareChartData();
+      this.renderChart();
+      window.addEventListener("resize", this.handleResize);
+    });
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+    this.destroyChart();
   },
   methods: {
     prepareChartData() {
       const frequency = Array(this.scoreRanges.length).fill(0);
       this.performanceScores.forEach((score) => {
-        if (score >= 0 && score < 2) {
-          frequency[0]++;
-        } else if (score >= 2 && score < 4) {
-          frequency[1]++;
-        } else if (score >= 4 && score < 6) {
-          frequency[2]++;
-        } else if (score >= 6 && score < 8) {
-          frequency[3]++;
-        } else if (score >= 8 && score <= 10) {
-          frequency[4]++;
-        }
+        if (score >= 0 && score < 2) frequency[4]++;
+        else if (score >= 2 && score < 4) frequency[3]++;
+        else if (score >= 4 && score < 6) frequency[2]++;
+        else if (score >= 6 && score < 8) frequency[1]++;
+        else if (score >= 8 && score <= 10) frequency[0]++;
       });
+
       this.chartData.labels = this.scoreRanges;
       this.chartData.datasets[0].data = frequency;
     },
 
     renderChart() {
-      new ChartJS(this.$refs.performanceRangeChart, {
-        type: "bar",
-        data: this.chartData,
-        options: this.chartOptions,
-      });
+      this.destroyChart();
+
+      if (this.$refs.performanceRangeChart) {
+        this.chartInstance = new ChartJS(this.$refs.performanceRangeChart, {
+          type: "bar",
+          data: this.chartData,
+          options: this.chartOptions,
+        });
+      }
+    },
+
+    destroyChart() {
+      if (this.chartInstance) {
+        this.chartInstance.destroy();
+        this.chartInstance = null;
+      }
+    },
+
+    handleResize() {
+      if (this.chartInstance) {
+        this.chartInstance.resize();
+      }
     },
   },
 };
 </script>
+
+<style scoped>
+.chart-container {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+}
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>
