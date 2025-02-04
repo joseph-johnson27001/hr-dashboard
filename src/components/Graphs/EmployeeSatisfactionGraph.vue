@@ -1,5 +1,7 @@
 <template>
-  <canvas ref="satisfactionChart"></canvas>
+  <div class="chart-container">
+    <canvas ref="satisfactionChart"></canvas>
+  </div>
 </template>
 
 <script>
@@ -30,6 +32,7 @@ export default {
   name: "SatisfactionGraph",
   data() {
     return {
+      chartInstance: null,
       chartData: {
         labels: [
           "Jan",
@@ -60,34 +63,21 @@ export default {
           },
         ],
       },
-
       chartOptions: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
           x: {
-            grid: {
-              display: false,
-            },
+            grid: { display: false },
           },
           y: {
-            grid: {
-              display: true,
-            },
-            ticks: {
-              min: 70,
-              max: 100,
-              stepSize: 5,
-            },
+            grid: { display: true },
+            ticks: { min: 70, max: 100, stepSize: 5 },
           },
         },
         plugins: {
-          title: {
-            display: false,
-            text: "Employee Satisfaction",
-          },
-          legend: {
-            display: false,
-          },
+          title: { display: false },
+          legend: { display: false },
           tooltip: {
             callbacks: {
               label: (tooltipItem) => `${tooltipItem.raw}%`,
@@ -98,16 +88,50 @@ export default {
     };
   },
   mounted() {
-    this.renderChart();
+    this.$nextTick(() => {
+      this.renderChart();
+      window.addEventListener("resize", this.handleResize);
+    });
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+    this.destroyChart();
   },
   methods: {
     renderChart() {
-      new ChartJS(this.$refs.satisfactionChart, {
-        type: "line",
-        data: this.chartData,
-        options: this.chartOptions,
-      });
+      this.destroyChart();
+
+      if (this.$refs.satisfactionChart) {
+        this.chartInstance = new ChartJS(this.$refs.satisfactionChart, {
+          type: "line",
+          data: this.chartData,
+          options: this.chartOptions,
+        });
+      }
+    },
+    destroyChart() {
+      if (this.chartInstance) {
+        this.chartInstance.destroy();
+        this.chartInstance = null;
+      }
+    },
+    handleResize() {
+      if (this.chartInstance) {
+        this.chartInstance.resize();
+      }
     },
   },
 };
 </script>
+
+<style scoped>
+.chart-container {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+}
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>
