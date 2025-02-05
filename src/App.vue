@@ -57,20 +57,25 @@ body {
   height: 100%;
   padding: 20px;
   background-color: #f9f9f9;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   height: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid #bbb;
+  border-top: 0;
+  border-right: 0;
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
   margin-left: 245px;
-  margin-top: 70px;
-  margin-right: 10px;
+  margin-top: 60px;
 }
 
 canvas {
   width: 100%;
   margin-top: 5px;
   max-height: 300px;
+}
+
+table {
+  font-size: 14px !important;
 }
 
 @media (max-width: 900px) {

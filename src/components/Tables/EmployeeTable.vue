@@ -234,10 +234,11 @@ export default {
 }
 
 .profile-photo {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
+  margin-right: 5px;
 }
 
 /* Utility Styles */
@@ -254,6 +255,11 @@ export default {
   justify-content: space-between;
   margin-bottom: 10px;
   gap: 10px;
+}
+
+.employee-name-container {
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 500px) {

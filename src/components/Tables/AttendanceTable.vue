@@ -344,20 +344,20 @@ export default {
   gap: 10px;
 }
 
+.search-input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .table-controls {
     flex-direction: column;
     align-items: stretch;
   }
-}
-
-.search-input {
-  padding: 8px;
-  width: 300px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  outline: none;
 }
 
 .filter-select {

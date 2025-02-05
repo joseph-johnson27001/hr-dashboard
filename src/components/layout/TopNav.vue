@@ -29,7 +29,7 @@ export default {};
   width: 100%;
   box-sizing: border-box;
   position: fixed;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #bbb;
 }
 
 .heading-area {

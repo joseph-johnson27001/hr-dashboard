@@ -1,25 +1,21 @@
 <template>
   <InfoCard title="Payroll">
+    <!-- Search Bar and Filters -->
     <div class="table-controls">
-      <!-- Search Bar -->
       <input
         v-model="searchQuery"
         type="text"
         placeholder="Search"
         class="search-input"
       />
-
-      <!-- Filter by Department -->
-      <div>
-        <select v-model="selectedDepartment" class="filter-select">
+      <div class="filter-container">
+        <select v-model="selectedDepartment" class="department-filter">
           <option value="">All Departments</option>
           <option v-for="dept in uniqueDepartments" :key="dept" :value="dept">
             {{ dept }}
           </option>
         </select>
-
-        <!-- Filter by Status -->
-        <select v-model="selectedStatus" class="filter-select">
+        <select v-model="selectedStatus" class="department-filter">
           <option value="">All Statuses</option>
           <option value="Paid">Paid</option>
           <option value="Pending">Pending</option>
@@ -27,57 +23,84 @@
       </div>
     </div>
 
-    <!-- Payroll Table -->
-    <table class="payroll-table">
-      <thead>
-        <tr>
-          <th @click="sortBy('name')">Employee Name</th>
-          <th @click="sortBy('department')">Department</th>
-          <th @click="sortBy('salary')">Salary (£)</th>
-          <th @click="sortBy('deductions')">Deductions (£)</th>
-          <th @click="sortBy('netPay')">Net Pay (£)</th>
-          <th @click="sortBy('status')">Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(employee, index) in paginatedEmployees" :key="index">
-          <td>
-            <div class="employee-name-container">
-              <img
-                :src="employee.photoUrl"
-                alt="Profile Photo"
-                class="profile-photo"
-              />
-              {{ employee.name }}
-            </div>
-          </td>
-          <td>{{ employee.department }}</td>
-          <td>£{{ formatNumber(employee.salary) }}</td>
-          <td>£{{ formatNumber(employee.deductions) }}</td>
-          <td>£{{ formatNumber(employee.netPay) }}</td>
-          <td>
-            <span
-              :class="[
-                'status-badge',
-                employee.status === 'Paid' ? 'paid' : 'pending',
-              ]"
-            >
+    <!-- Payroll Table (Hidden on Mobile) -->
+    <div v-if="!isMobile" class="table-wrapper">
+      <table class="payroll-table">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Department</th>
+            <th>Salary (£)</th>
+            <th>Net Pay (£)</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="employee in paginatedEmployees" :key="employee.id">
+            <td>
+              <div class="employee-name-container">
+                <img
+                  :src="employee.photoUrl"
+                  alt="Profile Photo"
+                  class="profile-photo"
+                />
+                {{ employee.name }}
+              </div>
+            </td>
+            <td>{{ employee.department }}</td>
+            <td>£{{ formatNumber(employee.salary) }}</td>
+            <td>£{{ formatNumber(employee.netPay) }}</td>
+            <td :class="getStatusClass(employee.status)">
               {{ employee.status }}
-            </span>
-          </td>
-          <td>
-            <button
-              v-if="employee.status !== 'Paid'"
-              @click="markAsPaid(employee)"
-              class="btn btn-primary"
-            >
-              Mark Paid
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </td>
+            <td>
+              <button
+                v-if="employee.status !== 'Paid'"
+                @click="markAsPaid(employee)"
+                class="btn btn-primary"
+              >
+                Mark Paid
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Stacked Cards Layout (Visible on Mobile) -->
+    <div v-if="isMobile" class="employee-cards">
+      <div
+        v-for="employee in paginatedEmployees"
+        :key="employee.id"
+        class="employee-card"
+      >
+        <div class="card-header">
+          <img
+            :src="employee.photoUrl"
+            alt="Profile Photo"
+            class="profile-photo"
+          />
+          <strong>{{ employee.name }}</strong>
+        </div>
+        <p><strong>Department:</strong> {{ employee.department }}</p>
+        <p><strong>Salary:</strong> £{{ formatNumber(employee.salary) }}</p>
+        <p><strong>Net Pay:</strong> £{{ formatNumber(employee.netPay) }}</p>
+        <p>
+          <strong>Status: </strong>
+          <span :class="getStatusClass(employee.status)">{{
+            employee.status
+          }}</span>
+        </p>
+        <button
+          v-if="employee.status !== 'Paid'"
+          @click="markAsPaid(employee)"
+          class="btn btn-primary"
+        >
+          Mark Paid
+        </button>
+      </div>
+    </div>
 
     <!-- Pagination Controls -->
     <div class="pagination-controls">
@@ -102,6 +125,7 @@ export default {
       selectedStatus: "",
       currentPage: 1,
       itemsPerPage: 5,
+      isMobile: window.innerWidth < 800,
       employees: [
         {
           id: 1,
@@ -261,19 +285,14 @@ export default {
       return [...new Set(this.employees.map((emp) => emp.department))];
     },
     filteredEmployees() {
-      return this.employees
-        .filter((emp) => {
-          return (
-            (!this.selectedDepartment ||
-              emp.department === this.selectedDepartment) &&
-            (!this.selectedStatus || emp.status === this.selectedStatus) &&
-            emp.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-          );
-        })
-        .sort((a, b) => {
-          if (!this.sortKey) return 0;
-          return (a[this.sortKey] > b[this.sortKey] ? 1 : -1) * this.sortOrder;
-        });
+      return this.employees.filter((emp) => {
+        return (
+          (!this.selectedDepartment ||
+            emp.department === this.selectedDepartment) &&
+          (!this.selectedStatus || emp.status === this.selectedStatus) &&
+          emp.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+      });
     },
     totalPages() {
       return Math.ceil(this.filteredEmployees.length / this.itemsPerPage);
@@ -287,30 +306,41 @@ export default {
     formatNumber(num) {
       return num.toLocaleString();
     },
-    changePage(page) {
-      if (page < 1 || page > this.totalPages) return;
-      this.currentPage = page;
+    getStatusClass(status) {
+      return status === "Paid" ? "status-active" : "status-on-leave";
     },
     markAsPaid(employee) {
       employee.status = "Paid";
     },
-    sortBy(key) {
-      if (this.sortKey === key) {
-        this.sortOrder *= -1; // Toggle sorting order
-      } else {
-        this.sortKey = key;
-        this.sortOrder = 1;
-      }
+    changePage(page) {
+      if (page < 1 || page > this.totalPages) return;
+      this.currentPage = page;
     },
+    checkScreenSize() {
+      this.isMobile = window.innerWidth < 800;
+    },
+  },
+  mounted() {
+    window.addEventListener("resize", this.checkScreenSize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.checkScreenSize);
   },
 };
 </script>
 
 <style scoped>
+/* Table Wrapper */
+.table-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Payroll Table */
 .payroll-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  border: 1px solid #ddd;
 }
 
 .payroll-table th,
@@ -323,20 +353,10 @@ export default {
 .payroll-table th {
   background-color: #0288d1;
   color: white;
-  cursor: pointer;
 }
 
 .payroll-table tbody tr:hover {
   background-color: #f5f5f5;
-  cursor: pointer;
-}
-
-.profile-photo {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
 }
 
 .employee-name-container {
@@ -344,47 +364,88 @@ export default {
   align-items: center;
 }
 
-.status-badge {
-  padding: 5px 10px;
-  color: white;
-  border-radius: 5px;
+/* Status Colors */
+.status-active {
+  color: green;
+  font-weight: bold;
 }
 
-.status-badge.paid {
-  background-color: #4caf50;
+.status-on-leave {
+  color: orange;
+  font-weight: bold;
 }
 
-.status-badge.pending {
-  background-color: #ff9800;
-}
-
+/* Search Bar and Filters */
 .table-controls {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
 }
 
 .search-input {
   padding: 8px;
-  width: 300px;
-  border-radius: 5px;
+  font-size: 14px;
   border: 1px solid #ccc;
-  outline: none;
+  border-radius: 4px;
+  width: 350px;
 }
 
-.filter-select {
+.department-filter {
   padding: 8px;
-  border-radius: 5px;
-  outline: none;
+  font-size: 14px;
   border: 1px solid #ccc;
-  margin-left: 5px;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
+.department-filter:focus,
+.search-input:focus {
+  outline: none;
+  border-color: #0288d1;
+}
+
+/* Employee Cards Layout (Mobile View) */
+.employee-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.employee-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+/* Action Buttons */
 .btn {
-  padding: 5px 10px;
+  padding: 8px 12px;
+  font-size: 12px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s ease;
 }
 
 .btn-primary {
@@ -392,32 +453,65 @@ export default {
   color: white;
 }
 
-.pagination-controls {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
+.btn-primary:hover {
+  background-color: #026aa7;
 }
 
-.pagination-controls .page-number {
-  margin-left: 5px;
-}
-
-.pagination-controls button {
-  padding: 5px 10px;
-  background-color: #fff;
-  color: #006ba6;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.pagination-controls button.active {
-  background-color: #006ba6;
-  color: #fff;
-}
-
-.pagination-controls button:disabled {
+.btn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-number button {
+  padding: 6px 12px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.page-number button.active {
+  background-color: #0288d1;
+  color: white;
+}
+
+.page-number button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .table-wrapper {
+    display: none;
+  }
+
+  .table-controls {
+    flex-direction: column;
+    align-items: stretch;
+    margin-right: 20px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .profile-photo {
+    margin-right: 0px;
+  }
+
+  .department-filter {
+    margin-bottom: 10px;
+    width: 100%;
+    margin-left: 0px;
+  }
 }
 </style>
