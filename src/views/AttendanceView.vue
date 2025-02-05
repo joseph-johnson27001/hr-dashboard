@@ -1,6 +1,7 @@
 <template>
   <div class="main-content">
     <!-- Grouped Stat Cards -->
+
     <div class="stats-container">
       <div
         v-for="(group, category) in groupedStats"
@@ -18,16 +19,24 @@
       </div>
     </div>
 
+    <!-- Table container -->
+
+    <div class="table-container">
+      <InfoCard title="Attendance">
+        <AttendanceTable />
+      </InfoCard>
+    </div>
+
     <!-- InfoCards below the StatCards -->
     <div class="info-cards">
+      <InfoCard title="Department Absenteeism">
+        <DepartmentAbsenteeismGraph />
+      </InfoCard>
       <InfoCard title="Total Absenteeism (Monthly)">
         <TotalAbsenteeismGraph />
       </InfoCard>
       <InfoCard title="Late Arrivals (Monthly)">
         <LateArrivalsGraph />
-      </InfoCard>
-      <InfoCard title="Department Absenteeism">
-        <DepartmentAbsenteeismGraph />
       </InfoCard>
     </div>
   </div>
@@ -41,6 +50,8 @@ import TotalAbsenteeismGraph from "@/components/Graphs/Attendance/TotalAbsenteei
 import LateArrivalsGraph from "@/components/Graphs/Attendance/LateArrivalsGraph.vue";
 import DepartmentAbsenteeismGraph from "@/components/Graphs/Attendance/DepartmentAbsenteeismGraph.vue";
 
+import AttendanceTable from "@/components/Tables/AttendanceTable.vue";
+
 export default {
   components: {
     InfoCard,
@@ -48,6 +59,7 @@ export default {
     TotalAbsenteeismGraph,
     LateArrivalsGraph,
     DepartmentAbsenteeismGraph,
+    AttendanceTable,
   },
   data() {
     return {
@@ -112,13 +124,20 @@ export default {
   width: 100%;
 }
 
-.info-cards > :last-child:nth-child(3) {
-  grid-column: span 2; /* Makes the last child span across both columns */
+.info-cards > :nth-child(1) {
+  grid-column: span 2;
 }
 
 @media (max-width: 900px) {
   .info-cards {
-    grid-template-columns: 1fr; /* Stacks graphs on smaller screens */
+    grid-template-columns: 1fr;
   }
+  .info-cards > :last-child:nth-child(3) {
+    grid-column: span 1;
+  }
+}
+
+.table-container {
+  margin-bottom: 10px;
 }
 </style>
