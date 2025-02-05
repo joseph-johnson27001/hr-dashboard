@@ -378,19 +378,21 @@ export default {
 /* Search Bar and Filters */
 .table-controls {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   gap: 10px;
 }
 
 .search-input {
   padding: 8px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  width: 350px;
+  width: 100%;
+}
+
+.filter-container {
+  display: flex;
 }
 
 .department-filter {
@@ -496,12 +498,10 @@ export default {
 
   .table-controls {
     flex-direction: column;
-    align-items: stretch;
-    margin-right: 20px;
   }
 
   .search-input {
-    width: 100%;
+    width: auto;
   }
 
   .profile-photo {
@@ -512,6 +512,11 @@ export default {
     margin-bottom: 10px;
     width: 100%;
     margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .filter-container {
+    gap: 10px;
   }
 }
 </style>

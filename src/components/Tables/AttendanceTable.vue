@@ -347,7 +347,7 @@ export default {
 .search-input {
   padding: 8px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #bbb;
   border-radius: 4px;
   width: 100%;
 }

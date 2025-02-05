@@ -270,7 +270,7 @@ export default {
 .department-filter {
   padding: 8px;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #bbb;
   outline: none;
 }
 
