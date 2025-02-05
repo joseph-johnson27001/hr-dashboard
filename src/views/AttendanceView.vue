@@ -50,7 +50,7 @@ import TotalAbsenteeismGraph from "@/components/Graphs/Attendance/TotalAbsenteei
 import LateArrivalsGraph from "@/components/Graphs/Attendance/LateArrivalsGraph.vue";
 import DepartmentAbsenteeismGraph from "@/components/Graphs/Attendance/DepartmentAbsenteeismGraph.vue";
 
-import AttendanceTable from "@/components/Tables/AttendanceTable.vue";
+import AttendanceTable from "@/components/tables/AttendanceTable.vue";
 
 export default {
   components: {
