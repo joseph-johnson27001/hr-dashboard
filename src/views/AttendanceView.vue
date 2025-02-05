@@ -126,9 +126,8 @@ export default {
   .info-cards {
     grid-template-columns: 1fr;
   }
-  .info-cards > :last-child:nth-child(3),
-  .info-cards > :last-child:nth-child(4) {
-    grid-column: span 2;
+  .info-cards > * {
+    grid-column: span 1 !important;
   }
 }
 
