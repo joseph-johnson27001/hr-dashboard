@@ -75,13 +75,12 @@ export default {
   data() {
     return {
       searchQuery: "",
-      selectedDepartment: "", // Default to no department selected
+      selectedDepartment: "",
       currentPage: 1,
-      itemsPerPage: 15, // 15 employees per page
+      itemsPerPage: 15,
     };
   },
   computed: {
-    // Departments list for the filter dropdown (extracted from employees data)
     departments() {
       const departmentSet = new Set(
         this.employees.map((employee) => employee.department)
@@ -90,7 +89,6 @@ export default {
     },
 
     filteredEmployees() {
-      // Filter employees by search query and selected department
       return this.employees.filter((employee) => {
         const matchesSearch =
           employee.name

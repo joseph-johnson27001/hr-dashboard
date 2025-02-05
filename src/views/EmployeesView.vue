@@ -1,18 +1,17 @@
 <template>
   <InfoCard title="Employee Information">
-    <!-- Use the EmployeeTable component and pass the employees data as a prop -->
     <EmployeeTable :employees="employees" />
   </InfoCard>
 </template>
 
 <script>
 import InfoCard from "@/components/ui/InfoCard.vue";
-import EmployeeTable from "@/components/tables/EmployeeTable.vue"; // Import the EmployeeTable component
+import EmployeeTable from "@/components/tables/EmployeeTable.vue";
 
 export default {
   components: {
     InfoCard,
-    EmployeeTable, // Register the EmployeeTable component
+    EmployeeTable,
   },
 
   data() {

@@ -292,7 +292,7 @@ export default {
   padding: 8px;
   width: 300px;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   outline: none;
 }
 
@@ -300,7 +300,7 @@ export default {
   padding: 8px;
   border-radius: 5px;
   outline: none;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
 }
 
 .pagination-controls {

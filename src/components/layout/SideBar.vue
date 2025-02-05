@@ -33,6 +33,11 @@ export default {
         { name: "Home", path: "/", icon: "fas fa-tachometer-alt" },
         { name: "Employees", path: "/employees", icon: "fas fa-users" },
         {
+          name: "Payroll",
+          path: "/payroll",
+          icon: "fas fa-money-bill-wave",
+        },
+        {
           name: "Attendance",
           path: "/attendance",
           icon: "fas fa-calendar-check",
