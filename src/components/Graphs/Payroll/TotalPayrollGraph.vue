@@ -53,10 +53,10 @@ export default {
       this.destroyChart();
 
       const payrollData = [
-        120, 125, 130, 128, 135, 140, 138, 145, 142, 150, 155, 160,
+        110, 125, 130, 128, 135, 140, 138, 145, 142, 150, 155, 170,
       ];
       const maxPayroll = Math.max(...payrollData) + 10;
-      const stepSize = 10;
+      const stepSize = 20;
 
       this.chartInstance = new ChartJS(this.$refs.payrollChart, {
         type: "line",
