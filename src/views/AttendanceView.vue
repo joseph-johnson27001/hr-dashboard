@@ -26,7 +26,9 @@
       <InfoCard title="Late Arrivals (Monthly)">
         <LateArrivalsGraph />
       </InfoCard>
-      <InfoCard title="Department Absenteeism"> </InfoCard>
+      <InfoCard title="Department Absenteeism">
+        <DepartmentAbsenteeismGraph />
+      </InfoCard>
     </div>
   </div>
 </template>
@@ -37,6 +39,7 @@ import StatCard from "@/components/ui/StatCard.vue";
 
 import TotalAbsenteeismGraph from "@/components/Graphs/Attendance/TotalAbsenteeismGraph.vue";
 import LateArrivalsGraph from "@/components/Graphs/Attendance/LateArrivalsGraph.vue";
+import DepartmentAbsenteeismGraph from "@/components/Graphs/Attendance/DepartmentAbsenteeismGraph.vue";
 
 export default {
   components: {
@@ -44,6 +47,7 @@ export default {
     StatCard,
     TotalAbsenteeismGraph,
     LateArrivalsGraph,
+    DepartmentAbsenteeismGraph,
   },
   data() {
     return {
@@ -103,14 +107,18 @@ export default {
 
 .info-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   width: 100%;
 }
 
+.info-cards > :last-child:nth-child(3) {
+  grid-column: span 2; /* Makes the last child span across both columns */
+}
+
 @media (max-width: 900px) {
   .info-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stacks graphs on smaller screens */
   }
 }
 </style>
