@@ -447,7 +447,7 @@ export default {
   border: none;
   cursor: pointer;
   border-radius: 4px;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary {
@@ -478,7 +478,7 @@ export default {
   background: white;
   cursor: pointer;
   border-radius: 4px;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .page-number button.active {
