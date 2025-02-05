@@ -56,11 +56,14 @@ body {
   height: 100%;
   padding: 20px;
   background-color: #f9f9f9;
-  border-top-left-radius: 5px;
+  border-radius: 5px;
   height: 100%;
-  border: 1px solid #bbb;
+  border: 1px solid #ddd;
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  margin-left: 220px;
+  margin-top: 70px;
+  margin-right: 10px;
 }
 
 canvas {
@@ -75,6 +78,11 @@ canvas {
   }
   .right-area {
     padding: 0px 10px;
+  }
+  .main {
+    margin-left: 0px;
+    overflow: none;
+    margin-right: 0px;
   }
 }
 </style>

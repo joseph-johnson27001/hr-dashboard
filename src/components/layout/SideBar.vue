@@ -1,10 +1,6 @@
 <template>
   <div :class="['sidebar', { collapsed: isCollapsed }]">
     <!-- Toggle Button and Dashboard Name -->
-    <div class="heading-area">
-      <span class="dashboard-name">Dashboard</span>
-      <i class="fas fa-bars"></i>
-    </div>
 
     <!-- Sidebar Content -->
     <nav>
@@ -63,15 +59,8 @@ export default {
   flex-direction: column;
   font-weight: 100;
   font-family: "Poppins", sans-serif;
-}
-
-.heading-area {
-  padding: 20px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  font-weight: 400;
+  position: fixed;
+  margin-top: 60px;
 }
 
 .heading-area i {

@@ -1,7 +1,8 @@
 <template>
   <div class="top-nav">
-    <div class="search-bar">
-      <!-- <input type="text" placeholder="Search..." /> -->
+    <div class="heading-area">
+      <span class="dashboard-name">Dashboard</span>
+      <i class="fas fa-bars"></i>
     </div>
 
     <div class="user-profile">
@@ -24,20 +25,20 @@ export default {};
   align-items: center;
   background-color: #f0f8ff;
   color: #0f3659;
-  padding: 10px 20px;
   height: 60px;
   width: 100%;
   box-sizing: border-box;
-}
-.burger-btn {
-  cursor: pointer;
+  position: fixed;
+  border-bottom: 1px solid #ddd;
 }
 
-.search-bar input {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #bbb;
+.heading-area {
+  margin: 20px 20px;
   width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
 }
 
 .user-profile {
@@ -53,5 +54,14 @@ export default {};
 .profile span {
   font-size: 14px;
   margin-left: 5px;
+}
+
+@media (max-width: 900px) {
+  .heading-area {
+    width: 100%;
+  }
+  .user-profile {
+    display: none;
+  }
 }
 </style>
