@@ -57,6 +57,9 @@ export default {};
 }
 
 @media (max-width: 900px) {
+  .top-nav {
+    border-bottom: 0px;
+  }
   .heading-area {
     width: 100%;
   }
