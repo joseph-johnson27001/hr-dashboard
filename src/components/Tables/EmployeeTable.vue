@@ -1,43 +1,103 @@
 <template>
-  <table class="employee-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Status</th>
-        <th>Location</th>
-        <th>Join Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="employee in employees" :key="employee.id">
-        <td>
-          <div class="employee-name-container">
-            <img
-              :src="employee.photoUrl"
-              alt="Profile Photo"
-              class="profile-photo"
-            />
-            {{ employee.name }}
-          </div>
-        </td>
-        <td>{{ employee.position }}</td>
-        <td :class="getStatusClass(employee.status)">
-          {{ employee.status }}
-        </td>
-        <td>{{ employee.location }}</td>
-        <td>{{ formatDate(employee.joinDate) }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <!-- Search Bar -->
+    <div class="table-controls">
+      <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Search employees"
+        class="search-input"
+      />
+    </div>
+
+    <!-- Employee Table -->
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Status</th>
+          <th>Location</th>
+          <th>Join Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="employee in paginatedEmployees" :key="employee.id">
+          <td>
+            <div class="employee-name-container">
+              <img
+                :src="employee.photoUrl"
+                alt="Profile Photo"
+                class="profile-photo"
+              />
+              {{ employee.name }}
+            </div>
+          </td>
+          <td>{{ employee.position }}</td>
+          <td :class="getStatusClass(employee.status)">
+            {{ employee.status }}
+          </td>
+          <td>{{ employee.location }}</td>
+          <td>{{ formatDate(employee.joinDate) }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination Controls (bottom-right) -->
+    <div class="pagination-controls">
+      <span v-for="page in totalPages" :key="page" class="page-number">
+        <button
+          :class="{ active: currentPage === page }"
+          @click="changePage(page)"
+        >
+          {{ page }}
+        </button>
+      </span>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    employees: {
-      type: Array,
-      required: true,
+    employees: Array,
+  },
+  data() {
+    return {
+      searchQuery: "",
+      currentPage: 1,
+      itemsPerPage: 15, // 15 employees per page
+    };
+  },
+  computed: {
+    filteredEmployees() {
+      // Filter employees by search query
+      if (this.searchQuery) {
+        return this.employees.filter(
+          (employee) =>
+            employee.name
+              .toLowerCase()
+              .includes(this.searchQuery.toLowerCase()) ||
+            employee.position
+              .toLowerCase()
+              .includes(this.searchQuery.toLowerCase()) ||
+            employee.status
+              .toLowerCase()
+              .includes(this.searchQuery.toLowerCase()) ||
+            employee.location
+              .toLowerCase()
+              .includes(this.searchQuery.toLowerCase())
+        );
+      }
+      return this.employees;
+    },
+    totalPages() {
+      return Math.ceil(this.filteredEmployees.length / this.itemsPerPage);
+    },
+    paginatedEmployees() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.filteredEmployees.slice(start, end);
     },
   },
   methods: {
@@ -54,6 +114,10 @@ export default {
     formatDate(date) {
       const options = { year: "numeric", month: "short", day: "numeric" };
       return new Date(date).toLocaleDateString("en-US", options);
+    },
+    changePage(page) {
+      if (page < 1 || page > this.totalPages) return;
+      this.currentPage = page;
     },
   },
 };
@@ -107,5 +171,48 @@ export default {
 .employee-name-container {
   display: flex;
   align-items: center;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  padding: 8px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.pagination-controls .page-number {
+  margin-left: 5px;
+}
+
+.pagination-controls button {
+  padding: 5px 10px;
+  background-color: #fff;
+  color: #006ba6;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-controls button.active {
+  background-color: #006ba6;
+  color: #fff;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 </style>
