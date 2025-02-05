@@ -219,6 +219,10 @@ export default {
   gap: 10px;
 }
 
+.search-input {
+  width: 100%;
+}
+
 .employee-card {
   background: white;
   padding: 15px;
@@ -262,13 +266,6 @@ export default {
   align-items: center;
 }
 
-@media (max-width: 500px) {
-  .table-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
-
 .search-input,
 .department-filter {
   padding: 8px;
@@ -305,5 +302,16 @@ export default {
 .pagination-controls button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+@media (max-width: 500px) {
+  .table-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input {
+    width: auto;
+  }
 }
 </style>
