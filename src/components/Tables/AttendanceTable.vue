@@ -20,34 +20,59 @@
       </select>
     </div>
 
-    <!-- Attendance Table -->
-    <table class="attendance-table">
-      <thead>
-        <tr>
-          <th>Employee Name</th>
-          <th>Department</th>
-          <th>Absence Date</th>
-          <th>Reason</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="entry in paginatedLogs" :key="entry.id">
-          <td>
-            <div class="employee-name-container">
-              <img
-                :src="entry.photoUrl"
-                alt="Profile Photo"
-                class="profile-photo"
-              />
-              {{ entry.name }}
-            </div>
-          </td>
-          <td>{{ entry.department }}</td>
-          <td>{{ formatDate(entry.absenceDate) }}</td>
-          <td>{{ entry.reason }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- Attendance Table (Hidden on Mobile) -->
+    <div v-if="!isMobile" class="table-wrapper">
+      <table class="attendance-table">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Department</th>
+            <th>Absence Date</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="entry in paginatedLogs" :key="entry.id">
+            <td>
+              <div class="employee-name-container">
+                <img
+                  :src="entry.photoUrl"
+                  alt="Profile Photo"
+                  class="profile-photo"
+                />
+                {{ entry.name }}
+              </div>
+            </td>
+            <td>{{ entry.department }}</td>
+            <td>{{ formatDate(entry.absenceDate) }}</td>
+            <td>{{ entry.reason }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Stacked Cards Layout (Visible on Mobile) -->
+    <div v-if="isMobile" class="attendance-cards">
+      <div
+        v-for="entry in paginatedLogs"
+        :key="entry.id"
+        class="attendance-card"
+      >
+        <div class="card-header">
+          <img
+            :src="entry.photoUrl"
+            alt="Profile Photo"
+            class="profile-photo"
+          />
+          <strong>{{ entry.name }}</strong>
+        </div>
+        <p><strong>Department:</strong> {{ entry.department }}</p>
+        <p>
+          <strong>Absence Date:</strong> {{ formatDate(entry.absenceDate) }}
+        </p>
+        <p><strong>Reason:</strong> {{ entry.reason }}</p>
+      </div>
+    </div>
 
     <!-- Pagination Controls (bottom-right) -->
     <div class="pagination-controls">
@@ -71,6 +96,7 @@ export default {
       selectedFilter: "",
       currentPage: 1,
       itemsPerPage: 5,
+      isMobile: window.innerWidth < 900,
       attendanceLogs: [
         {
           id: 1,
@@ -241,6 +267,15 @@ export default {
       if (page < 1 || page > this.totalPages) return;
       this.currentPage = page;
     },
+    checkScreenSize() {
+      this.isMobile = window.innerWidth < 768;
+    },
+  },
+  mounted() {
+    window.addEventListener("resize", this.checkScreenSize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.checkScreenSize);
   },
 };
 </script>
@@ -269,6 +304,26 @@ export default {
   cursor: pointer;
 }
 
+.attendance-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.attendance-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .profile-photo {
   width: 30px;
   height: 30px;
@@ -286,6 +341,15 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  gap: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .table-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .search-input {

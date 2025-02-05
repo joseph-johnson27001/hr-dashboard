@@ -73,9 +73,9 @@
         <p><strong>Position:</strong> {{ employee.position }}</p>
         <p>
           <strong>Status:</strong>
-          <span :class="getStatusClass(employee.status)">{{
-            employee.status
-          }}</span>
+          <span :class="getStatusClass(employee.status)">
+            {{ " " + employee.status }}</span
+          >
         </p>
         <p><strong>Location:</strong> {{ employee.location }}</p>
         <p><strong>Joined:</strong> {{ formatDate(employee.joinDate) }}</p>
@@ -107,7 +107,7 @@ export default {
       selectedDepartment: "",
       currentPage: 1,
       itemsPerPage: 15,
-      isMobile: window.innerWidth < 900,
+      isMobile: window.innerWidth < 768,
     };
   },
   computed: {
@@ -254,6 +254,13 @@ export default {
   justify-content: space-between;
   margin-bottom: 10px;
   gap: 10px;
+}
+
+@media (max-width: 500px) {
+  .table-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .search-input,
