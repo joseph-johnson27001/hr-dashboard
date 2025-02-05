@@ -20,18 +20,11 @@
 
     <!-- InfoCards below the StatCards -->
     <div class="info-cards">
-      <InfoCard title="Total Employees">
-        <TotalEmployeesGraph />
+      <InfoCard title="Total Absenteeism (Monthly)">
+        <TotalAbsenteeismGraph />
       </InfoCard>
-      <InfoCard title="Employee Performance">
-        <EmployeePerforamnceGraph />
-      </InfoCard>
-      <InfoCard title="Employee Satisfaction (%)">
-        <EmployeeSatisfactionGraph />
-      </InfoCard>
-      <InfoCard title="Spending Breakdown (%)">
-        <SpendingBreakdownGraph />
-      </InfoCard>
+      <InfoCard title="Department Absenteeism"> </InfoCard>
+      <InfoCard title="Late Arrivals"> </InfoCard>
     </div>
   </div>
 </template>
@@ -39,29 +32,21 @@
 <script>
 import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
-import TotalEmployeesGraph from "@/components/Graphs/HomePage/TotalEmployeesGraph.vue";
-import EmployeeSatisfactionGraph from "@/components/Graphs/HomePage/EmployeeSatisfactionGraph.vue";
-import SpendingBreakdownGraph from "@/components/Graphs/HomePage/SpendingBreakdownGraph.vue";
-import EmployeePerforamnceGraph from "@/components/Graphs/HomePage/EmployeePerformanceGraph.vue";
+
+import TotalAbsenteeismGraph from "@/components/Graphs/Attendance/TotalAbsenteeismGraph.vue";
 
 export default {
   components: {
     InfoCard,
     StatCard,
-    TotalEmployeesGraph,
-    EmployeeSatisfactionGraph,
-    SpendingBreakdownGraph,
-    EmployeePerforamnceGraph,
+    TotalAbsenteeismGraph,
   },
   data() {
     return {
       workforceStats: [
-        { title: "Total Employees", value: 150 },
-        { title: "New Hires This Month", value: 8 },
-        { title: "Employee Turnover Rate", value: "5%" },
-        { title: "Total Payroll (Monthly)", value: "$1.2M" },
-        { title: "Employee Satisfaction", value: "85%" },
         { title: "Absenteeism Rate", value: "3%" },
+        { title: "Absences (Monthly)", value: 8 },
+        { title: "Late Arrivals (Monthly)", value: 12 },
       ],
     };
   },
