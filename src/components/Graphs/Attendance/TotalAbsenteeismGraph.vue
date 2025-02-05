@@ -99,7 +99,7 @@ export default {
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (tooltipItem) => `${tooltipItem.raw}%`,
+                label: (tooltipItem) => `${tooltipItem.raw}`,
               },
             },
           },

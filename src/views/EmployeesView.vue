@@ -259,7 +259,7 @@ export default {
 .employee-table td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .employee-table th {
