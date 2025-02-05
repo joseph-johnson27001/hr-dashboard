@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Search Bar -->
+    <!-- Search Bar and Department Filter -->
     <div class="table-controls">
       <input
         v-model="searchQuery"
@@ -8,6 +8,16 @@
         placeholder="Search employees"
         class="search-input"
       />
+      <select v-model="selectedDepartment" class="department-filter">
+        <option value="">All Departments</option>
+        <option
+          v-for="department in departments"
+          :key="department"
+          :value="department"
+        >
+          {{ department }}
+        </option>
+      </select>
     </div>
 
     <!-- Employee Table -->
@@ -65,35 +75,49 @@ export default {
   data() {
     return {
       searchQuery: "",
+      selectedDepartment: "", // Default to no department selected
       currentPage: 1,
       itemsPerPage: 15, // 15 employees per page
     };
   },
   computed: {
-    filteredEmployees() {
-      // Filter employees by search query
-      if (this.searchQuery) {
-        return this.employees.filter(
-          (employee) =>
-            employee.name
-              .toLowerCase()
-              .includes(this.searchQuery.toLowerCase()) ||
-            employee.position
-              .toLowerCase()
-              .includes(this.searchQuery.toLowerCase()) ||
-            employee.status
-              .toLowerCase()
-              .includes(this.searchQuery.toLowerCase()) ||
-            employee.location
-              .toLowerCase()
-              .includes(this.searchQuery.toLowerCase())
-        );
-      }
-      return this.employees;
+    // Departments list for the filter dropdown (extracted from employees data)
+    departments() {
+      const departmentSet = new Set(
+        this.employees.map((employee) => employee.department)
+      );
+      return Array.from(departmentSet);
     },
+
+    filteredEmployees() {
+      // Filter employees by search query and selected department
+      return this.employees.filter((employee) => {
+        const matchesSearch =
+          employee.name
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          employee.position
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          employee.status
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          employee.location
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase());
+
+        const matchesDepartment = this.selectedDepartment
+          ? employee.department === this.selectedDepartment
+          : true;
+
+        return matchesSearch && matchesDepartment;
+      });
+    },
+
     totalPages() {
       return Math.ceil(this.filteredEmployees.length / this.itemsPerPage);
     },
+
     paginatedEmployees() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
@@ -175,13 +199,22 @@ export default {
 
 .table-controls {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-bottom: 10px;
+  gap: 10px;
 }
 
 .search-input {
   padding: 8px;
   width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+.department-filter {
+  padding: 8px;
+  width: 180px;
   border-radius: 5px;
   border: 1px solid #ddd;
   outline: none;
