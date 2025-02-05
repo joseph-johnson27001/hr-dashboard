@@ -23,6 +23,9 @@
       <InfoCard title="Total Payroll">
         <TotalPayrollGraph />
       </InfoCard>
+      <InfoCard title="Total Payroll">
+        <PayrollTable />
+      </InfoCard>
     </div>
   </div>
 </template>
@@ -32,12 +35,14 @@ import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
 
 import TotalPayrollGraph from "@/components/Graphs/Payroll/TotalPayrollGraph.vue";
+import PayrollTable from "@/components/tables/PayrollTable.vue";
 
 export default {
   components: {
     InfoCard,
     StatCard,
     TotalPayrollGraph,
+    PayrollTable,
   },
   data() {
     return {
