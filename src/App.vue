@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <SideBar />
+    <div class="sidebar-container">
+      <SideBar />
+    </div>
     <div class="right-area">
       <TopNav />
       <div class="main">
@@ -65,5 +67,14 @@ canvas {
   width: 100%;
   margin-top: 5px;
   max-height: 300px;
+}
+
+@media (max-width: 900px) {
+  .sidebar-container {
+    display: none;
+  }
+  .right-area {
+    padding: 0px 10px;
+  }
 }
 </style>
