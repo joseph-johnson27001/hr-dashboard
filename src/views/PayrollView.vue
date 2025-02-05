@@ -23,7 +23,7 @@
       <InfoCard title="Total Payroll">
         <TotalPayrollGraph />
       </InfoCard>
-      <InfoCard title="Total Payroll">
+      <InfoCard title="Employee Payroll">
         <PayrollTable />
       </InfoCard>
     </div>
