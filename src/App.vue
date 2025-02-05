@@ -50,6 +50,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .main {
@@ -61,7 +62,7 @@ body {
   border: 1px solid #ddd;
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
-  margin-left: 220px;
+  margin-left: 245px;
   margin-top: 70px;
   margin-right: 10px;
 }
