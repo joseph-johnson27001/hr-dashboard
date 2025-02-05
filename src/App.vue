@@ -89,6 +89,8 @@ table {
     margin-left: 0px;
     overflow: none;
     margin-right: 0px;
+    border-top: 1px solid #bbb;
+    border-right: 1px solid #bbb;
   }
 }
 </style>
