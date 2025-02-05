@@ -94,7 +94,7 @@ export default {
 
 .stat-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   width: 100%;
 }
@@ -107,13 +107,7 @@ export default {
 
 @media (max-width: 900px) {
   .stat-cards {
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .stat-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, minmax(150px, 1fr));
   }
 }
 

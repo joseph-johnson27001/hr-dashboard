@@ -77,7 +77,7 @@ export default {
       searchQuery: "",
       selectedDepartment: "",
       currentPage: 1,
-      itemsPerPage: 10,
+      itemsPerPage: 15,
     };
   },
   computed: {

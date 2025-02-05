@@ -1,16 +1,41 @@
 <template>
-  <InfoCard title="Employee Information">
-    <EmployeeTable :employees="employees" />
-  </InfoCard>
+  <div class="main-content">
+    <!-- Grouped Stat Cards -->
+    <div class="stats-container">
+      <div
+        v-for="(group, category) in groupedStats"
+        :key="category"
+        class="stat-section"
+      >
+        <div class="stat-cards">
+          <StatCard
+            v-for="stat in group"
+            :key="stat.title"
+            :title="stat.title"
+            :value="stat.value"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Employee Table -->
+    <div class="table-container">
+      <InfoCard title="Employee Information">
+        <EmployeeTable :employees="employees" />
+      </InfoCard>
+    </div>
+  </div>
 </template>
 
 <script>
 import InfoCard from "@/components/ui/InfoCard.vue";
+import StatCard from "@/components/ui/StatCard.vue";
 import EmployeeTable from "@/components/tables/EmployeeTable.vue";
 
 export default {
   components: {
     InfoCard,
+    StatCard,
     EmployeeTable,
   },
 
@@ -218,7 +243,61 @@ export default {
           photoUrl: "images/ProfilePhoto4.jpg",
         },
       ],
+      workforceStats: [
+        { title: "Total Employees", value: "150" },
+        { title: "New Hires This Month", value: "8" },
+        { title: "Active Employees", value: "136" },
+        { title: "On Leave", value: "4" },
+        { title: "Employee Turnover Rate", value: "5%" },
+        { title: "Departments", value: "6" },
+      ],
     };
+  },
+
+  computed: {
+    groupedStats() {
+      return {
+        Workforce: this.workforceStats,
+      };
+    },
   },
 };
 </script>
+
+<style scoped>
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stat-section {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .stat-cards {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .stat-cards {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .stat-cards {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
