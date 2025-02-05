@@ -12,13 +12,15 @@
       </thead>
       <tbody>
         <tr v-for="employee in employees" :key="employee.id">
-          <td class="employee-name-container">
-            <img
-              :src="employee.photoUrl"
-              alt="Profile Photo"
-              class="profile-photo"
-            />
-            {{ employee.name }}
+          <td>
+            <div class="employee-name-container">
+              <img
+                :src="employee.photoUrl"
+                alt="Profile Photo"
+                class="profile-photo"
+              />
+              {{ employee.name }}
+            </div>
           </td>
           <td>{{ employee.position }}</td>
           <td :class="getStatusClass(employee.status)">

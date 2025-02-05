@@ -112,10 +112,10 @@ export default {
           responsive: true,
           maintainAspectRatio: false,
           scales: {
-            x: { grid: { display: false }, stacked: true },
+            x: { grid: { display: true }, stacked: true },
             y: {
               stacked: true,
-              grid: { display: true },
+              grid: { display: false },
               ticks: { stepSize: 20 },
             },
           },
