@@ -5,7 +5,7 @@
       <input
         v-model="searchQuery"
         type="text"
-        placeholder="Search employee payroll"
+        placeholder="Search"
         class="search-input"
       />
 
