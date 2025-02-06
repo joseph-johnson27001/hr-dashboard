@@ -59,7 +59,6 @@ export default {
   position: fixed;
   margin-top: 60px;
   border-right: 1px solid #bbb;
-  transition: margin 0.2s linear;
 }
 
 .sidebar i {
