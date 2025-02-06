@@ -9,7 +9,7 @@
     </div>
 
     <div class="user-profile">
-      <i class="fas fa-bell"></i>
+      <i class="far fa-bell"></i>
       <div class="profile">
         <!-- Profile Image instead of icon -->
         <img src="images/ProfilePhoto1.jpg" alt="Profile" class="profile-img" />
@@ -79,6 +79,7 @@
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
+  display: flex;
 }
 
 .profile span {

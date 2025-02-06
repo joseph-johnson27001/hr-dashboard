@@ -76,6 +76,7 @@ body {
   margin-top: 50px;
   transition: margin-left 0.1s linear;
   z-index: 5;
+  border-radius: 5px;
 }
 
 .right-area.collapsed .main {

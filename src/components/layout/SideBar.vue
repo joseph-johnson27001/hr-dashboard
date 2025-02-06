@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: "Home", path: "/", icon: "fas fa-home" },
+        { name: "Home", path: "/", icon: "fa fa-home" },
         { name: "Employees", path: "/employees", icon: "fas fa-users" },
         { name: "Payroll", path: "/payroll", icon: "fas fa-money-bill-wave" },
         {
