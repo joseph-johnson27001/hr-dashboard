@@ -397,7 +397,6 @@ export default {
   margin-left: 10px;
 }
 
-/* Employee Cards Layout (Mobile View) */
 .employee-cards {
   display: flex;
   flex-direction: column;

@@ -58,10 +58,10 @@ export default {
   flex-direction: column;
   position: fixed;
   margin-top: 55px;
+  font-size: 16px;
 }
 
 .sidebar i {
-  font-size: 18px;
   margin-right: 5px;
 }
 
@@ -89,17 +89,16 @@ export default {
   margin-right: 0;
 }
 
-.heading-area i {
-  cursor: pointer;
-}
-
 .dashboard-name {
-  font-size: 18px;
   padding-left: 10px;
 }
 
+.menu-name {
+  font-size: 15px;
+}
+
 nav {
-  padding-top: 15px;
+  padding-top: 10px;
   height: 100%;
 }
 
@@ -126,10 +125,6 @@ nav ul li .menu-link {
   border-radius: 12px;
   transition: background-color 0.2s;
   height: 30px;
-}
-
-.menu-name {
-  margin-bottom: 2px;
 }
 
 nav ul li .menu-link:hover {

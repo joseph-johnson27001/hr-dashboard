@@ -1,7 +1,10 @@
 <template>
   <div class="top-nav">
     <div class="heading-area">
-      <span class="dashboard-name">Dashboard</span>
+      <div class="icon-container">
+        <img src="/bird-icon.png" alt="Bird Icon" class="bird-icon" />
+        <span class="dashboard-name">Dashboard</span>
+      </div>
       <i class="fas fa-bars" @click="$emit('toggle-sidebar')"></i>
     </div>
 
@@ -30,7 +33,7 @@
 }
 
 .heading-area {
-  margin: 20px;
+  margin: 15px;
   width: 210px;
   display: flex;
   align-items: center;
@@ -38,10 +41,25 @@
   font-weight: 400;
 }
 
+.dashboard-name {
+  font-size: 1.1rem;
+}
+
+.bird-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+}
+
 .heading-area i {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 15px;
   margin-right: 20px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
 }
 
 .user-profile {
@@ -52,7 +70,7 @@
 
 .user-profile i {
   margin-right: 10px;
-  font-size: 20px;
+  font-size: 18px;
   color: #0a4d86;
 }
 

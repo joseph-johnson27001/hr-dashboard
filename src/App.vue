@@ -114,6 +114,10 @@ table {
   outline: none;
 }
 
+i {
+  cursor: pointer;
+}
+
 @media (max-width: 900px) {
   .sidebar-container {
     display: none;
