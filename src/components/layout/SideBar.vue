@@ -59,6 +59,7 @@ export default {
   position: fixed;
   margin-top: 60px;
   border-right: 1px solid #bbb;
+  transition: display 0.2s step-end;
 }
 
 .sidebar i {
@@ -82,6 +83,10 @@ export default {
   justify-content: center;
   width: 30px;
   height: 30px;
+}
+
+.sidebar.collapsed span {
+  display: none;
 }
 
 .sidebar.collapsed .menu-link i {
