@@ -13,7 +13,7 @@
         >
           <router-link :to="item.path" class="menu-link">
             <i :class="item.icon"></i>
-            <span>{{ item.name }}</span>
+            <span v-if="!isCollapsed">{{ item.name }}</span>
           </router-link>
         </li>
       </ul>
@@ -23,16 +23,15 @@
 
 <script>
 export default {
+  props: {
+    isCollapsed: Boolean, // Receive collapsed state from App.vue
+  },
   data() {
     return {
       menuItems: [
         { name: "Home", path: "/", icon: "fas fa-tachometer-alt" },
         { name: "Employees", path: "/employees", icon: "fas fa-users" },
-        {
-          name: "Payroll",
-          path: "/payroll",
-          icon: "fas fa-money-bill-wave",
-        },
+        { name: "Payroll", path: "/payroll", icon: "fas fa-money-bill-wave" },
         {
           name: "Attendance",
           path: "/attendance",
@@ -40,7 +39,7 @@ export default {
         },
         { name: "Reports", path: "/reports", icon: "fas fa-chart-line" },
         { name: "Settings", path: "/settings", icon: "fas fa-cog" },
-        { name: "Log Out", path: "/log-out", icon: "fas fa-sign-out-alt" },
+        { name: "Log Out", path: "/#", icon: "fas fa-sign-out-alt" },
       ],
     };
   },
@@ -55,14 +54,35 @@ export default {
   height: 100%;
   min-height: 100vh;
   padding: 0px 10px;
-  transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
-  font-weight: 100;
-  font-family: "Poppins", sans-serif;
   position: fixed;
   margin-top: 60px;
-  padding-bottom: 100px;
+  border-right: 1px solid #bbb;
+  transition: margin 0.2s linear;
+}
+
+.sidebar.collapsed {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  /* margin-top: 50px; */
+}
+
+.sidebar.collapsed .menu-link span {
+  display: none;
+}
+
+.sidebar.collapsed a {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.sidebar.collapsed .menu-link i {
+  margin-right: 0;
 }
 
 .heading-area i {
@@ -86,7 +106,10 @@ nav ul {
 
 nav ul li {
   cursor: pointer;
-  margin: 5px 0;
+}
+
+.menu-link {
+  margin-bottom: 10px;
 }
 
 nav ul li .menu-link {
@@ -97,6 +120,7 @@ nav ul li .menu-link {
   padding: 10px;
   border-radius: 12px;
   transition: background-color 0.2s;
+  height: 30px;
 }
 
 nav ul li .menu-link:hover {
@@ -109,7 +133,11 @@ nav ul li.active .menu-link {
 }
 
 nav ul li .menu-link i {
-  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu-container {

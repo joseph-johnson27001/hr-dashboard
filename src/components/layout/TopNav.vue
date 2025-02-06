@@ -2,7 +2,7 @@
   <div class="top-nav">
     <div class="heading-area">
       <span class="dashboard-name">Dashboard</span>
-      <i class="fas fa-bars"></i>
+      <i class="fas fa-bars" @click="$emit('toggle-sidebar')"></i>
     </div>
 
     <div class="user-profile">
@@ -14,10 +14,6 @@
   </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style scoped>
 .top-nav {
   display: flex;
@@ -27,9 +23,9 @@ export default {};
   color: #0f3659;
   height: 60px;
   width: 100%;
-  box-sizing: border-box;
   position: fixed;
   border-bottom: 1px solid #bbb;
+  z-index: 6;
 }
 
 .heading-area {
@@ -43,6 +39,7 @@ export default {};
 
 .heading-area i {
   cursor: pointer;
+  font-size: 20px;
 }
 
 .user-profile {

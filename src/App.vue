@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="sidebar-container">
-      <SideBar />
+      <SideBar :isCollapsed="isCollapsed" />
     </div>
-    <div class="right-area">
-      <TopNav />
+    <div class="right-area" :class="{ collapsed: isCollapsed }">
+      <TopNav @toggle-sidebar="toggleSidebar" />
       <div class="main">
         <router-view></router-view>
       </div>
@@ -20,6 +20,16 @@ export default {
   components: {
     SideBar,
     TopNav,
+  },
+  data() {
+    return {
+      isCollapsed: false, // Controls sidebar state
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      this.isCollapsed = !this.isCollapsed; // Toggle the state
+    },
   },
 };
 </script>
@@ -57,7 +67,6 @@ body {
   height: 100%;
   padding: 20px;
   background-color: #f9f9f9;
-  /* border-radius: 5px; */
   height: 100%;
   border: 1px solid #bbb;
   border-top: 0;
@@ -66,6 +75,12 @@ body {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
   margin-left: 245px;
   margin-top: 60px;
+  transition: margin-left 0.2s linear;
+  z-index: 5;
+}
+
+.right-area.collapsed .main {
+  margin-left: 60px;
 }
 
 canvas {
@@ -86,7 +101,7 @@ table {
     padding: 0px 10px;
   }
   .main {
-    margin-left: 0px;
+    margin-left: 0px !important;
     overflow: none;
     margin-right: 0px;
     border-top: 1px solid #bbb;
