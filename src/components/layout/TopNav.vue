@@ -8,7 +8,8 @@
     <div class="user-profile">
       <i class="fas fa-bell"></i>
       <div class="profile">
-        <i class="fas fa-user-circle"></i>
+        <!-- Profile Image instead of icon -->
+        <img src="images/ProfilePhoto1.jpg" alt="Profile" class="profile-img" />
       </div>
     </div>
   </div>
@@ -45,11 +46,19 @@
 .user-profile {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 
 .user-profile i {
   margin-right: 10px;
   font-size: 20px;
+}
+
+.profile-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile span {
