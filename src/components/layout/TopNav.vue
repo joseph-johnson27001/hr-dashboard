@@ -5,13 +5,20 @@
         <img src="/bird-icon.png" alt="Bird Icon" class="bird-icon" />
         <span class="dashboard-name">Dashboard</span>
       </div>
-      <i class="fas fa-bars" @click="$emit('toggle-sidebar')"></i>
+
+      <!-- Sidebar Toggle (Only for larger screens) -->
+      <i class="fas fa-bars desktop-menu" @click="$emit('toggle-sidebar')"></i>
+
+      <!-- Mobile Nav Toggle (Only for smaller screens) -->
+      <i
+        class="fas fa-bars mobile-menu"
+        @click="$emit('toggle-mobile-nav')"
+      ></i>
     </div>
 
     <div class="user-profile">
       <i class="far fa-bell"></i>
       <div class="profile">
-        <!-- Profile Image instead of icon -->
         <img src="images/ProfilePhoto1.jpg" alt="Profile" class="profile-img" />
       </div>
     </div>
@@ -28,12 +35,11 @@
   height: 50px;
   width: 100%;
   position: fixed;
-  /* border-bottom: 1px solid #bbb; */
   z-index: 6;
 }
 
 .heading-area {
-  padding-top: 15px;
+  padding-top: 5px;
   margin: 10px;
   width: 210px;
   display: flex;
@@ -52,15 +58,23 @@
   margin-right: 8px;
 }
 
-.heading-area i {
-  cursor: pointer;
-  font-size: 15px;
-  margin-right: 30px;
-}
-
 .icon-container {
   display: flex;
   align-items: center;
+}
+
+/* Hamburger Icons */
+.desktop-menu {
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 30px;
+}
+
+.mobile-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .user-profile {
@@ -83,11 +97,6 @@
   display: flex;
 }
 
-.profile span {
-  font-size: 14px;
-  margin-left: 5px;
-}
-
 @media (max-width: 900px) {
   .top-nav {
     border-bottom: 1px solid #bbb;
@@ -97,6 +106,15 @@
     margin-left: 0px;
     padding: 0px 5px;
   }
+
+  /* Show only the mobile menu */
+  .desktop-menu {
+    display: none;
+  }
+  .mobile-menu {
+    display: block;
+  }
+
   .user-profile {
     display: none;
   }

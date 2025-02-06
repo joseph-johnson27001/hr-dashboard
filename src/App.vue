@@ -3,8 +3,19 @@
     <div class="sidebar-container">
       <SideBar :isCollapsed="isCollapsed" />
     </div>
+    <!-- Mobile Nav -->
+    <MobileNav
+      :isActive="isMobileNavOpen"
+      v-if="isMobileNavOpen"
+      @close="isMobileNavOpen = false"
+    />
+
     <div class="right-area" :class="{ collapsed: isCollapsed }">
-      <TopNav @toggle-sidebar="toggleSidebar" />
+      <TopNav
+        @toggle-sidebar="toggleSidebar"
+        @toggle-mobile-nav="toggleMobileNav"
+      />
+
       <div class="main">
         <router-view></router-view>
       </div>
@@ -15,21 +26,38 @@
 <script>
 import SideBar from "./components/layout/SideBar.vue";
 import TopNav from "./components/layout/TopNav.vue";
+import MobileNav from "./components/layout/MobileNav.vue";
 
 export default {
   components: {
     SideBar,
     TopNav,
+    MobileNav,
   },
   data() {
     return {
       isCollapsed: false,
+      isMobileNavOpen: false,
     };
   },
   methods: {
     toggleSidebar() {
       this.isCollapsed = !this.isCollapsed;
     },
+    toggleMobileNav() {
+      this.isMobileNavOpen = !this.isMobileNavOpen;
+    },
+    handleResize() {
+      if (window.innerWidth > 900) {
+        this.isMobileNavOpen = false;
+      }
+    },
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.handleResize);
   },
 };
 </script>
@@ -67,7 +95,6 @@ body {
   height: 100%;
   padding: 20px;
   background-color: #fcfcfc;
-  height: 100%;
   border: 1px solid #bbb;
   border-right: 0;
   overflow: auto;
@@ -118,16 +145,15 @@ i {
   cursor: pointer;
 }
 
+/* Responsive Design */
 @media (max-width: 900px) {
   .sidebar-container {
     display: none;
   }
 
   .main {
-    margin-left: 0px !important;
-    margin-right: 0px;
-    padding-right: 15px;
-    padding-left: 15px;
+    margin-left: 0 !important;
+    padding: 15px;
     border-radius: 0;
   }
 }
