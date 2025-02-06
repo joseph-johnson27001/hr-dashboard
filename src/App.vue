@@ -23,12 +23,12 @@ export default {
   },
   data() {
     return {
-      isCollapsed: false, // Controls sidebar state
+      isCollapsed: false,
     };
   },
   methods: {
     toggleSidebar() {
-      this.isCollapsed = !this.isCollapsed; // Toggle the state
+      this.isCollapsed = !this.isCollapsed;
     },
   },
 };
@@ -66,15 +66,15 @@ body {
 .main {
   height: 100%;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #fcfcfc;
   height: 100%;
   border: 1px solid #bbb;
   border-top: 0;
   border-right: 0;
   overflow: auto;
-  margin-left: 245px;
-  margin-top: 60px;
-  transition: margin-left 0.2s linear;
+  margin-left: 220px;
+  margin-top: 50px;
+  transition: margin-left 0.1s linear;
   z-index: 5;
 }
 

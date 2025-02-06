@@ -21,8 +21,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: #f0f8ff;
-  color: #0a4d86;
-  height: 60px;
+  color: #0b508b;
+  height: 50px;
   width: 100%;
   position: fixed;
   border-bottom: 1px solid #bbb;
@@ -41,6 +41,7 @@
 .heading-area i {
   cursor: pointer;
   font-size: 20px;
+  margin-right: 20px;
 }
 
 .user-profile {

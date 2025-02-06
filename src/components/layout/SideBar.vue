@@ -48,21 +48,20 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 225px;
+  width: 200px;
   background-color: #f0f8ff;
-  color: #0f3659;
+  color: #0a4d86;
   height: 100%;
   min-height: 100vh;
   padding: 0px 10px;
   display: flex;
   flex-direction: column;
   position: fixed;
-  margin-top: 60px;
-  border-right: 1px solid #bbb;
+  margin-top: 55px;
 }
 
 .sidebar i {
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 5px;
 }
 
@@ -70,7 +69,7 @@ export default {
   width: 40px;
   display: flex;
   justify-content: center;
-  transition: 0.2s linear;
+  transition: 0.1s linear;
 }
 
 .sidebar.collapsed .menu-link span {
