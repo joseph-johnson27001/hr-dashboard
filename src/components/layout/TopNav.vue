@@ -28,12 +28,13 @@
   height: 50px;
   width: 100%;
   position: fixed;
-  border-bottom: 1px solid #bbb;
+  /* border-bottom: 1px solid #bbb; */
   z-index: 6;
 }
 
 .heading-area {
-  margin: 15px;
+  padding-top: 15px;
+  margin: 10px;
   width: 210px;
   display: flex;
   align-items: center;
@@ -54,7 +55,7 @@
 .heading-area i {
   cursor: pointer;
   font-size: 15px;
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .icon-container {
@@ -89,7 +90,7 @@
 
 @media (max-width: 900px) {
   .top-nav {
-    border-bottom: 0px;
+    border-bottom: 1px solid #bbb;
   }
   .heading-area {
     width: 100%;

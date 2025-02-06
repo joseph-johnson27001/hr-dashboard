@@ -69,14 +69,13 @@ body {
   background-color: #fcfcfc;
   height: 100%;
   border: 1px solid #bbb;
-  border-top: 0;
   border-right: 0;
   overflow: auto;
-  margin-left: 220px;
+  margin-left: 195px;
   margin-top: 50px;
   transition: margin-left 0.1s linear;
   z-index: 5;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .right-area.collapsed .main {
@@ -123,15 +122,13 @@ i {
   .sidebar-container {
     display: none;
   }
-  .right-area {
-    padding: 0px 10px;
-  }
+
   .main {
     margin-left: 0px !important;
-    overflow: none;
     margin-right: 0px;
-    border-top: 1px solid #bbb;
-    border-right: 1px solid #bbb;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 0;
   }
 }
 </style>
