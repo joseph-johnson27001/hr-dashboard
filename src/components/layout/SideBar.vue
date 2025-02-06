@@ -62,11 +62,15 @@ export default {
   transition: margin 0.2s linear;
 }
 
+.sidebar i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
 .sidebar.collapsed {
   width: 40px;
   display: flex;
   justify-content: center;
-  /* margin-top: 50px; */
 }
 
 .sidebar.collapsed .menu-link span {
@@ -102,6 +106,7 @@ nav {
 nav ul {
   list-style: none;
   padding: 0;
+  margin: 0px -5px;
 }
 
 nav ul li {
