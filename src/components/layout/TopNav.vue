@@ -21,7 +21,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #f0f8ff;
-  color: #0f3659;
+  color: #0a4d86;
   height: 60px;
   width: 100%;
   position: fixed;
@@ -52,6 +52,7 @@
 .user-profile i {
   margin-right: 10px;
   font-size: 20px;
+  color: #0a4d86;
 }
 
 .profile-img {

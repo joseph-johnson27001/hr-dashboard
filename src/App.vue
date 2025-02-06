@@ -72,7 +72,6 @@ body {
   border-top: 0;
   border-right: 0;
   overflow: auto;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
   margin-left: 245px;
   margin-top: 60px;
   transition: margin-left 0.2s linear;

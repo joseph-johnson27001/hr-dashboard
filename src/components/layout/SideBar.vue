@@ -13,7 +13,7 @@
         >
           <router-link :to="item.path" class="menu-link">
             <i :class="item.icon"></i>
-            <span v-if="!isCollapsed">{{ item.name }}</span>
+            <span v-if="!isCollapsed" class="menu-name">{{ item.name }}</span>
           </router-link>
         </li>
       </ul>
@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: "Home", path: "/", icon: "fas fa-tachometer-alt" },
+        { name: "Home", path: "/", icon: "fas fa-home" },
         { name: "Employees", path: "/employees", icon: "fas fa-users" },
         { name: "Payroll", path: "/payroll", icon: "fas fa-money-bill-wave" },
         {
@@ -100,7 +100,7 @@ export default {
 }
 
 nav {
-  padding-top: 20px;
+  padding-top: 15px;
   height: 100%;
 }
 
@@ -121,12 +121,16 @@ nav ul li {
 nav ul li .menu-link {
   display: flex;
   align-items: center;
-  color: #0f3659;
+  color: #0a4d86;
   text-decoration: none;
   padding: 10px;
   border-radius: 12px;
   transition: background-color 0.2s;
   height: 30px;
+}
+
+.menu-name {
+  margin-bottom: 2px;
 }
 
 nav ul li .menu-link:hover {
