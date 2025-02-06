@@ -92,6 +92,28 @@ table {
   font-size: 14px !important;
 }
 
+.search-input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.department-filter {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  color: #333 !important;
+}
+
+.search-input:focus {
+  border: 1px solid #3498db;
+  box-shadow: 0 0 4px rgba(52, 152, 219, 0.2);
+  border-radius: 4px;
+  outline: none;
+}
+
 @media (max-width: 900px) {
   .sidebar-container {
     display: none;

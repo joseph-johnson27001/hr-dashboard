@@ -266,14 +266,6 @@ export default {
   align-items: center;
 }
 
-.search-input,
-.department-filter {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #bbb;
-  outline: none;
-}
-
 /* Pagination */
 .pagination-controls {
   display: flex;

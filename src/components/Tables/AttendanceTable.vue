@@ -344,19 +344,14 @@ export default {
   gap: 10px;
 }
 
-.search-input {
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  width: 100%;
-}
-
 /* Responsive Styles */
 @media (max-width: 768px) {
   .table-controls {
     flex-direction: column;
     align-items: stretch;
+  }
+  .search-input {
+    width: auto;
   }
 }
 

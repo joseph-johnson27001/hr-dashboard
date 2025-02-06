@@ -383,14 +383,6 @@ export default {
   gap: 10px;
 }
 
-.search-input {
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 100%;
-}
-
 .filter-container {
   display: flex;
 }
@@ -398,17 +390,11 @@ export default {
 .department-filter {
   padding: 8px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 4px;
   background: white;
   cursor: pointer;
   margin-left: 10px;
-}
-
-.department-filter:focus,
-.search-input:focus {
-  outline: none;
-  border-color: #0288d1;
 }
 
 /* Employee Cards Layout (Mobile View) */
