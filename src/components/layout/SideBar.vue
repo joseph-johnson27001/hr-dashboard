@@ -1,15 +1,15 @@
 <template>
   <div :class="['sidebar', { collapsed: isCollapsed }]">
-    <!-- Toggle Button and Dashboard Name -->
-
-    <!-- Sidebar Content -->
     <nav>
-      <ul>
+      <ul class="menu-container">
         <li
           v-for="item in menuItems"
           :key="item.path"
           class="menu-item"
-          :class="{ active: $route.path === item.path }"
+          :class="{
+            active: $route.path === item.path,
+            logout: item.name === 'Log Out',
+          }"
         >
           <router-link :to="item.path" class="menu-link">
             <i :class="item.icon"></i>
@@ -40,6 +40,7 @@ export default {
         },
         { name: "Reports", path: "/reports", icon: "fas fa-chart-line" },
         { name: "Settings", path: "/settings", icon: "fas fa-cog" },
+        { name: "Log Out", path: "/log-out", icon: "fas fa-sign-out-alt" },
       ],
     };
   },
@@ -61,6 +62,7 @@ export default {
   font-family: "Poppins", sans-serif;
   position: fixed;
   margin-top: 60px;
+  padding-bottom: 100px;
 }
 
 .heading-area i {
@@ -74,6 +76,7 @@ export default {
 
 nav {
   padding-top: 20px;
+  height: 100%;
 }
 
 nav ul {
@@ -107,5 +110,16 @@ nav ul li.active .menu-link {
 
 nav ul li .menu-link i {
   margin-right: 10px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.logout {
+  margin-top: auto;
+  padding-bottom: 70px;
 }
 </style>

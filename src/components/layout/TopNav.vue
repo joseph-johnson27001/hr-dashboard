@@ -33,12 +33,16 @@ export default {};
 }
 
 .heading-area {
-  margin: 20px 20px;
-  width: 200px;
+  margin: 20px;
+  width: 210px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-weight: 400;
+}
+
+.heading-area i {
+  cursor: pointer;
 }
 
 .user-profile {
@@ -62,6 +66,8 @@ export default {};
   }
   .heading-area {
     width: 100%;
+    margin-left: 0px;
+    padding: 0px 5px;
   }
   .user-profile {
     display: none;
