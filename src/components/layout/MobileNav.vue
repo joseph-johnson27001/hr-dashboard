@@ -1,41 +1,34 @@
 <template>
-  <div>
-    <div class="mobile-nav" :class="{ active: isActive }">
-      <nav>
-        <ul class="menu-container">
-          <li
-            v-for="item in menuItems"
-            :key="item.path"
-            class="menu-item"
-            :class="{
-              active: $route.path === item.path,
-              logout: item.name === 'Log Out',
-            }"
+  <div class="mobile-nav" :class="{ active: isActive }">
+    <nav>
+      <ul class="menu-container">
+        <li
+          v-for="item in menuItems"
+          :key="item.path"
+          class="menu-item"
+          :class="{
+            active: $route.path === item.path,
+            logout: item.name === 'Log Out',
+          }"
+        >
+          <router-link
+            v-if="item.name !== 'Log Out'"
+            :to="item.path"
+            class="menu-link"
+            @click="$emit('close')"
           >
-            <router-link
-              v-if="item.name !== 'Log Out'"
-              :to="item.path"
-              class="menu-link"
-              @click="$emit('close')"
-            >
-              <i :class="item.icon"></i>
-              <span class="menu-name">{{ item.name }}</span>
-            </router-link>
+            <i :class="item.icon"></i>
+            <span class="menu-name">{{ item.name }}</span>
+          </router-link>
 
-            <!-- Log Out button -->
-            <a
-              v-else
-              href="#"
-              class="menu-link"
-              @click.prevent="$emit('logout')"
-            >
-              <i :class="item.icon"></i>
-              <span class="menu-name">{{ item.name }}</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+          <!-- Log Out button -->
+          <a v-else href="#" class="menu-link" @click.prevent="$emit('logout')">
+            <i :class="item.icon"></i>
+            <span class="menu-name">{{ item.name }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -76,7 +69,7 @@ export default {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   z-index: 6;
-  padding-top: 50px;
+  height: 60px;
 }
 
 /* Styling for menu items */
@@ -84,6 +77,7 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
+  margin-top: 55px;
 }
 
 .menu-item {
