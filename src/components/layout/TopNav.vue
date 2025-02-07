@@ -32,7 +32,7 @@
   align-items: center;
   background-color: #f0f8ff;
   color: #0b508b;
-  height: 50px;
+  height: 55px;
   width: 100%;
   position: fixed;
   z-index: 6;
@@ -40,7 +40,7 @@
 
 .heading-area {
   padding-top: 5px;
-  margin: 10px;
+  margin: 12px;
   width: 210px;
   display: flex;
   align-items: center;
@@ -53,8 +53,8 @@
 }
 
 .bird-icon {
-  width: 28px;
-  height: 28px;
+  width: 35px;
+  height: 35px;
   margin-right: 8px;
 }
 

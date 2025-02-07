@@ -1,7 +1,8 @@
 <template>
   <div class="login-container">
     <div class="login-card">
-      <h2>Login</h2>
+      <img src="/bird-icon.png" alt="Company Logo" class="logo" />
+      <h3>Login</h3>
       <form @submit.prevent="handleLogin">
         <div class="input-group">
           <label for="email">Email</label>
@@ -34,7 +35,6 @@ export default {
   },
   methods: {
     handleLogin() {
-      // Redirect to home page
       this.$router.push("/home");
     },
   },
@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style scoped>
-/* Full-screen background */
+/* Center login page */
 .login-container {
   display: flex;
   justify-content: center;
@@ -62,7 +62,16 @@ export default {
   border: 1px solid #bbb;
 }
 
-/* Input fields */
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+h3 {
+  font-weight: 100;
+  color: #0a4d86;
+}
+
 .input-group {
   margin-bottom: 15px;
   text-align: left;
@@ -70,7 +79,7 @@ export default {
 
 .input-group label {
   display: block;
-  font-weight: bold;
+  font-weight: 100;
   margin-bottom: 5px;
 }
 
