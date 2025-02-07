@@ -66,7 +66,7 @@ export default {
 }
 
 h3 {
-  font-weight: 100;
+  font-weight: 400;
   color: #0a4d86;
 }
 
