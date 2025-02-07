@@ -48,8 +48,7 @@ export default {
           path: "/attendance",
           icon: "fas fa-calendar-check",
         },
-        { name: "Reports", path: "/reports", icon: "fas fa-chart-line" },
-        { name: "Settings", path: "/settings", icon: "fas fa-cog" },
+        // { name: "Reports", path: "/reports", icon: "fas fa-chart-line" },
         { name: "Log Out", path: "/#", icon: "fas fa-sign-out-alt" },
       ],
     };
