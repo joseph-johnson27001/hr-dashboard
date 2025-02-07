@@ -124,7 +124,7 @@ body {
   border-right: 0;
   overflow: auto;
   margin-left: 195px;
-  margin-top: 65px;
+  margin-top: 55px;
   transition: margin-left 0.1s linear;
   z-index: 5;
   border-top-left-radius: 5px;

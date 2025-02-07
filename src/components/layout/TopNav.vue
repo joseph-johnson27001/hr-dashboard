@@ -3,7 +3,7 @@
     <div class="heading-area">
       <div class="icon-container">
         <img src="/bird-icon.png" alt="Bird Icon" class="bird-icon" />
-        <!-- <span class="dashboard-name">Dashboard</span> -->
+        <span class="dashboard-name">Dashboard</span>
       </div>
 
       <!-- Sidebar Toggle (Only for larger screens) -->

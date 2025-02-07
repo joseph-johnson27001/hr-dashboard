@@ -7,6 +7,7 @@ import Payroll from "@/views/PayrollView.vue";
 import Login from "@/views/LoginView.vue";
 
 const routes = [
+  { path: "/", redirect: "/login" }, // Redirect from / to /login
   { path: "/login", component: Login },
   { path: "/home", component: Home },
   { path: "/employees", component: Employees },
