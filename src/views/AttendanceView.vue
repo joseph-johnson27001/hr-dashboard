@@ -99,15 +99,9 @@ export default {
   width: 100%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 450px) {
   .stat-cards {
-    grid-template-columns: repeat(3, minmax(150px, 1fr));
-  }
-}
-
-@media (max-width: 900px) {
-  .stat-cards {
-    grid-template-columns: repeat(1, minmax(150px, 1fr));
+    grid-template-columns: 1fr;
   }
 }
 

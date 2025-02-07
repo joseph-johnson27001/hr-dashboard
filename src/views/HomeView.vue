@@ -102,11 +102,11 @@ export default {
 
 @media (max-width: 900px) {
   .stat-cards {
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 275px) {
   .stat-cards {
     grid-template-columns: 1fr;
   }

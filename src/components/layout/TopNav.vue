@@ -52,6 +52,7 @@
 
 .dashboard-name {
   font-size: 1.1rem;
+  text-transform: uppercase;
 }
 
 .bird-icon {
