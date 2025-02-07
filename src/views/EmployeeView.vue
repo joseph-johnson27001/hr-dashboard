@@ -37,29 +37,32 @@
 
     <!-- Graph Section -->
     <div class="info-cards">
-      <InfoCard title="Performance Over Time">
+      <InfoCard title="Performance">
         <div class="card-header">
           <span class="download-icon"><i class="fas fa-download"></i></span>
         </div>
-        <!-- <EmployeePerformanceGraph :employeeId="employee.id" /> -->
+        <EmployeePerformanceGraph :employeeId="employee.id" />
       </InfoCard>
 
       <InfoCard title="Attendance History">
         <div class="card-header">
           <span class="download-icon"><i class="fas fa-download"></i></span>
         </div>
-        <!-- <EmployeeAttendanceGraph :employeeId="employee.id" /> -->
+        <EmployeeAttendanceGraph :employeeId="employee.id" />
       </InfoCard>
     </div>
 
     <!-- Tables for Payroll & Attendance -->
     <div class="info-cards">
       <InfoCard title="Payroll History">
-        <!-- <EmployeePayrollTable :employeeId="employee.id" /> -->
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
+        <EmployeePayrollGraph :employeeId="employee.id" />
       </InfoCard>
 
-      <InfoCard title="Attendance Records">
-        <EmployeeAttendanceTable :employeeId="employee.id" />
+      <InfoCard title="Satisfaction">
+        <EmployeeSatisfactionGraph :employeeId="employee.id" />
       </InfoCard>
     </div>
   </div>
@@ -68,19 +71,19 @@
 <script>
 import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
-// import EmployeePerformanceGraph from "@/components/Graphs/Employee/EmployeePerformanceGraph.vue";
-// import EmployeeAttendanceGraph from "@/components/Graphs/Employee/EmployeeAttendanceGraph.vue";
-// import EmployeePayrollTable from "@/components/tables/EmployeePayrollTable.vue";
-// import EmployeeAttendanceTable from "@/components/tables/EmployeeAttendanceTable.vue";
+import EmployeePerformanceGraph from "@/components/Graphs/Employee/EmployeePerformanceGraph.vue";
+import EmployeeAttendanceGraph from "@/components/Graphs/Employee/EmployeeAttendanceGraph.vue";
+import EmployeePayrollGraph from "@/components/Graphs/Employee/EmployeePayrollGraph.vue";
+import EmployeeSatisfactionGraph from "@/components/Graphs/Employee/EmployeeSatisfactionGraph.vue";
 
 export default {
   components: {
     InfoCard,
     StatCard,
-    // EmployeePerformanceGraph,
-    // EmployeeAttendanceGraph,
-    // EmployeePayrollTable,
-    // EmployeeAttendanceTable,
+    EmployeePerformanceGraph,
+    EmployeeAttendanceGraph,
+    EmployeePayrollGraph,
+    EmployeeSatisfactionGraph,
   },
   data() {
     return {
@@ -100,8 +103,8 @@ export default {
         { title: "Overtime Hours", value: "10h" },
         { title: "Projects Completed", value: "15" },
         { title: "Sick Days Taken", value: "2" },
-        { title: "Holiday Allowance Left", value: "12 Days" }, // New stat
-        { title: "Training Sessions Completed", value: "5" }, // New stat
+        { title: "Holiday Allowance Left", value: "12 Days" },
+        { title: "Training Sessions Completed", value: "5" },
       ],
     };
   },
@@ -115,7 +118,6 @@ export default {
   width: 100%;
 }
 
-/* ✅ Employee Card (Styled Like InfoCard but No Min-Height) */
 .employee-card {
   background-color: white;
   border-radius: 5px;
@@ -176,7 +178,6 @@ h3 {
   margin-bottom: 5px;
 }
 
-/* ✅ Stat Cards */
 .stat-section {
   margin-bottom: 10px;
   width: 100%;
@@ -184,25 +185,30 @@ h3 {
 
 .stat-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 Columns for Desktop */
+  grid-template-columns: repeat(8, 1fr);
   gap: 10px;
   margin-bottom: 10px;
   width: 100%;
 }
 
+@media (max-width: 1200px) {
+  .stat-cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
 @media (max-width: 900px) {
   .stat-cards {
-    grid-template-columns: 1fr 1fr; /* 2 Columns for Tablets */
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 450px) {
   .stat-cards {
-    grid-template-columns: 1fr; /* 1 Column for Mobile */
+    grid-template-columns: 1fr;
   }
 }
 
-/* ✅ Info Cards */
 .info-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -213,11 +219,10 @@ h3 {
 
 @media (max-width: 900px) {
   .info-cards {
-    grid-template-columns: 1fr; /* 1 Column on Smaller Screens */
+    grid-template-columns: 1fr;
   }
 }
 
-/* ✅ Just the Download Icon */
 .card-header {
   display: flex;
   justify-content: flex-end;
