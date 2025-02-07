@@ -36,6 +36,9 @@
   width: 100%;
   position: fixed;
   z-index: 6;
+  font-family: "Assistant", serif;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .heading-area {
@@ -45,7 +48,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 400;
 }
 
 .dashboard-name {

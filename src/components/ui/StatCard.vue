@@ -39,8 +39,8 @@ export default {
 }
 
 .stat-card-value {
-  padding-top: 5px;
-  font-size: 18px;
+  padding-top: 10px;
+  font-size: 16px;
   color: #0288d1;
 }
 </style>

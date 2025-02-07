@@ -67,12 +67,14 @@ export default {
   display: flex;
   flex-direction: column;
   position: fixed;
-  margin-top: 55px;
+  margin-top: 65px;
   font-size: 16px;
+  font-family: "Assistant", serif;
+  font-weight: 500;
 }
 
 .sidebar i {
-  margin-right: 5px;
+  margin-right: 2px;
 }
 
 .sidebar.collapsed {
@@ -104,7 +106,7 @@ export default {
 }
 
 .menu-name {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 nav {

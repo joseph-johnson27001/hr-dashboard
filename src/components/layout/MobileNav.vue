@@ -70,6 +70,7 @@ export default {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   z-index: 6;
   height: 60px;
+  font-family: "Assistant", serif;
 }
 
 /* Styling for menu items */
