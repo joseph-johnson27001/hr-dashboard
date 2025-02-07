@@ -37,7 +37,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="employee in paginatedEmployees" :key="employee.id">
+          <tr
+            v-for="employee in paginatedEmployees"
+            :key="employee.id"
+            @click="navigateToUser"
+          >
             <td>
               <div class="employee-name-container">
                 <img
@@ -74,6 +78,7 @@
         v-for="employee in paginatedEmployees"
         :key="employee.id"
         class="employee-card"
+        @click="navigateToUser"
       >
         <div class="card-header">
           <img
@@ -303,6 +308,9 @@ export default {
     },
   },
   methods: {
+    navigateToUser() {
+      this.$router.push(`/employee`);
+    },
     formatNumber(num) {
       return num.toLocaleString();
     },
@@ -357,6 +365,7 @@ export default {
 
 .payroll-table tbody tr:hover {
   background-color: #f5f5f5;
+  cursor: pointer;
 }
 
 .employee-name-container {

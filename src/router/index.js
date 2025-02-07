@@ -15,7 +15,7 @@ const routes = [
   { path: "/reports", component: Reports },
   { path: "/attendance", component: Attendance },
   { path: "/payroll", component: Payroll },
-  { path: "/employee", component: Employee },
+  { path: "/employee/", component: Employee },
 ];
 
 const router = createRouter({

@@ -32,7 +32,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="entry in paginatedLogs" :key="entry.id">
+          <tr
+            v-for="entry in paginatedLogs"
+            :key="entry.id"
+            @click="navigateToUser"
+          >
             <td>
               <div class="employee-name-container">
                 <img
@@ -57,6 +61,7 @@
         v-for="entry in paginatedLogs"
         :key="entry.id"
         class="attendance-card"
+        @click="navigateToUser"
       >
         <div class="card-header">
           <img
@@ -259,6 +264,9 @@ export default {
     },
   },
   methods: {
+    navigateToUser() {
+      this.$router.push(`/employee`);
+    },
     formatDate(date) {
       const options = { year: "numeric", month: "short", day: "numeric" };
       return new Date(date).toLocaleDateString("en-US", options);
@@ -308,6 +316,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  cursor: pointer;
 }
 
 .attendance-card {
