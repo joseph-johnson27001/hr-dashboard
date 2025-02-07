@@ -1,12 +1,10 @@
 <template>
   <div class="modal-overlay" v-if="isVisible">
     <div class="modal">
-      <h2>Confirm Logout</h2>
+      <h3>Confirm Logout</h3>
       <p>Are you sure you want to log out?</p>
       <div class="modal-buttons">
-        <button class="confirm-btn" @click="$emit('confirm')">
-          Yes, Log Out
-        </button>
+        <button class="confirm-btn" @click="$emit('confirm')">Log Out</button>
         <button class="cancel-btn" @click="$emit('close')">Cancel</button>
       </div>
     </div>
@@ -42,10 +40,14 @@ export default {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 300px;
+  border: 1px solid #bbb;
 }
 
-h2 {
+h3 {
   margin-bottom: 10px;
+  font-weight: 100;
+  font-family: "Poppins", sans-serif;
+  color: #0a4d86;
 }
 
 p {
@@ -58,28 +60,22 @@ p {
 }
 
 .confirm-btn {
-  background: #d9534f;
+  background: #0a4d86;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
-}
-
-.confirm-btn:hover {
-  background: #c9302c;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 8px;
 }
 
 .cancel-btn {
-  background: #5bc0de;
+  background: #d9534f;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
-}
-
-.cancel-btn:hover {
-  background: #31b0d5;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 8px;
 }
 </style>
