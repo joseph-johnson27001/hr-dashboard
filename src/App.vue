@@ -1,29 +1,31 @@
 <template>
   <div id="app">
-    <div class="sidebar-container">
+    <!-- Conditionally show sidebar and nav elements -->
+    <div v-if="!isLoginPage" class="sidebar-container">
       <SideBar :isCollapsed="isCollapsed" @logout="showLogoutModal" />
     </div>
 
-    <!-- Mobile Nav -->
     <MobileNav
+      v-if="!isLoginPage && isMobileNavOpen"
       :isActive="isMobileNavOpen"
-      v-if="isMobileNavOpen"
       @close="isMobileNavOpen = false"
       @logout="showLogoutModal"
     />
 
     <div class="right-area" :class="{ collapsed: isCollapsed }">
       <TopNav
+        v-if="!isLoginPage"
         @toggle-sidebar="toggleSidebar"
         @toggle-mobile-nav="toggleMobileNav"
       />
-      <div class="main">
+
+      <div class="main" :class="{ 'login-page': isLoginPage }">
         <router-view></router-view>
       </div>
     </div>
 
-    <!-- Logout Modal -->
     <LogoutModal
+      v-if="!isLoginPage"
       :isVisible="isLogoutModalVisible"
       @confirm="logout"
       @close="isLogoutModalVisible = false"
@@ -51,6 +53,11 @@ export default {
       isLogoutModalVisible: false,
     };
   },
+  computed: {
+    isLoginPage() {
+      return this.$route.path === "/login";
+    },
+  },
   methods: {
     toggleSidebar() {
       this.isCollapsed = !this.isCollapsed;
@@ -63,6 +70,7 @@ export default {
     },
     logout() {
       this.isLogoutModalVisible = false;
+      this.$router.push("/login");
     },
     handleResize() {
       if (window.innerWidth > 900) {
@@ -162,7 +170,6 @@ i {
   cursor: pointer;
 }
 
-/* Responsive Design */
 @media (max-width: 900px) {
   .sidebar-container {
     display: none;
@@ -173,5 +180,17 @@ i {
     padding: 15px;
     border-radius: 0;
   }
+}
+
+.main.login-page {
+  margin-left: 0;
+  margin-top: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f0f8ff;
+  border: none;
 }
 </style>
