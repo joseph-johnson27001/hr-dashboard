@@ -63,8 +63,6 @@ export default {
     },
     logout() {
       this.isLogoutModalVisible = false;
-      // Simulate logging out (Redirect to login or clear session)
-      alert("Logged out (In a real app, redirect the user)");
     },
     handleResize() {
       if (window.innerWidth > 900) {
