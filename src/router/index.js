@@ -6,7 +6,7 @@ import Attendance from "@/views/AttendanceView.vue";
 import Payroll from "@/views/PayrollView.vue";
 
 const routes = [
-  { path: "/", component: Home },
+  { path: "/home", component: Home },
   { path: "/employees", component: Employees },
   { path: "/reports", component: Reports },
   { path: "/attendance", component: Attendance },
