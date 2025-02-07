@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Slide-down menu -->
     <div class="mobile-nav" :class="{ active: isActive }">
       <nav>
         <ul class="menu-container">
@@ -14,6 +13,7 @@
             }"
           >
             <router-link
+              v-if="item.name !== 'Log Out'"
               :to="item.path"
               class="menu-link"
               @click="$emit('close')"
@@ -21,6 +21,17 @@
               <i :class="item.icon"></i>
               <span class="menu-name">{{ item.name }}</span>
             </router-link>
+
+            <!-- Log Out button -->
+            <a
+              v-else
+              href="#"
+              class="menu-link"
+              @click.prevent="$emit('logout')"
+            >
+              <i :class="item.icon"></i>
+              <span class="menu-name">{{ item.name }}</span>
+            </a>
           </li>
         </ul>
       </nav>
@@ -31,7 +42,7 @@
 <script>
 export default {
   props: {
-    isActive: Boolean, // Control the menu visibility
+    isActive: Boolean,
   },
   data() {
     return {
