@@ -42,7 +42,6 @@ export default {
 </script>
 
 <style scoped>
-/* Center login page */
 .login-container {
   display: flex;
   justify-content: center;
@@ -51,14 +50,13 @@ export default {
   background: #f0f8ff;
 }
 
-/* Login Card */
 .login-card {
   background: white;
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 320px;
+  width: 95%;
   border: 1px solid #bbb;
 }
 
@@ -92,7 +90,6 @@ h3 {
   font-size: 16px;
 }
 
-/* Login button */
 .login-button {
   width: 100%;
   padding: 10px;
