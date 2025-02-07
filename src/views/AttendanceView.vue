@@ -106,7 +106,6 @@ export default {
   width: 100%;
 }
 
-/* Just the download icon without functionality */
 .card-header {
   display: flex;
   justify-content: flex-end;
@@ -116,13 +115,13 @@ export default {
 .download-icon {
   cursor: pointer;
   font-size: 16px;
-  color: #0288d1; /* Keep the blue color consistent */
-  transition: color 0.2s ease;
+  color: #0288d1;
+  transition: color 0.1s linear;
   margin-top: -22px;
 }
 
 .download-icon:hover {
-  color: #01579b; /* Darker blue on hover */
+  color: #0a4d86;
 }
 
 @media (max-width: 450px) {
