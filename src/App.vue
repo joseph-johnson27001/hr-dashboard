@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <div class="sidebar-container">
-      <SideBar :isCollapsed="isCollapsed" />
+      <SideBar :isCollapsed="isCollapsed" @logout="showLogoutModal" />
     </div>
+
     <!-- Mobile Nav -->
     <MobileNav
       :isActive="isMobileNavOpen"
       v-if="isMobileNavOpen"
       @close="isMobileNavOpen = false"
+      @logout="showLogoutModal"
     />
 
     <div class="right-area" :class="{ collapsed: isCollapsed }">
@@ -15,11 +17,17 @@
         @toggle-sidebar="toggleSidebar"
         @toggle-mobile-nav="toggleMobileNav"
       />
-
       <div class="main">
         <router-view></router-view>
       </div>
     </div>
+
+    <!-- Logout Modal -->
+    <LogoutModal
+      :isVisible="isLogoutModalVisible"
+      @confirm="logout"
+      @close="isLogoutModalVisible = false"
+    />
   </div>
 </template>
 
@@ -27,17 +35,20 @@
 import SideBar from "./components/layout/SideBar.vue";
 import TopNav from "./components/layout/TopNav.vue";
 import MobileNav from "./components/layout/MobileNav.vue";
+import LogoutModal from "./components/modals/LogoutModal.vue";
 
 export default {
   components: {
     SideBar,
     TopNav,
     MobileNav,
+    LogoutModal,
   },
   data() {
     return {
       isCollapsed: false,
       isMobileNavOpen: false,
+      isLogoutModalVisible: false,
     };
   },
   methods: {
@@ -46,6 +57,14 @@ export default {
     },
     toggleMobileNav() {
       this.isMobileNavOpen = !this.isMobileNavOpen;
+    },
+    showLogoutModal() {
+      this.isLogoutModalVisible = true;
+    },
+    logout() {
+      this.isLogoutModalVisible = false;
+      // Simulate logging out (Redirect to login or clear session)
+      alert("Logged out (In a real app, redirect the user)");
     },
     handleResize() {
       if (window.innerWidth > 900) {

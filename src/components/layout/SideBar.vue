@@ -11,10 +11,20 @@
             logout: item.name === 'Log Out',
           }"
         >
-          <router-link :to="item.path" class="menu-link">
+          <router-link
+            v-if="item.name !== 'Log Out'"
+            :to="item.path"
+            class="menu-link"
+          >
             <i :class="item.icon"></i>
             <span v-if="!isCollapsed" class="menu-name">{{ item.name }}</span>
           </router-link>
+
+          <!-- Log Out button -->
+          <a v-else href="#" class="menu-link" @click.prevent="$emit('logout')">
+            <i :class="item.icon"></i>
+            <span v-if="!isCollapsed" class="menu-name">{{ item.name }}</span>
+          </a>
         </li>
       </ul>
     </nav>
@@ -24,7 +34,7 @@
 <script>
 export default {
   props: {
-    isCollapsed: Boolean, // Receive collapsed state from App.vue
+    isCollapsed: Boolean,
   },
   data() {
     return {
