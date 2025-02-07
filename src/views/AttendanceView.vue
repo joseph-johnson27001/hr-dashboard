@@ -1,7 +1,6 @@
 <template>
   <div class="main-content">
     <!-- Grouped Stat Cards -->
-
     <div class="stats-container">
       <div
         v-for="(group, category) in groupedStats"
@@ -20,7 +19,6 @@
     </div>
 
     <!-- Table container -->
-
     <div class="table-container">
       <InfoCard title="Attendance">
         <AttendanceTable />
@@ -30,12 +28,23 @@
     <!-- InfoCards below the StatCards -->
     <div class="info-cards">
       <InfoCard title="Department Absenteeism">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
         <DepartmentAbsenteeismGraph />
       </InfoCard>
+
       <InfoCard title="Total Absenteeism (Monthly)">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
         <TotalAbsenteeismGraph />
       </InfoCard>
+
       <InfoCard title="Late Arrivals (Monthly)">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
         <LateArrivalsGraph />
       </InfoCard>
     </div>
@@ -45,11 +54,9 @@
 <script>
 import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
-
 import TotalAbsenteeismGraph from "@/components/Graphs/Attendance/TotalAbsenteeismGraph.vue";
 import LateArrivalsGraph from "@/components/Graphs/Attendance/LateArrivalsGraph.vue";
 import DepartmentAbsenteeismGraph from "@/components/Graphs/Attendance/DepartmentAbsenteeismGraph.vue";
-
 import AttendanceTable from "@/components/tables/AttendanceTable.vue";
 
 export default {
@@ -97,6 +104,25 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   width: 100%;
+}
+
+/* Just the download icon without functionality */
+.card-header {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.download-icon {
+  cursor: pointer;
+  font-size: 16px;
+  color: #0288d1; /* Keep the blue color consistent */
+  transition: color 0.2s ease;
+  margin-top: -22px;
+}
+
+.download-icon:hover {
+  color: #01579b; /* Darker blue on hover */
 }
 
 @media (max-width: 450px) {

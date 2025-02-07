@@ -21,8 +21,12 @@
     <!-- InfoCards below the StatCards -->
     <div class="info-cards">
       <InfoCard title="Total Payroll">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
         <TotalPayrollGraph />
       </InfoCard>
+
       <InfoCard title="Employee Payroll">
         <PayrollTable />
       </InfoCard>
@@ -33,7 +37,6 @@
 <script>
 import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
-
 import TotalPayrollGraph from "@/components/Graphs/Payroll/TotalPayrollGraph.vue";
 import PayrollTable from "@/components/tables/PayrollTable.vue";
 
@@ -81,6 +84,25 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   width: 100%;
+}
+
+/* Just the download icon without functionality */
+.card-header {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.download-icon {
+  cursor: pointer;
+  font-size: 16px;
+  color: #0288d1; /* Keep the blue color consistent */
+  transition: color 0.2s ease;
+  margin-top: -22px;
+}
+
+.download-icon:hover {
+  color: #01579b; /* Darker blue on hover */
 }
 
 @media (max-width: 900px) {

@@ -18,18 +18,33 @@
       </div>
     </div>
 
-    <!-- InfoCards below the StatCards -->
+    <!-- InfoCards with Download Icons -->
     <div class="info-cards">
       <InfoCard title="Total Employees">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
         <TotalEmployeesGraph />
       </InfoCard>
+
       <InfoCard title="Employee Performance">
-        <EmployeePerforamnceGraph />
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
+        <EmployeePerformanceGraph />
       </InfoCard>
+
       <InfoCard title="Employee Satisfaction (%)">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
         <EmployeeSatisfactionGraph />
       </InfoCard>
+
       <InfoCard title="Spending Breakdown (%)">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
         <SpendingBreakdownGraph />
       </InfoCard>
     </div>
@@ -42,7 +57,7 @@ import StatCard from "@/components/ui/StatCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/HomePage/TotalEmployeesGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/HomePage/EmployeeSatisfactionGraph.vue";
 import SpendingBreakdownGraph from "@/components/Graphs/HomePage/SpendingBreakdownGraph.vue";
-import EmployeePerforamnceGraph from "@/components/Graphs/HomePage/EmployeePerformanceGraph.vue";
+import EmployeePerformanceGraph from "@/components/Graphs/HomePage/EmployeePerformanceGraph.vue";
 
 export default {
   components: {
@@ -51,7 +66,7 @@ export default {
     TotalEmployeesGraph,
     EmployeeSatisfactionGraph,
     SpendingBreakdownGraph,
-    EmployeePerforamnceGraph,
+    EmployeePerformanceGraph,
   },
   data() {
     return {
@@ -92,6 +107,21 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 10px;
   width: 100%;
+}
+
+/* Just the download icon without functionality */
+.card-header {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.download-icon {
+  cursor: pointer;
+  font-size: 16px;
+  color: #0288d1;
+  transition: color 0.2s ease;
+  margin-top: -22px;
 }
 
 @media (max-width: 1200px) {
