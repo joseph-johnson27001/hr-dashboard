@@ -61,7 +61,7 @@ export default {
   background-color: #f0f8ff;
   color: #0a4d86;
   height: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   padding: 0px 10px;
   display: flex;
   flex-direction: column;

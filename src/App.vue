@@ -113,7 +113,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .main {
@@ -189,7 +189,7 @@ i {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100dvh;
   background: #f0f8ff;
   border: none;
 }
