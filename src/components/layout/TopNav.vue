@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f0f8ff;
+  background-color: #e6f3ff;
   color: #0b508b;
   height: 55px;
   width: 100%;

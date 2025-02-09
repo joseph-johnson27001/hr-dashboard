@@ -109,7 +109,7 @@ body {
 
 .right-area {
   height: 100%;
-  background-color: #f0f8ff;
+  background-color: #e6f3ff;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -119,7 +119,7 @@ body {
 .main {
   height: 100%;
   padding: 20px;
-  background-color: #fcfcfc;
+  background-color: #fdfdfd;
   border: 1px solid #bbb;
   border-right: 0;
   overflow: auto;
@@ -177,7 +177,7 @@ i {
 
   .main {
     margin-left: 0 !important;
-    padding: 15px;
+    padding: 20px;
     border-radius: 0;
   }
 }
@@ -190,7 +190,7 @@ i {
   align-items: center;
   justify-content: center;
   height: 100dvh;
-  background: #f0f8ff;
+  background: #e6f3ff;
   border: none;
 }
 </style>

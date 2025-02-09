@@ -47,7 +47,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100dvh;
-  background: #f0f8ff;
+  background: #e6f3ff;
 }
 
 .login-card {
