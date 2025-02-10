@@ -62,4 +62,10 @@ export default {
   color: #006ba6;
   margin-left: 20px;
 }
+
+@media (max-width: 300px) {
+  .stat-card {
+    padding: 10px;
+  }
+}
 </style>
