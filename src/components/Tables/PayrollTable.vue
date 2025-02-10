@@ -1,137 +1,133 @@
 <template>
-  <InfoCard title="Payroll">
-    <!-- Search Bar and Filters -->
-    <div class="table-controls">
-      <input
-        v-model="searchQuery"
-        type="text"
-        placeholder="Search"
-        class="search-input"
-      />
-      <div class="filter-container">
-        <select v-model="selectedDepartment" class="department-filter">
-          <option value="">All Departments</option>
-          <option v-for="dept in uniqueDepartments" :key="dept" :value="dept">
-            {{ dept }}
-          </option>
-        </select>
-        <select v-model="selectedStatus" class="department-filter">
-          <option value="">All Statuses</option>
-          <option value="Paid">Paid</option>
-          <option value="Pending">Pending</option>
-        </select>
+  <!-- Search Bar and Filters -->
+  <div class="table-controls">
+    <input
+      v-model="searchQuery"
+      type="text"
+      placeholder="Search"
+      class="search-input"
+    />
+    <div class="filter-container">
+      <select v-model="selectedDepartment" class="department-filter">
+        <option value="">All Departments</option>
+        <option v-for="dept in uniqueDepartments" :key="dept" :value="dept">
+          {{ dept }}
+        </option>
+      </select>
+      <select v-model="selectedStatus" class="department-filter">
+        <option value="">All Statuses</option>
+        <option value="Paid">Paid</option>
+        <option value="Pending">Pending</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Payroll Table (Hidden on Mobile) -->
+  <div v-if="!isMobile" class="table-wrapper">
+    <table class="payroll-table">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Department</th>
+          <th>Salary (£)</th>
+          <th>Net Pay (£)</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="employee in paginatedEmployees"
+          :key="employee.id"
+          @click="navigateToUser"
+        >
+          <td>
+            <div class="employee-name-container">
+              <img
+                :src="employee.photoUrl"
+                alt="Profile Photo"
+                class="profile-photo"
+              />
+              {{ employee.name }}
+            </div>
+          </td>
+          <td>{{ employee.department }}</td>
+          <td>£{{ formatNumber(employee.salary) }}</td>
+          <td>£{{ formatNumber(employee.netPay) }}</td>
+          <td :class="getStatusClass(employee.status)">
+            {{ employee.status }}
+          </td>
+          <td>
+            <button
+              v-if="employee.status !== 'Paid'"
+              @click="markAsPaid(employee)"
+              class="btn btn-primary"
+            >
+              Mark Paid
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Stacked Cards Layout (Visible on Mobile) -->
+  <div v-if="isMobile" class="employee-cards">
+    <div
+      v-for="employee in paginatedEmployees"
+      :key="employee.id"
+      class="employee-card"
+      @click="navigateToUser"
+    >
+      <div class="card-header">
+        <img
+          :src="employee.photoUrl"
+          alt="Profile Photo"
+          class="profile-photo"
+        />
+        <span>{{ employee.name }}</span>
       </div>
-    </div>
-
-    <!-- Payroll Table (Hidden on Mobile) -->
-    <div v-if="!isMobile" class="table-wrapper">
-      <table class="payroll-table">
-        <thead>
-          <tr>
-            <th>Employee Name</th>
-            <th>Department</th>
-            <th>Salary (£)</th>
-            <th>Net Pay (£)</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="employee in paginatedEmployees"
-            :key="employee.id"
-            @click="navigateToUser"
-          >
-            <td>
-              <div class="employee-name-container">
-                <img
-                  :src="employee.photoUrl"
-                  alt="Profile Photo"
-                  class="profile-photo"
-                />
-                {{ employee.name }}
-              </div>
-            </td>
-            <td>{{ employee.department }}</td>
-            <td>£{{ formatNumber(employee.salary) }}</td>
-            <td>£{{ formatNumber(employee.netPay) }}</td>
-            <td :class="getStatusClass(employee.status)">
-              {{ employee.status }}
-            </td>
-            <td>
-              <button
-                v-if="employee.status !== 'Paid'"
-                @click="markAsPaid(employee)"
-                class="btn btn-primary"
-              >
-                Mark Paid
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Stacked Cards Layout (Visible on Mobile) -->
-    <div v-if="isMobile" class="employee-cards">
-      <div
-        v-for="employee in paginatedEmployees"
-        :key="employee.id"
-        class="employee-card"
-        @click="navigateToUser"
+      <p>
+        <span class="employee-stat">Department:</span>
+        {{ employee.department }}
+      </p>
+      <p>
+        <span class="employee-stat">Salary:</span> £{{
+          formatNumber(employee.salary)
+        }}
+      </p>
+      <p>
+        <span class="employee-stat">Net Pay:</span> £{{
+          formatNumber(employee.netPay)
+        }}
+      </p>
+      <p>
+        <span class="employee-stat">Status: </span>
+        <span class="employee-stat" :class="getStatusClass(employee.status)">{{
+          employee.status
+        }}</span>
+      </p>
+      <button
+        v-if="employee.status !== 'Paid'"
+        @click="markAsPaid(employee)"
+        class="btn btn-primary"
       >
-        <div class="card-header">
-          <img
-            :src="employee.photoUrl"
-            alt="Profile Photo"
-            class="profile-photo"
-          />
-          <span>{{ employee.name }}</span>
-        </div>
-        <p>
-          <span class="employee-stat">Department:</span>
-          {{ employee.department }}
-        </p>
-        <p>
-          <span class="employee-stat">Salary:</span> £{{
-            formatNumber(employee.salary)
-          }}
-        </p>
-        <p>
-          <span class="employee-stat">Net Pay:</span> £{{
-            formatNumber(employee.netPay)
-          }}
-        </p>
-        <p>
-          <span class="employee-stat">Status: </span>
-          <span
-            class="employee-stat"
-            :class="getStatusClass(employee.status)"
-            >{{ employee.status }}</span
-          >
-        </p>
-        <button
-          v-if="employee.status !== 'Paid'"
-          @click="markAsPaid(employee)"
-          class="btn btn-primary"
-        >
-          Mark Paid
-        </button>
-      </div>
+        Mark Paid
+      </button>
     </div>
+  </div>
 
-    <!-- Pagination Controls -->
-    <div class="pagination-controls">
-      <span v-for="page in totalPages" :key="page" class="page-number">
-        <button
-          :class="{ active: currentPage === page }"
-          @click="changePage(page)"
-        >
-          {{ page }}
-        </button>
-      </span>
-    </div>
-  </InfoCard>
+  <!-- Pagination Controls -->
+  <div class="pagination-controls">
+    <span v-for="page in totalPages" :key="page" class="page-number">
+      <button
+        :class="{ active: currentPage === page }"
+        @click="changePage(page)"
+      >
+        {{ page }}
+      </button>
+    </span>
+  </div>
 </template>
 
 <script>

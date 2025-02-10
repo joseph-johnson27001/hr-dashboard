@@ -1,99 +1,93 @@
 <template>
-  <InfoCard title="Attendance Log">
-    <div class="table-controls">
-      <!-- Search Bar -->
-      <input
-        v-model="searchQuery"
-        type="text"
-        placeholder="Search"
-        class="search-input"
-      />
+  <div class="table-controls">
+    <!-- Search Bar -->
+    <input
+      v-model="searchQuery"
+      type="text"
+      placeholder="Search"
+      class="search-input"
+    />
 
-      <!-- Filter Dropdown -->
-      <select v-model="selectedFilter" class="filter-select">
-        <option value="">All Departments</option>
-        <option value="HR">HR</option>
-        <option value="Engineering">Engineering</option>
-        <option value="Sales">Sales</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Operations">Operations</option>
-      </select>
-    </div>
+    <!-- Filter Dropdown -->
+    <select v-model="selectedFilter" class="filter-select">
+      <option value="">All Departments</option>
+      <option value="HR">HR</option>
+      <option value="Engineering">Engineering</option>
+      <option value="Sales">Sales</option>
+      <option value="Marketing">Marketing</option>
+      <option value="Operations">Operations</option>
+    </select>
+  </div>
 
-    <!-- Attendance Table (Hidden on Mobile) -->
-    <div v-if="!isMobile" class="table-wrapper">
-      <table class="attendance-table">
-        <thead>
-          <tr>
-            <th>Employee Name</th>
-            <th>Department</th>
-            <th>Absence Date</th>
-            <th>Reason</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="entry in paginatedLogs"
-            :key="entry.id"
-            @click="navigateToUser"
-          >
-            <td>
-              <div class="employee-name-container">
-                <img
-                  :src="entry.photoUrl"
-                  alt="Profile Photo"
-                  class="profile-photo"
-                />
-                {{ entry.name }}
-              </div>
-            </td>
-            <td>{{ entry.department }}</td>
-            <td>{{ formatDate(entry.absenceDate) }}</td>
-            <td>{{ entry.reason }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Stacked Cards Layout (Visible on Mobile) -->
-    <div v-if="isMobile" class="attendance-cards">
-      <div
-        v-for="entry in paginatedLogs"
-        :key="entry.id"
-        class="attendance-card"
-        @click="navigateToUser"
-      >
-        <div class="card-header">
-          <img
-            :src="entry.photoUrl"
-            alt="Profile Photo"
-            class="profile-photo"
-          />
-          <span>{{ entry.name }}</span>
-        </div>
-        <p>
-          <span class="employee-stat">Department:</span> {{ entry.department }}
-        </p>
-        <p>
-          <span class="employee-stat">Absence Date:</span>
-          {{ formatDate(entry.absenceDate) }}
-        </p>
-        <p><span class="employee-stat">Reason:</span> {{ entry.reason }}</p>
-      </div>
-    </div>
-
-    <!-- Pagination Controls (bottom-right) -->
-    <div class="pagination-controls">
-      <span v-for="page in totalPages" :key="page" class="page-number">
-        <button
-          :class="{ active: currentPage === page }"
-          @click="changePage(page)"
+  <!-- Attendance Table (Hidden on Mobile) -->
+  <div v-if="!isMobile" class="table-wrapper">
+    <table class="attendance-table">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Department</th>
+          <th>Absence Date</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="entry in paginatedLogs"
+          :key="entry.id"
+          @click="navigateToUser"
         >
-          {{ page }}
-        </button>
-      </span>
+          <td>
+            <div class="employee-name-container">
+              <img
+                :src="entry.photoUrl"
+                alt="Profile Photo"
+                class="profile-photo"
+              />
+              {{ entry.name }}
+            </div>
+          </td>
+          <td>{{ entry.department }}</td>
+          <td>{{ formatDate(entry.absenceDate) }}</td>
+          <td>{{ entry.reason }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Stacked Cards Layout (Visible on Mobile) -->
+  <div v-if="isMobile" class="attendance-cards">
+    <div
+      v-for="entry in paginatedLogs"
+      :key="entry.id"
+      class="attendance-card"
+      @click="navigateToUser"
+    >
+      <div class="card-header">
+        <img :src="entry.photoUrl" alt="Profile Photo" class="profile-photo" />
+        <span>{{ entry.name }}</span>
+      </div>
+      <p>
+        <span class="employee-stat">Department:</span> {{ entry.department }}
+      </p>
+      <p>
+        <span class="employee-stat">Absence Date:</span>
+        {{ formatDate(entry.absenceDate) }}
+      </p>
+      <p><span class="employee-stat">Reason:</span> {{ entry.reason }}</p>
     </div>
-  </InfoCard>
+  </div>
+
+  <!-- Pagination Controls (bottom-right) -->
+  <div class="pagination-controls">
+    <span v-for="page in totalPages" :key="page" class="page-number">
+      <button
+        :class="{ active: currentPage === page }"
+        @click="changePage(page)"
+      >
+        {{ page }}
+      </button>
+    </span>
+  </div>
 </template>
 
 <script>
