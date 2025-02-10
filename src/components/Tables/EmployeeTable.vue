@@ -118,7 +118,7 @@ export default {
       searchQuery: "",
       selectedDepartment: "",
       currentPage: 1,
-      itemsPerPage: 15,
+      itemsPerPage: 10,
       isMobile: window.innerWidth < 768,
     };
   },

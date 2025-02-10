@@ -69,13 +69,16 @@
             alt="Profile Photo"
             class="profile-photo"
           />
-          <strong>{{ entry.name }}</strong>
+          <span>{{ entry.name }}</span>
         </div>
-        <p><strong>Department:</strong> {{ entry.department }}</p>
         <p>
-          <strong>Absence Date:</strong> {{ formatDate(entry.absenceDate) }}
+          <span class="employee-stat">Department:</span> {{ entry.department }}
         </p>
-        <p><strong>Reason:</strong> {{ entry.reason }}</p>
+        <p>
+          <span class="employee-stat">Absence Date:</span>
+          {{ formatDate(entry.absenceDate) }}
+        </p>
+        <p><span class="employee-stat">Reason:</span> {{ entry.reason }}</p>
       </div>
     </div>
 
@@ -100,7 +103,7 @@ export default {
       searchQuery: "",
       selectedFilter: "",
       currentPage: 1,
-      itemsPerPage: 5,
+      itemsPerPage: 10,
       isMobile: window.innerWidth < 900,
       attendanceLogs: [
         {
@@ -313,18 +316,22 @@ export default {
 }
 
 .attendance-cards {
-  display: flex;
+  display: grid;
   flex-direction: column;
-  gap: 10px;
-  cursor: pointer;
+  border-top: 1px solid #ddd;
+  grid-template-columns: 1fr 1fr;
 }
 
 .attendance-card {
   background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
+  padding: 15px 10px;
+  border-bottom: 1px solid #ddd;
+  font-family: "Assistant", sans-serif;
+}
+
+.attendance-card:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
 }
 
 .card-header {
@@ -333,12 +340,16 @@ export default {
   gap: 10px;
 }
 
+.employee-stat {
+  color: #0a4d86;
+}
+
 .profile-photo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .employee-name-container {
@@ -351,17 +362,6 @@ export default {
   justify-content: space-between;
   margin-bottom: 10px;
   gap: 10px;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .table-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .search-input {
-    width: auto;
-  }
 }
 
 .filter-select {
@@ -398,5 +398,24 @@ export default {
 .pagination-controls button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .table-controls {
+    flex-direction: column;
+  }
+  .search-input {
+    width: auto;
+  }
+  .profile-photo {
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 500px) {
+  .attendance-cards {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

@@ -142,7 +142,7 @@ export default {
       selectedDepartment: "",
       selectedStatus: "",
       currentPage: 1,
-      itemsPerPage: 5,
+      itemsPerPage: 10,
       isMobile: window.innerWidth < 800,
       employees: [
         {
@@ -537,6 +537,12 @@ export default {
 
   .filter-container {
     gap: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .employee-cards {
+    grid-template-columns: 1fr;
   }
 }
 </style>
