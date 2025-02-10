@@ -48,6 +48,7 @@ export default {
   align-items: center;
   height: 100dvh;
   background: #e6f3ff;
+  font-family: "Assistant", sans-serif;
 }
 
 .login-card {
@@ -77,7 +78,7 @@ h3 {
 
 .input-group label {
   display: block;
-  font-weight: 100;
+  font-weight: 400;
   margin-bottom: 5px;
 }
 

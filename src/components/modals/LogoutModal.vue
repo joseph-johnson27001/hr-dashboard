@@ -33,6 +33,7 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  font-family: "Assistant", sans-serif;
 }
 
 /* Modal box */
@@ -63,6 +64,7 @@ h3 {
 
 p {
   margin-bottom: 20px;
+  font-family: "Assistant", sans-serif;
 }
 
 .modal-buttons {
