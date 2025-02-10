@@ -90,6 +90,14 @@ h3 {
   font-size: 16px;
 }
 
+.input-group input:focus {
+  border: 1px solid #3498db;
+  box-shadow: 0 0 4px rgba(52, 152, 219, 0.2);
+  background-color: #fcfcfc;
+  border-radius: 4px;
+  outline: none;
+}
+
 .login-button {
   width: 100%;
   padding: 10px;

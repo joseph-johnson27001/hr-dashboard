@@ -156,12 +156,14 @@ table {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 8px;
+  outline: none;
   color: #333 !important;
 }
 
 .search-input:focus {
   border: 1px solid #3498db;
   box-shadow: 0 0 4px rgba(52, 152, 219, 0.2);
+  background-color: #fcfcfc;
   border-radius: 4px;
   outline: none;
 }
