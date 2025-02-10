@@ -249,7 +249,7 @@ export default {
         { title: "Active Employees", value: "136" },
         { title: "On Leave", value: "4" },
         { title: "Employee Turnover Rate", value: "5%" },
-        { title: "Departments", value: "6" },
+        { title: "Gender Balance (M/F)", value: "55 / 45" },
       ],
     };
   },

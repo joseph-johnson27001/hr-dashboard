@@ -290,6 +290,7 @@ export default {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+  font-family: "Assistant", sans-serif;
 }
 
 .attendance-table th,
@@ -331,7 +332,6 @@ export default {
 .card-header {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 .employee-stat {
@@ -401,9 +401,6 @@ export default {
   }
   .search-input {
     width: auto;
-  }
-  .profile-photo {
-    margin-right: 0px;
   }
 }
 
