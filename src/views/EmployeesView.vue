@@ -304,7 +304,7 @@ export default {
   }
 }
 
-@media (max-width: 275px) {
+@media (max-width: 350px) {
   .stat-cards {
     grid-template-columns: 1fr;
   }
