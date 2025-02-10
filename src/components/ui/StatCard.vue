@@ -34,7 +34,7 @@ export default {
 .stat-card {
   background-color: white;
   border-radius: 5px;
-  padding: 20px;
+  padding: 15px;
   border: 1px solid #ccc;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 8px;
   display: flex;
