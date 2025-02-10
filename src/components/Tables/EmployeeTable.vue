@@ -249,7 +249,7 @@ export default {
 
 .employee-card:hover {
   cursor: pointer;
-  background-color: #ddd;
+  background-color: #f5f5f5;
 }
 
 .employee-stat {

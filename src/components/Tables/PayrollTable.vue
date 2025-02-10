@@ -86,16 +86,29 @@
             alt="Profile Photo"
             class="profile-photo"
           />
-          <strong>{{ employee.name }}</strong>
+          <span>{{ employee.name }}</span>
         </div>
-        <p><strong>Department:</strong> {{ employee.department }}</p>
-        <p><strong>Salary:</strong> £{{ formatNumber(employee.salary) }}</p>
-        <p><strong>Net Pay:</strong> £{{ formatNumber(employee.netPay) }}</p>
         <p>
-          <strong>Status: </strong>
-          <span :class="getStatusClass(employee.status)">{{
-            employee.status
-          }}</span>
+          <span class="employee-stat">Department:</span>
+          {{ employee.department }}
+        </p>
+        <p>
+          <span class="employee-stat">Salary:</span> £{{
+            formatNumber(employee.salary)
+          }}
+        </p>
+        <p>
+          <span class="employee-stat">Net Pay:</span> £{{
+            formatNumber(employee.netPay)
+          }}
+        </p>
+        <p>
+          <span class="employee-stat">Status: </span>
+          <span
+            class="employee-stat"
+            :class="getStatusClass(employee.status)"
+            >{{ employee.status }}</span
+          >
         </p>
         <button
           v-if="employee.status !== 'Paid'"
@@ -349,6 +362,8 @@ export default {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #ddd;
+  font-size: 14px;
+  font-family: "Assistant", sans-serif;
 }
 
 .payroll-table th,
@@ -375,13 +390,11 @@ export default {
 
 /* Status Colors */
 .status-active {
-  color: green;
-  font-weight: bold;
+  color: green !important;
 }
 
 .status-on-leave {
-  color: orange;
-  font-weight: bold;
+  color: orange !important;
 }
 
 /* Search Bar and Filters */
@@ -407,17 +420,26 @@ export default {
 }
 
 .employee-cards {
-  display: flex;
+  display: grid;
   flex-direction: column;
-  gap: 10px;
+  border-top: 1px solid #ddd;
+  grid-template-columns: 1fr 1fr;
 }
 
 .employee-card {
   background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
+  padding: 15px 10px;
+  border-bottom: 1px solid #ddd;
+  font-family: "Assistant", sans-serif;
+}
+
+.employee-card:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+
+.employee-stat {
+  color: #0a4d86;
 }
 
 .card-header {
@@ -458,30 +480,34 @@ export default {
   cursor: not-allowed;
 }
 
-/* Pagination Controls */
+/* Pagination */
 .pagination-controls {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
-.page-number button {
-  padding: 6px 12px;
-  margin: 0 5px;
-  border: 1px solid #ccc;
-  background: white;
+.pagination-controls .page-number {
+  margin-left: 5px;
+}
+
+.pagination-controls button {
+  padding: 5px 10px;
+  background-color: #fff;
+  color: #006ba6;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 
-.page-number button.active {
-  background-color: #0288d1;
-  color: white;
+.pagination-controls button.active {
+  background-color: #006ba6;
+  color: #fff;
 }
 
-.page-number button:hover {
-  background-color: #e0e0e0;
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 /* Responsive Design */
