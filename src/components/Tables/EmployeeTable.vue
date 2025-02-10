@@ -224,7 +224,7 @@ export default {
 .employee-cards {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  border-top: 1px solid #ddd;
 }
 
 .search-input {
@@ -233,10 +233,13 @@ export default {
 
 .employee-card {
   background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
+  padding: 15px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.employee-card:hover {
+  cursor: pointer;
+  background-color: #ddd;
 }
 
 .card-header {
