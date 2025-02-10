@@ -42,4 +42,10 @@ export default {
   padding-bottom: 10px;
   color: #0f3659;
 }
+
+@media (max-width: 400px) {
+  .info-card {
+    padding: 20px 10px;
+  }
+}
 </style>
