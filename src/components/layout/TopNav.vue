@@ -56,8 +56,8 @@
 }
 
 .bird-icon {
-  width: 35px;
-  height: auto;
+  width: 20%;
+  height: 20%;
   margin-right: 8px;
 }
 
