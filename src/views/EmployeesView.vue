@@ -13,6 +13,7 @@
             :key="stat.title"
             :title="stat.title"
             :value="stat.value"
+            :icon="stat.icon"
           />
         </div>
       </div>
@@ -244,12 +245,20 @@ export default {
         },
       ],
       workforceStats: [
-        { title: "Total Employees", value: "150" },
-        { title: "New Hires This Month", value: "8" },
-        { title: "Active Employees", value: "136" },
-        { title: "On Leave", value: "4" },
-        { title: "Employee Turnover Rate", value: "5%" },
-        { title: "Gender Balance (M/F)", value: "55 / 45" },
+        { title: "Total Employees", value: "150", icon: "fas fa-users" },
+        { title: "New Hires This Month", value: "8", icon: "fas fa-user-plus" },
+        { title: "Active Employees", value: "136", icon: "fas fa-user-check" },
+        { title: "On Leave", value: "4", icon: "fas fa-user-times" },
+        {
+          title: "Employee Turnover Rate",
+          value: "5%",
+          icon: "fas fa-exchange-alt",
+        },
+        {
+          title: "Gender Balance (M/F)",
+          value: "55 / 45",
+          icon: "fas fa-restroom",
+        },
       ],
     };
   },

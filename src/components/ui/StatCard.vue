@@ -1,7 +1,12 @@
 <template>
   <div class="stat-card">
-    <h3 class="stat-card-title">{{ title }}</h3>
-    <p class="stat-card-value">{{ value }}</p>
+    <div class="stat-content">
+      <h3 class="stat-card-title">{{ title }}</h3>
+      <p class="stat-card-value">{{ value }}</p>
+    </div>
+    <div class="stat-icon">
+      <i :class="icon"></i>
+    </div>
   </div>
 </template>
 
@@ -17,6 +22,10 @@ export default {
       type: [String, Number],
       required: true,
     },
+    icon: {
+      type: String,
+      required: true,
+    },
   },
 };
 </script>
@@ -29,7 +38,11 @@ export default {
   border: 1px solid #ccc;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 8px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-content {
+  flex: 1;
 }
 
 .stat-card-title {
@@ -42,5 +55,11 @@ export default {
   padding-top: 10px;
   font-size: 16px;
   color: #0288d1;
+}
+
+.stat-icon {
+  font-size: 1rem;
+  color: #0288d1;
+  margin-left: 20px;
 }
 </style>

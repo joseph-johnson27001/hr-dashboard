@@ -13,6 +13,7 @@
             :key="stat.title"
             :title="stat.title"
             :value="stat.value"
+            :icon="stat.icon"
           />
         </div>
       </div>
@@ -71,12 +72,24 @@ export default {
   data() {
     return {
       workforceStats: [
-        { title: "Total Employees", value: 150 },
-        { title: "New Hires This Month", value: 8 },
-        { title: "Employee Turnover Rate", value: "5%" },
-        { title: "Total Payroll (Monthly)", value: "$1.2M" },
-        { title: "Employee Satisfaction", value: "85%" },
-        { title: "Absenteeism Rate", value: "3%" },
+        { title: "Total Employees", value: 150, icon: "fas fa-users" },
+        { title: "New Hires This Month", value: 8, icon: "fas fa-user-plus" },
+        {
+          title: "Employee Turnover Rate",
+          value: "5%",
+          icon: "fas fa-user-minus",
+        },
+        {
+          title: "Total Payroll (Monthly)",
+          value: "$1.2M",
+          icon: "fas fa-money-bill-wave",
+        },
+        { title: "Employee Satisfaction", value: "85%", icon: "fas fa-smile" },
+        {
+          title: "Absenteeism Rate",
+          value: "3%",
+          icon: "fas fa-calendar-times",
+        },
       ],
     };
   },

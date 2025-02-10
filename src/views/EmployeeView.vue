@@ -30,6 +30,7 @@
             :key="stat.title"
             :title="stat.title"
             :value="stat.value"
+            :icon="stat.icon"
           />
         </div>
       </div>
@@ -100,14 +101,30 @@ export default {
         birthday: "7th July 1990",
       },
       employeeStats: [
-        { title: "Salary (Monthly)", value: "£3,500.00" },
-        { title: "Performance Score", value: "88%" },
-        { title: "Attendance Rate", value: "95%" },
-        { title: "Overtime Hours", value: "10h" },
-        { title: "Projects Completed", value: "15" },
-        { title: "Sick Days Taken", value: "2" },
-        { title: "Holiday Allowance Left", value: "12 Days" },
-        { title: "Training Sessions Completed", value: "5" },
+        {
+          title: "Salary (Monthly)",
+          value: "£3,500.00",
+          icon: "fas fa-money-bill-wave",
+        },
+        { title: "Performance Score", value: "88%", icon: "fas fa-chart-line" },
+        {
+          title: "Attendance Rate",
+          value: "95%",
+          icon: "fas fa-calendar-check",
+        },
+        { title: "Overtime Hours", value: "10h", icon: "fas fa-clock" },
+        { title: "Projects Completed", value: "15", icon: "fas fa-tasks" },
+        { title: "Sick Days Taken", value: "2", icon: "fas fa-procedures" },
+        {
+          title: "Holiday Allowance Left",
+          value: "12 Days",
+          icon: "fas fa-umbrella-beach",
+        },
+        {
+          title: "Training Sessions Completed",
+          value: "5",
+          icon: "fas fa-graduation-cap",
+        },
       ],
     };
   },
