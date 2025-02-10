@@ -73,17 +73,24 @@
             alt="Profile Photo"
             class="profile-photo"
           />
-          <strong>{{ employee.name }}</strong>
+          <span class="employee-name">{{ employee.name }}</span>
         </div>
-        <p><strong>Position:</strong> {{ employee.position }}</p>
         <p>
-          <strong>Status:</strong>
-          <span :class="getStatusClass(employee.status)">
+          <span class="employee-stat">Position:</span> {{ employee.position }}
+        </p>
+        <p>
+          <span class="employee-stat">Status:</span>
+          <span class="employee-stat" :class="getStatusClass(employee.status)">
             {{ " " + employee.status }}</span
           >
         </p>
-        <p><strong>Location:</strong> {{ employee.location }}</p>
-        <p><strong>Joined:</strong> {{ formatDate(employee.joinDate) }}</p>
+        <p>
+          <span class="employee-stat">Location:</span> {{ employee.location }}
+        </p>
+        <p>
+          <span class="employee-stat">Joined:</span>
+          {{ formatDate(employee.joinDate) }}
+        </p>
       </div>
     </div>
 
@@ -201,6 +208,7 @@ export default {
   border-collapse: collapse;
   border: 1px solid #ddd;
   font-size: 14px;
+  font-family: "Assistant", sans-serif;
 }
 
 .employee-table th,
@@ -222,9 +230,10 @@ export default {
 
 /* Card Styles */
 .employee-cards {
-  display: flex;
+  display: grid;
   flex-direction: column;
   border-top: 1px solid #ddd;
+  grid-template-columns: 1fr 1fr;
 }
 
 .search-input {
@@ -235,6 +244,7 @@ export default {
   background: white;
   padding: 15px 10px;
   border-bottom: 1px solid #ddd;
+  font-family: "Assistant", sans-serif;
 }
 
 .employee-card:hover {
@@ -242,10 +252,13 @@ export default {
   background-color: #ddd;
 }
 
+.employee-stat {
+  color: #0a4d86;
+}
+
 .card-header {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 .profile-photo {
@@ -315,6 +328,16 @@ export default {
 
   .search-input {
     width: auto;
+  }
+
+  .profile-photo {
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .employee-cards {
+    grid-template-columns: 1fr;
   }
 }
 </style>
