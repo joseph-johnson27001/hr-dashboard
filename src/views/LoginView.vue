@@ -61,8 +61,8 @@ export default {
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: auto;
 }
 
 h3 {
