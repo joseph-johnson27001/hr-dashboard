@@ -13,6 +13,7 @@
             :key="stat.title"
             :title="stat.title"
             :value="stat.value"
+            :icon="stat.icon"
           />
         </div>
       </div>
@@ -50,10 +51,22 @@ export default {
   data() {
     return {
       workforceStats: [
-        { title: "Total Payroll (Monthly)", value: "£8,995.00" },
-        { title: "Average Salary (Monthly)", value: "£1,113.00" },
-        { title: "Pending Payments", value: "7" },
-        { title: "Pending Payment Value", value: "£2560.50" },
+        {
+          title: "Total Payroll (Monthly)",
+          value: "£8,995.00",
+          icon: "fas fa-money-bill-wave",
+        },
+        {
+          title: "Average Salary (Monthly)",
+          value: "£1,113.00",
+          icon: "fas fa-dollar-sign",
+        },
+        { title: "Pending Payments", value: "7", icon: "fas fa-clock" },
+        {
+          title: "Pending Payment Value",
+          value: "£2560.50",
+          icon: "fas fa-exclamation-circle",
+        },
       ],
     };
   },

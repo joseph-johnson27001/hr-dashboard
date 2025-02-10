@@ -58,8 +58,8 @@ export default {
 }
 
 .stat-icon {
-  font-size: 1rem;
-  color: #0288d1;
+  font-size: 0.8rem;
+  color: #006ba6;
   margin-left: 20px;
 }
 </style>

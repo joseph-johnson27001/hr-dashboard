@@ -13,6 +13,7 @@
             :key="stat.title"
             :title="stat.title"
             :value="stat.value"
+            :icon="stat.icon"
           />
         </div>
       </div>
@@ -71,9 +72,13 @@ export default {
   data() {
     return {
       workforceStats: [
-        { title: "Absenteeism Rate", value: "3%" },
-        { title: "Absences (Monthly)", value: 8 },
-        { title: "Late Arrivals (Monthly)", value: 12 },
+        { title: "Absenteeism Rate", value: "3%", icon: "fas fa-percent" },
+        {
+          title: "Absences (Monthly)",
+          value: 8,
+          icon: "fas fa-calendar-times",
+        },
+        { title: "Late Arrivals (Monthly)", value: 12, icon: "fas fa-clock" },
       ],
     };
   },
