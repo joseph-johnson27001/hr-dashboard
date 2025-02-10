@@ -329,10 +329,6 @@ export default {
   .search-input {
     width: auto;
   }
-
-  .profile-photo {
-    margin-right: 0px;
-  }
 }
 
 @media (max-width: 600px) {
