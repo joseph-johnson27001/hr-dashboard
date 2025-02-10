@@ -145,7 +145,7 @@ export default {
 }
 
 h3 {
-  font-weight: 100;
+  font-weight: 400;
   font-family: "Poppins", sans-serif;
   color: #0a4d86;
   margin-bottom: 10px;
