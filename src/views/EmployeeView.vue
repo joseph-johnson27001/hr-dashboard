@@ -62,6 +62,9 @@
       </InfoCard>
 
       <InfoCard title="Satisfaction">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
         <EmployeeSatisfactionGraph :employeeId="employee.id" />
       </InfoCard>
     </div>
@@ -134,7 +137,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
 }
 
@@ -161,6 +163,7 @@ h3 {
 .employee-details {
   display: flex;
   flex-direction: column;
+  font-family: "Assistant", sans-serif;
 }
 
 .extra-info {
@@ -168,6 +171,7 @@ h3 {
   flex-direction: column;
   font-size: 14px;
   margin-left: 20px;
+  font-family: "Assistant", sans-serif;
 }
 
 .extra-info strong {
