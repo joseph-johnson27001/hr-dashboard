@@ -59,7 +59,7 @@ export default {
 
 .stat-icon {
   font-size: 0.8rem;
-  color: #333;
+  color: #006ba6;
   margin-left: 20px;
 }
 </style>
