@@ -48,8 +48,8 @@ export default {
 
 /* Logo */
 .logo {
-  width: 20%;
-  height: 20%;
+  width: 80px;
+  height: auto;
   margin-bottom: 15px;
 }
 
