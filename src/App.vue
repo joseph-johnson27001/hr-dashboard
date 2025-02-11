@@ -119,7 +119,7 @@ body {
 .main {
   height: 100%;
   padding: 20px;
-  background-color: #fdfdfd;
+  background-color: #fbfbfb;
   border: 1px solid #bbb;
   border-right: 0;
   overflow: auto;
@@ -159,7 +159,6 @@ table {
   padding: 8px;
   outline: none;
   color: #333 !important;
-  font-family: "Assistant", sans-serif;
 }
 
 .search-input:focus {

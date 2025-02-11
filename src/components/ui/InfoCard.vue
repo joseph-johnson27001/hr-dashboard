@@ -25,7 +25,7 @@ export default {
   border-radius: 5px;
   padding: 20px;
   border: 1px solid #ccc;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 4px;
   display: flex;
   flex-direction: column;
 }
