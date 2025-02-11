@@ -11,42 +11,41 @@
       <i class="fas fa-bars desktop-menu" @click="$emit('toggle-sidebar')"></i>
     </div>
 
+    <!-- Centered Search Bar -->
+    <div class="center-content">
+      <div class="search-container">
+        <input
+          type="text"
+          v-model="searchQuery"
+          placeholder="Search employees..."
+          class="search-input"
+          @input="filterEmployees"
+          @focus="showResults = true"
+          @blur="hideResults"
+        />
+        <ul
+          v-if="showResults && filteredEmployees.length"
+          class="search-results"
+        >
+          <li
+            v-for="employee in filteredEmployees"
+            :key="employee.id"
+            @click="goToEmployee()"
+          >
+            <img
+              :src="employee.image"
+              alt="Profile"
+              class="search-profile-img"
+            />
+            {{ employee.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
     <!-- Mobile Nav Toggle -->
     <i class="fas fa-bars mobile-menu" @click="$emit('toggle-mobile-nav')"></i>
 
-    <!-- Right Section: Profile & Notifications -->
     <div class="user-profile">
-      <!-- Centered Search Bar -->
-      <div class="center-content">
-        <div class="search-container">
-          <input
-            type="text"
-            v-model="searchQuery"
-            placeholder="Search employees..."
-            class="search-input"
-            @input="filterEmployees"
-            @focus="showResults = true"
-            @blur="hideResults"
-          />
-          <ul
-            v-if="showResults && filteredEmployees.length"
-            class="search-results"
-          >
-            <li
-              v-for="employee in filteredEmployees"
-              :key="employee.id"
-              @click="goToEmployee()"
-            >
-              <img
-                :src="employee.image"
-                alt="Profile"
-                class="search-profile-img"
-              />
-              {{ employee.name }}
-            </li>
-          </ul>
-        </div>
-      </div>
       <i class="far fa-bell"></i>
       <div class="profile">
         <img src="images/ProfilePhoto1.jpg" alt="Profile" class="profile-img" />
@@ -113,7 +112,6 @@ export default {
 .heading-area {
   display: flex;
   align-items: center;
-  gap: 10px;
   width: 180px;
 }
 
@@ -123,9 +121,9 @@ export default {
 }
 
 .bird-icon {
-  width: 30px;
-  height: 30px;
-  margin-right: 8px;
+  width: 35px;
+  height: 35px;
+  margin-right: 15px;
 }
 
 .icon-container {
@@ -136,13 +134,14 @@ export default {
 .center-content {
   flex-grow: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .search-container {
   position: relative;
-  width: 100%;
+  width: 30%;
   margin-right: 20px;
+  min-width: 300px;
 }
 
 .search-input {
@@ -164,7 +163,6 @@ export default {
   border-radius: 5px;
   list-style: none;
   padding: 0;
-
   margin: 0;
   max-height: 200px;
   overflow-y: auto;
@@ -195,7 +193,6 @@ export default {
   margin-right: 10px;
 }
 
-/* Right Section - Profile & Notifications */
 .user-profile {
   display: flex;
   align-items: center;
@@ -216,7 +213,6 @@ export default {
   object-fit: cover;
 }
 
-/* Hamburger Icons */
 .desktop-menu {
   display: block;
   cursor: pointer;
@@ -251,11 +247,13 @@ export default {
     display: block;
   }
 
-  .center-content {
-    width: 100%;
-  }
-
   .user-profile {
+    display: none;
+  }
+}
+
+@media (max-width: 570px) {
+  .center-content {
     display: none;
   }
 }
