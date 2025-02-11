@@ -229,7 +229,7 @@ export default {
   display: none;
   cursor: pointer;
   font-size: 20px;
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 /* Mobile & Responsive Adjustments */
