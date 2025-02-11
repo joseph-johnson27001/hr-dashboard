@@ -509,6 +509,9 @@ export default {
 
 /* Responsive Design */
 @media (max-width: 800px) {
+  .btn {
+    margin-top: 5px;
+  }
   .table-wrapper {
     display: none;
   }
