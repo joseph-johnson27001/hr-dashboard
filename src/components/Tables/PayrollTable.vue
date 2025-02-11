@@ -441,7 +441,8 @@ export default {
 .card-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
+  font-size: 1.1rem;
 }
 
 .profile-photo {

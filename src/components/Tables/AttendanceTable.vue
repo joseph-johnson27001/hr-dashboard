@@ -332,6 +332,7 @@ export default {
 .card-header {
   display: flex;
   align-items: center;
+  font-size: 1.1rem;
 }
 
 .employee-stat {
