@@ -1,22 +1,52 @@
 <template>
   <div class="top-nav">
+    <!-- Left Section: Logo & Sidebar Icons -->
     <div class="heading-area">
       <div class="icon-container">
         <img src="/bird-icon.png" alt="Bird Icon" class="bird-icon" />
         <span class="dashboard-name">WorkSphere</span>
       </div>
 
-      <!-- Sidebar Toggle (Only for larger screens) -->
+      <!-- Sidebar Toggle (Desktop) -->
       <i class="fas fa-bars desktop-menu" @click="$emit('toggle-sidebar')"></i>
-
-      <!-- Mobile Nav Toggle (Only for smaller screens) -->
-      <i
-        class="fas fa-bars mobile-menu"
-        @click="$emit('toggle-mobile-nav')"
-      ></i>
     </div>
 
+    <!-- Mobile Nav Toggle -->
+    <i class="fas fa-bars mobile-menu" @click="$emit('toggle-mobile-nav')"></i>
+
+    <!-- Right Section: Profile & Notifications -->
     <div class="user-profile">
+      <!-- Centered Search Bar -->
+      <div class="center-content">
+        <div class="search-container">
+          <input
+            type="text"
+            v-model="searchQuery"
+            placeholder="Search employees..."
+            class="search-input"
+            @input="filterEmployees"
+            @focus="showResults = true"
+            @blur="hideResults"
+          />
+          <ul
+            v-if="showResults && filteredEmployees.length"
+            class="search-results"
+          >
+            <li
+              v-for="employee in filteredEmployees"
+              :key="employee.id"
+              @click="goToEmployee()"
+            >
+              <img
+                :src="employee.image"
+                alt="Profile"
+                class="search-profile-img"
+              />
+              {{ employee.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
       <i class="far fa-bell"></i>
       <div class="profile">
         <img src="images/ProfilePhoto1.jpg" alt="Profile" class="profile-img" />
@@ -25,7 +55,45 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      searchQuery: "",
+      employees: [
+        { id: 1, name: "John Doe", image: "images/ProfilePhoto1.jpg" },
+        { id: 2, name: "Jane Smith", image: "images/ProfilePhoto2.jpg" },
+        { id: 3, name: "Michael Johnson", image: "images/ProfilePhoto3.jpg" },
+      ],
+      filteredEmployees: [],
+      showResults: false,
+    };
+  },
+  methods: {
+    filterEmployees() {
+      const query = this.searchQuery.toLowerCase();
+      this.filteredEmployees = this.employees.filter((emp) =>
+        emp.name.toLowerCase().includes(query)
+      );
+      this.showResults = true;
+    },
+    goToEmployee() {
+      this.$router.push(`/employee`);
+      this.searchQuery = "";
+      this.filteredEmployees = [];
+      this.showResults = false;
+    },
+    hideResults() {
+      setTimeout(() => {
+        this.showResults = false;
+      }, 150);
+    },
+  },
+};
+</script>
+
 <style scoped>
+/* Top Navigation */
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -39,15 +107,14 @@
   font-family: "Assistant", serif;
   font-size: 22px;
   font-weight: 600;
+  padding-left: 10px;
 }
 
 .heading-area {
-  padding-top: 5px;
-  margin: 12px;
-  width: 210px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
+  width: 180px;
 }
 
 .dashboard-name {
@@ -56,8 +123,8 @@
 }
 
 .bird-icon {
-  width: 20%;
-  height: 20%;
+  width: 30px;
+  height: 30px;
   margin-right: 8px;
 }
 
@@ -66,24 +133,74 @@
   align-items: center;
 }
 
-/* Hamburger Icons */
-.desktop-menu {
-  display: block;
-  cursor: pointer;
-  font-size: 16px;
-  margin-right: 30px;
+.center-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }
 
-.mobile-menu {
-  display: none;
-  cursor: pointer;
-  font-size: 16px;
+.search-container {
+  position: relative;
+  width: 100%;
+  margin-right: 20px;
 }
 
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.search-results {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  list-style: none;
+  padding: 0;
+
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.search-results li {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  padding-right: 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.search-results li:hover {
+  background: #f0f0f0;
+}
+
+.search-profile-img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+/* Right Section - Profile & Notifications */
 .user-profile {
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  justify-content: flex-end;
+  margin-right: 40px;
 }
 
 .user-profile i {
@@ -97,22 +214,45 @@
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
-  display: flex;
 }
 
+/* Hamburger Icons */
+.desktop-menu {
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.mobile-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 40px;
+}
+
+/* Mobile & Responsive Adjustments */
 @media (max-width: 900px) {
   .top-nav {
     border-bottom: 1px solid #bbb;
   }
+
   .heading-area {
-    width: 100%;
+    width: auto;
+    flex-grow: 1;
+    justify-content: space-between;
   }
 
   .desktop-menu {
     display: none;
   }
+
   .mobile-menu {
     display: block;
+  }
+
+  .center-content {
+    width: 100%;
   }
 
   .user-profile {
