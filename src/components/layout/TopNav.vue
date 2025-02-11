@@ -124,9 +124,9 @@ export default {
 }
 
 .bird-icon {
-  width: 35px;
-  height: 35px;
-  margin-right: 5px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 .icon-container {
