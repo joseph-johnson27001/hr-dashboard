@@ -29,18 +29,18 @@ export default {
   data() {
     return {
       chartInstance: null,
-      isMounted: false, // Flag to track if the component is mounted
+      isMounted: false,
     };
   },
   mounted() {
-    this.isMounted = true; // Set flag when the component is mounted
+    this.isMounted = true;
     this.$nextTick(() => {
       this.renderChart();
       window.addEventListener("resize", this.handleResize);
     });
   },
   beforeUnmount() {
-    this.isMounted = false; // Set flag when the component is unmounted
+    this.isMounted = false;
     window.removeEventListener("resize", this.handleResize);
     this.destroyChart();
   },
@@ -96,7 +96,7 @@ export default {
           responsive: true,
           maintainAspectRatio: false,
           scales: {
-            x: { grid: { display: true }, stacked: true },
+            x: { grid: { display: false }, stacked: true },
             y: {
               stacked: true,
               grid: { display: false },

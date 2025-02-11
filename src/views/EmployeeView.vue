@@ -2,7 +2,8 @@
   <div class="main-content">
     <!-- Employee Header Card -->
     <div class="employee-card">
-      <div class="employee-header">
+      <!-- Desktop version -->
+      <div class="employee-header desktop-header">
         <div class="employee-info">
           <img
             :src="employee.photo"
@@ -12,6 +13,26 @@
           <div class="employee-details">
             <h3>{{ employee.name }}</h3>
             <p>{{ employee.position }} - {{ employee.department }}</p>
+          </div>
+        </div>
+        <div class="extra-info">
+          <span><strong>Join Date:</strong> {{ employee.joinDate }}</span>
+          <span><strong>Birthday:</strong> {{ employee.birthday }}</span>
+        </div>
+      </div>
+
+      <!-- Mobile version -->
+      <div class="employee-header mobile-header">
+        <div class="employee-info">
+          <img
+            :src="employee.photo"
+            alt="Employee Photo"
+            class="employee-photo"
+          />
+          <div class="employee-details">
+            <h3>{{ employee.name }}</h3>
+            <p>{{ employee.position }}</p>
+            <p>{{ employee.department }}</p>
           </div>
         </div>
         <div class="extra-info">
@@ -157,6 +178,19 @@ export default {
   width: 100%;
 }
 
+.desktop-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-header {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
 .employee-info {
   display: flex;
   align-items: center;
@@ -189,6 +223,7 @@ h3 {
   font-size: 14px;
   margin-left: 20px;
   font-family: "Assistant", sans-serif;
+  padding: 10px;
 }
 
 .extra-info strong {
@@ -212,7 +247,7 @@ h3 {
   width: 100%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .stat-cards {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -227,6 +262,26 @@ h3 {
 @media (max-width: 450px) {
   .stat-cards {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .desktop-header {
+    display: none;
+  }
+
+  .mobile-header {
+    display: flex;
+  }
+
+  .employee-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .extra-info {
+    margin-left: 0;
+    text-align: center;
   }
 }
 
