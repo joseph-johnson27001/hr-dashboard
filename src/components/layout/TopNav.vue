@@ -116,8 +116,9 @@ export default {
 }
 
 .dashboard-name {
-  font-size: 1.1rem;
-  text-transform: uppercase;
+  font-size: 1rem;
+  /* text-transform: uppercase; */
+  margin-right: 15px;
 }
 
 .bird-icon {

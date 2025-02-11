@@ -120,7 +120,12 @@ export default {
             },
           },
           plugins: {
-            legend: { display: true, position: "top", labels: { padding: 20 } },
+            legend: {
+              display: false,
+              position: "top",
+              labels: { padding: 20 },
+            },
+
             tooltip: {
               callbacks: {
                 label: (tooltipItem) =>

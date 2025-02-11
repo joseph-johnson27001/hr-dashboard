@@ -115,13 +115,17 @@ export default {
             },
             y: {
               grid: { display: false },
-              stacked: false, // Ensure bars are not stacked
+              stacked: false,
               ticks: { stepSize: 5 },
               title: { display: true, text: "Employees Absent" },
             },
           },
           plugins: {
-            legend: { display: true, position: "top", labels: { padding: 20 } },
+            legend: {
+              display: false,
+              position: "top",
+              labels: { padding: 20 },
+            },
             tooltip: {
               callbacks: {
                 label: (tooltipItem) =>
