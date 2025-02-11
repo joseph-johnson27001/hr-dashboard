@@ -57,8 +57,14 @@ export default {
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 95%;
+  width: 250px;
   border: 1px solid #bbb;
+}
+
+@media (max-width: 300px) {
+  .login-card {
+    width: 95%;
+  }
 }
 
 .logo {

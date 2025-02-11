@@ -150,6 +150,7 @@ table {
   border: 1px solid #ddd;
   border-radius: 4px;
   width: 100%;
+  font-family: "Assistant", sans-serif;
 }
 
 .department-filter {
@@ -158,6 +159,7 @@ table {
   padding: 8px;
   outline: none;
   color: #333 !important;
+  font-family: "Assistant", sans-serif;
 }
 
 .search-input:focus {
