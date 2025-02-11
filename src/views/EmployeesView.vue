@@ -1,6 +1,7 @@
 <template>
   <div class="main-content">
     <!-- Grouped Stat Cards -->
+
     <div class="stats-container">
       <div
         v-for="(group, category) in groupedStats"
@@ -19,6 +20,29 @@
       </div>
     </div>
 
+    <div class="employee-graphs">
+      <InfoCard title="Employee Satisfaction">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
+        <EmployeeSatisfactionGraph />
+      </InfoCard>
+
+      <!-- <InfoCard title="Employee Performance">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
+        <EmployeePerformanceGraph />
+      </InfoCard> -->
+
+      <InfoCard title="Employee Satisfaction">
+        <div class="card-header">
+          <span class="download-icon"><i class="fas fa-download"></i></span>
+        </div>
+        <TotalEmployeesGraph />
+      </InfoCard>
+    </div>
+
     <!-- Employee Table -->
     <div class="table-container">
       <InfoCard title="Employee Information">
@@ -32,12 +56,18 @@
 import InfoCard from "@/components/ui/InfoCard.vue";
 import StatCard from "@/components/ui/StatCard.vue";
 import EmployeeTable from "@/components/tables/EmployeeTable.vue";
+// import EmployeePerformanceGraph from "@/components/Graphs/Employees/EmployeePerformanceGraph.vue";
+import TotalEmployeesGraph from "@/components/Graphs/Employees/TotalEmployeesGraph.vue";
+import EmployeeSatisfactionGraph from "@/components/Graphs/Employee/EmployeeSatisfactionGraph.vue";
 
 export default {
   components: {
     InfoCard,
     StatCard,
     EmployeeTable,
+    // EmployeePerformanceGraph,
+    TotalEmployeesGraph,
+    EmployeeSatisfactionGraph,
   },
 
   data() {
@@ -285,11 +315,36 @@ export default {
   width: 100%;
 }
 
+.card-header {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.download-icon {
+  cursor: pointer;
+  font-size: 16px;
+  color: #0288d1;
+  transition: color 0.2s ease;
+  margin-top: -22px;
+}
+
+.download-icon:hover {
+  color: #01579b;
+}
+
 .stat-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 10px;
   width: 100%;
+}
+
+.employee-graphs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 1200px) {
@@ -301,6 +356,9 @@ export default {
 @media (max-width: 900px) {
   .stat-cards {
     grid-template-columns: 1fr 1fr;
+  }
+  .employee-graphs {
+    grid-template-columns: 1fr;
   }
 }
 
