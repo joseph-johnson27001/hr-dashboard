@@ -116,15 +116,17 @@ export default {
 }
 
 .dashboard-name {
+  font-family: "Exo 2", serif;
   font-size: 1rem;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   margin-right: 15px;
+  font-weight: 600;
 }
 
 .bird-icon {
   width: 35px;
   height: 35px;
-  margin-right: 15px;
+  margin-right: 5px;
 }
 
 .icon-container {
@@ -218,7 +220,8 @@ export default {
   display: block;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 10px;
+  margin-left: 0px;
+  z-index: 10;
 }
 
 .mobile-menu {
