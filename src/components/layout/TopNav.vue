@@ -200,7 +200,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 40px;
+  margin-right: 30px;
 }
 
 .user-profile i {
