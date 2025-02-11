@@ -140,7 +140,7 @@ export default {
 .search-container {
   position: relative;
   width: 30%;
-  margin-right: 20px;
+  margin-right: 10px;
   min-width: 300px;
 }
 
@@ -148,7 +148,7 @@ export default {
   width: 100%;
   padding: 10px;
   border: 1px solid #bbb;
-  border-radius: 5px;
+  border-radius: 4px;
   font-size: 0.9rem;
   box-sizing: border-box;
 }

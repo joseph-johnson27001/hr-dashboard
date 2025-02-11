@@ -72,7 +72,7 @@ export default {
   data() {
     return {
       workforceStats: [
-        { title: "Absenteeism Rate", value: "3%", icon: "fas fa-percent" },
+        { title: "Absenteeism Rate", value: "3%", icon: "fas fa-user-times" },
         {
           title: "Absences (Monthly)",
           value: 8,
