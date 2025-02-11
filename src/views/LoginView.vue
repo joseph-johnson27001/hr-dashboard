@@ -68,8 +68,8 @@ export default {
 }
 
 .logo {
-  width: 30%;
-  height: 30%;
+  width: 70px;
+  height: 70px;
 }
 
 h3 {
