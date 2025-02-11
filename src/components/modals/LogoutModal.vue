@@ -49,8 +49,8 @@ export default {
 
 /* Logo */
 .logo {
-  width: 99px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   image-rendering: crisp-edges;
   margin-bottom: 15px;
 }

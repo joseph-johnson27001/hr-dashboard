@@ -68,9 +68,8 @@ export default {
 }
 
 .logo {
-  width: 99px;
-  height: 100px;
-  image-rendering: crisp-edges;
+  width: 80px;
+  height: 80px;
 }
 
 h3 {
