@@ -101,18 +101,17 @@ export default {
   color: #0b508b;
   height: 55px;
   width: 100%;
-  position: fixed;
   z-index: 6;
   font-family: "Assistant", serif;
   font-size: 22px;
   font-weight: 600;
-  padding-left: 10px;
 }
 
 .heading-area {
   display: flex;
   align-items: center;
   width: 180px;
+  padding-left: 10px;
 }
 
 .dashboard-name {

@@ -132,7 +132,7 @@ body {
   border: 1px solid #bbb;
   border-right: 0;
   margin-left: 195px;
-  margin-top: 55px;
+  padding-bottom: 80px;
   transition: margin-left 0.1s linear;
   z-index: 5;
   border-top-left-radius: 5px;
@@ -190,6 +190,7 @@ i {
     margin-left: 0 !important;
     padding: 20px;
     border-radius: 0;
+    border-top: none;
   }
 }
 
