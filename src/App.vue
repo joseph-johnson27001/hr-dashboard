@@ -101,10 +101,16 @@ body {
   padding: 0;
 }
 
+body {
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
 #app {
   display: flex;
   width: 100%;
   font-family: "Poppins", sans-serif;
+  min-height: 100vh;
 }
 
 .right-area {
@@ -117,12 +123,14 @@ body {
 }
 
 .main {
-  height: 100%;
+  height: 100dvh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  box-sizing: border-box;
   padding: 20px;
   background-color: #fbfbfb;
   border: 1px solid #bbb;
   border-right: 0;
-  overflow: auto;
   margin-left: 195px;
   margin-top: 55px;
   transition: margin-left 0.1s linear;
