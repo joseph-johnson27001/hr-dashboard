@@ -29,8 +29,8 @@
 export default {
   data() {
     return {
-      email: "demo@demo.com",
-      password: "demo",
+      email: "",
+      password: "",
     };
   },
   methods: {
