@@ -191,6 +191,7 @@ i {
     padding: 20px;
     border-radius: 0;
     border-top: none;
+    padding-bottom: 70px;
   }
 }
 
