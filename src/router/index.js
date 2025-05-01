@@ -21,9 +21,13 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior() {
-    return { top: 0, behavior: "auto" };
-  },
+});
+
+router.afterEach(() => {
+  const mainContent = document.querySelector(".main");
+  if (mainContent) {
+    mainContent.scrollTop = 0;
+  }
 });
 
 export default router;
