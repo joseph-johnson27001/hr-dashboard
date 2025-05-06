@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-card">
-      <img src="/bird-icon.png" alt="Company Logo" class="logo" />
+      <img src="/dashboard-logo.png" alt="Company Logo" class="logo" />
       <h3>Login</h3>
       <form @submit.prevent="handleLogin">
         <div class="input-group">

@@ -2,7 +2,7 @@
   <div class="modal-overlay" v-if="isVisible">
     <div class="modal">
       <!-- Logo -->
-      <img src="/bird-icon.png" alt="Company Logo" class="logo" />
+      <img src="/dashboard-logo.png" alt="Company Logo" class="logo" />
       <h3>Confirm Logout</h3>
       <p>Are you sure you want to log out?</p>
       <div class="modal-buttons">

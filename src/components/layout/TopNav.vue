@@ -3,7 +3,7 @@
     <!-- Left Section: Logo & Sidebar Icons -->
     <div class="heading-area">
       <div class="icon-container">
-        <img src="/bird-icon.png" alt="Bird Icon" class="bird-icon" />
+        <img src="/dashboard-logo.png" alt="Bird Icon" class="dashboard-logo" />
         <span class="dashboard-name">WorkSphere</span>
       </div>
 
@@ -122,7 +122,7 @@ export default {
   font-weight: 600;
 }
 
-.bird-icon {
+.dashboard-logo {
   width: 40px;
   height: 40px;
   margin-right: 10px;
