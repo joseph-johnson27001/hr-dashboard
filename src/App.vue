@@ -129,6 +129,7 @@ body {
 .main {
   height: 100dvh;
   overflow-y: scroll;
+  scrollbar-width: none;
   box-sizing: border-box;
   padding: 20px;
   background-color: #fbfbfb;
