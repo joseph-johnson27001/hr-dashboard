@@ -31,6 +31,8 @@
       @close="isLogoutModalVisible = false"
     />
   </div>
+
+  <DashboardButton />
 </template>
 
 <script>
@@ -38,6 +40,7 @@ import SideBar from "./components/layout/SideBar.vue";
 import TopNav from "./components/layout/TopNav.vue";
 import MobileNav from "./components/layout/MobileNav.vue";
 import LogoutModal from "./components/modals/LogoutModal.vue";
+import DashboardButton from "./components/ui/DashboardButton.vue";
 
 export default {
   components: {
@@ -45,6 +48,7 @@ export default {
     TopNav,
     MobileNav,
     LogoutModal,
+    DashboardButton,
   },
   data() {
     return {
@@ -125,7 +129,6 @@ body {
 .main {
   height: 100dvh;
   overflow-y: scroll;
-  scrollbar-width: none;
   box-sizing: border-box;
   padding: 20px;
   background-color: #fbfbfb;
