@@ -21,6 +21,10 @@
 
         <button type="submit" class="login-button">Login</button>
       </form>
+      <p class="demo-note">
+        This is a demo login. Use any fake email and password — no real
+        credentials are needed and no information is stored.
+      </p>
     </div>
   </div>
 </template>
@@ -59,6 +63,13 @@ export default {
   text-align: center;
   width: 250px;
   border: 1px solid #bbb;
+}
+
+.demo-note {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #555;
+  text-align: center;
 }
 
 @media (max-width: 300px) {
